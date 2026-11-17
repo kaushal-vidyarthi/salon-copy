@@ -1,0 +1,2252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Salon Copy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;500;600;700&family=Anek+Devanagari:wght@400;500;600;700&family=Anek+Odia:wght@400;500;600;700&family=Kalam:wght@400;700&display=swap">
+<style>
+/* The salon's cash copy on a phone: navy notebook cover above, ruled page below,
+   amounts in ballpoint blue. Green always means cash, blue always means Paytm. */
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+  --cover:#14264D; --cover-2:#213B72; --cover-line:#304C8A; --on-cover:#F5F7FF; --on-cover-2:#B4C1E0;
+  --gold:#FFC233; --gold-ink:#2C2007;
+  --paper:#FDFDF9; --paper-2:#F0F2EC; --paper-3:#E3E7DF; --rule:#D3DCEA; --margin:#EC9C9C; --line:#D8DEE7;
+  --ink:#16213F; --ink-2:#56617C; --ink-3:#8790A8;
+  --pen:#1C3FAA;
+  --btn:#14264D; --on-btn:#F5F7FF;
+  --cash:#0B7A42; --cash-bg:#E2F3E9; --on-cash:#FFFFFF;
+  --ptm:#0A62C6; --ptm-bg:#E1EDFB; --on-ptm:#FFFFFF;
+  --out:#BF312A; --out-bg:#FBE8E6; --on-out:#FFFFFF;
+  --hl:rgba(255,194,51,.45);
+  --ui:"Anek Latin","Anek Devanagari","Anek Odia",system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans Devanagari","Noto Sans Oriya",sans-serif;
+  --hand:"Kalam","Anek Devanagari","Anek Odia","Segoe Print","Bradley Hand",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cover:#0B1630; --cover-2:#17284F; --cover-line:#253A68; --on-cover:#F1F5FF; --on-cover-2:#A1AFD3;
+    --paper:#141A26; --paper-2:#1E2636; --paper-3:#283246; --rule:#273247; --margin:#8C484C; --line:#2C374B;
+    --ink:#E9EEFA; --ink-2:#A9B3CA; --ink-3:#75819B;
+    --pen:#A5BDFF;
+    --btn:#2B417B; --on-btn:#F5F7FF;
+    --cash:#5BD08F; --cash-bg:#163222; --on-cash:#05200F;
+    --ptm:#78B6FF; --ptm-bg:#14273F; --on-ptm:#04172E;
+    --out:#FF8F85; --out-bg:#3B1D1B; --on-out:#3A0B07;
+    --hl:rgba(255,194,51,.28);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cover:#0B1630; --cover-2:#17284F; --cover-line:#253A68; --on-cover:#F1F5FF; --on-cover-2:#A1AFD3;
+  --paper:#141A26; --paper-2:#1E2636; --paper-3:#283246; --rule:#273247; --margin:#8C484C; --line:#2C374B;
+  --ink:#E9EEFA; --ink-2:#A9B3CA; --ink-3:#75819B;
+  --pen:#A5BDFF;
+  --btn:#2B417B; --on-btn:#F5F7FF;
+  --cash:#5BD08F; --cash-bg:#163222; --on-cash:#05200F;
+  --ptm:#78B6FF; --ptm-bg:#14273F; --on-ptm:#04172E;
+  --out:#FF8F85; --out-bg:#3B1D1B; --on-out:#3A0B07;
+  --hl:rgba(255,194,51,.28);
+}
+
+*,*::before,*::after{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{height:100%;background:var(--cover);scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100%;display:flex;flex-direction:column;background:var(--cover);color:var(--ink);
+  font-family:var(--ui);font-size:16px;line-height:1.4;-webkit-font-smoothing:antialiased}
+:root:lang(hi) body,:root:lang(or) body{line-height:1.55}
+button,input,textarea{font:inherit;color:inherit}
+button{touch-action:manipulation;cursor:pointer;border:0;background:none;padding:0;text-align:inherit}
+button[disabled]{cursor:default}
+h1,h2,p,dl,dd,ul,ol{margin:0;padding:0}
+ul,ol{list-style:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+svg{flex:none}
+html.has-sheet,html.has-sheet body{overflow:hidden}
+#app{flex:1;display:flex;flex-direction:column;width:100%;max-width:540px;margin:0 auto}
+.hand{font-family:var(--hand);font-weight:700}
+
+/* avatars */
+.av{flex:none;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--av,#6B7AA6);color:#fff;
+  font-weight:700;font-size:13.5px;line-height:1;letter-spacing:-.02em}
+.av.lg{width:46px;height:46px;font-size:19px}
+.av.ghost{background:var(--paper-2);color:var(--ink-2)}
+.cover .av.ghost{background:var(--cover-line);color:var(--on-cover)}
+
+/* ── cover ── */
+.cover{color:var(--on-cover);padding:10px 16px 34px}
+.cv-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px}
+.cv-right{display:flex;gap:8px;flex:none}
+.pill{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 13px;border-radius:20px;background:var(--cover-2);color:var(--on-cover);
+  font-size:14.5px;font-weight:600;flex:none;white-space:nowrap}
+.me-chip{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 10px 0 7px;border-radius:22px;background:var(--cover-2);min-width:0;max-width:66%}
+.me-chip .me-n{font-weight:600;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cv-name{font-weight:600;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.cv-date{margin-top:12px}
+.cv-date .hand{position:relative;display:inline-block;font-size:46px;line-height:1;padding-bottom:12px}
+.cv-date .hand svg{position:absolute;left:-2%;bottom:0;width:106%;height:11px;color:var(--gold)}
+.cv-week{margin-top:6px;font-size:15.5px;color:var(--on-cover-2)}
+.cv-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid var(--cover-line)}
+.cv-strip dt{font-size:13px;color:var(--on-cover-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cv-strip dd{margin-top:1px;font-size:20px;font-weight:700;white-space:nowrap}
+.cv-strip .hi dd{color:var(--gold)}
+.cv-h1{font-size:28px;font-weight:700;line-height:1.2;margin-top:14px}
+.cv-sub{margin-top:6px;font-size:15.5px;color:var(--on-cover-2)}
+
+/* ── paper ── */
+.paper{flex:1;position:relative;background:var(--paper);border-radius:22px 22px 0 0;margin-top:-18px;padding:18px 16px 100px}
+.paper.bare{padding-bottom:28px}
+.mine{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:600;color:var(--ink-2);margin:0 2px 10px}
+.cta{display:flex;align-items:center;gap:14px;width:100%;min-height:86px;padding:12px 16px;border-radius:20px;background:var(--gold);color:var(--gold-ink);
+  box-shadow:0 2px 0 #D99A12,0 10px 22px -12px rgba(120,80,0,.55);transition:transform .08s}
+.cta:active{transform:translateY(1px) scale(.99)}
+.cta-i{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--btn);color:var(--gold)}
+.cta-t{display:flex;flex-direction:column;min-width:0}
+.cta-t b{font-size:22px;font-weight:700;line-height:1.2}
+.cta-t small{font-size:14.5px;font-weight:500;opacity:.8;margin-top:1px}
+.cta2{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;margin-top:10px;padding:6px 14px;border-radius:16px;
+  border:1.5px solid var(--out);color:var(--out);font-weight:600;font-size:16.5px;text-align:center}
+.cta2:active{background:var(--out-bg)}
+
+.tips{margin-top:16px;padding:14px;border-radius:16px;background:var(--paper-2)}
+.tips ol{display:grid;gap:10px}
+.tips li{display:flex;gap:10px;align-items:center;font-size:15.5px;font-weight:500}
+.tips .tn{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--btn);color:var(--on-btn);font-weight:700;font-size:15px}
+.tips .chip{margin-top:12px}
+
+/* the ruled page: every row is exactly one rule tall, so writing sits on the lines */
+.ledger{--row:38px;position:relative;margin:22px -16px 0;padding:0 16px 0 32px;border-top:2px solid var(--margin);
+  background-image:linear-gradient(to bottom,transparent calc(var(--row) - 1px),var(--rule) calc(var(--row) - 1px));background-size:100% var(--row)}
+.ledger::before{content:"";position:absolute;top:0;bottom:0;left:21px;width:1.5px;background:var(--margin)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));column-gap:10px}
+.col{min-width:0}
+.col-h{height:var(--row);display:flex;align-items:flex-end;gap:6px;padding-bottom:5px;font-weight:700;font-size:15.5px;line-height:1.1;min-width:0}
+.col-h span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.col-h .left{font-weight:500;font-size:12px;color:var(--ink-3)}
+.amt-line{display:flex;align-items:flex-end;gap:3px;width:100%;height:var(--row);padding:0 0 3px;font-family:var(--hand);font-weight:700;
+  font-size:22px;line-height:1;color:var(--pen);white-space:nowrap;overflow:hidden}
+.amt-line .p{font-size:14px;font-weight:400;padding-bottom:2px}
+.mk{align-self:center;flex:none;margin-left:4px;display:grid;place-items:center;width:19px;height:19px;border-radius:50%;font-family:var(--ui);font-size:12px;font-weight:700;line-height:1}
+.mk.q{border:1.5px solid var(--out);color:var(--out)}
+.mk.w{color:var(--ink-3)}
+.void .a,.void .p,.lg-row.void .vl,.lg-row.void .lb>span{text-decoration:line-through;text-decoration-thickness:2px;opacity:.5}
+.col-t{height:var(--row);display:flex;align-items:flex-end;padding-bottom:3px;border-top:2px solid var(--ink);width:88%;
+  font-family:var(--hand);font-weight:700;font-size:22px;line-height:1;color:var(--ink)}
+.lg-gap{height:var(--row)}
+.lg-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;width:100%;height:var(--row);padding-bottom:4px}
+.lg-row .lb{display:flex;align-items:flex-end;gap:6px;min-width:0;font-size:15.5px;line-height:1.15;color:var(--ink-2)}
+.lg-row .lb>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lg-row .lb i{font-style:normal;color:var(--ink-3);white-space:nowrap}
+.lg-row .vl{flex:none;font-family:var(--hand);font-weight:700;font-size:22px;line-height:1;color:var(--pen);white-space:nowrap}
+.lg-row.out .vl{color:var(--out)}
+.lg-row.sum{border-top:2px solid var(--ink)}
+.lg-row.sum .lb{color:var(--ink);font-weight:600}
+.lg-row.final{height:calc(var(--row)*2);padding-bottom:9px;border-top:2px solid var(--ink);border-bottom:4px double var(--ink)}
+.lg-row.final .lb{font-size:17.5px;font-weight:700;color:var(--ink)}
+.lg-row.final .vl{font-size:36px;color:var(--ink)}
+.lg-row.good .lb,.lg-row.good .vl{color:var(--cash);font-weight:700}
+.lg-row.bad .lb,.lg-row.bad .vl{color:var(--out);font-weight:700}
+.lg-row.muted .lb{color:var(--ink-3)}
+.lg-row .vl svg{vertical-align:-3px}
+.fresh{animation:hl 1.8s ease-out}
+.fresh .a,.fresh .p,.fresh .vl{animation:write .6s ease-out both}
+@keyframes write{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 -8px 0 0)}}
+@keyframes hl{0%,55%{background-color:var(--hl)}100%{background-color:transparent}}
+
+.stamp-row{display:flex;justify-content:flex-end;padding:18px 6px 0}
+.stamp{display:inline-flex;flex-direction:column;align-items:center;gap:1px;padding:7px 16px 6px;border:2.5px solid currentColor;border-radius:10px;
+  color:var(--pen);transform:rotate(-5deg);font-weight:700;font-size:18px;letter-spacing:.08em;line-height:1.2;opacity:.92}
+:root:lang(hi) .stamp,:root:lang(or) .stamp{letter-spacing:.02em}
+.stamp small{font-size:12.5px;font-weight:600;letter-spacing:.01em}
+.stamp.bad{color:var(--out)}
+.stamp.thunk{animation:thunk .38s cubic-bezier(.2,1.5,.4,1) both}
+.done .stamp{font-size:30px;padding:10px 26px 9px;border-width:3.5px;border-radius:14px}
+.done .stamp small{font-size:15px}
+@keyframes thunk{from{transform:rotate(-5deg) scale(1.7);opacity:0}to{transform:rotate(-5deg) scale(1);opacity:.92}}
+
+.count-btn{margin-top:24px}
+.row-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.legend{margin-top:18px;font-size:14px;color:var(--ink-2)}
+.modeline{display:flex;gap:7px;align-items:flex-start;margin-top:8px;font-size:13.5px;color:var(--ink-3)}
+.modeline svg{margin-top:2px}
+
+.note{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border-radius:14px;background:var(--paper-2);font-size:15.5px}
+.note>svg{margin-top:2px;color:var(--pen)}
+.note b{font-weight:600}
+.note p{margin-top:4px;color:var(--ink-2)}
+.note.bad{background:var(--out-bg)}
+.note.bad>svg{color:var(--out)}
+.note.warn{background:#FFF3D1;color:#4A3504}
+.note.warn>svg{color:#A06A00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .note.warn{background:#3A2E10;color:#FFE3A1}}
+:root[data-theme="dark"] .note.warn{background:#3A2E10;color:#FFE3A1}
+.note-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.note+.note,.note+.cta,.note+.mine{margin-top:12px}
+.notes-stack{display:grid;gap:10px;margin-bottom:14px}
+
+/* ── buttons, chips, inputs ── */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:8px 16px;border-radius:16px;
+  font-weight:700;font-size:17px;text-align:center;line-height:1.25}
+.btn.gold{background:var(--gold);color:var(--gold-ink)}
+.btn.navy{background:var(--btn);color:var(--on-btn)}
+.btn.red{background:var(--out);color:var(--on-out)}
+.btn.green{background:var(--cash);color:var(--on-cash)}
+.btn.line{border:1.5px solid var(--line);color:var(--ink)}
+.btn.ghost{border:1.5px solid var(--cover-line);color:var(--on-cover)}
+.btn.sm{min-height:48px;font-size:16px;border-radius:14px}
+.btn[disabled]{background:var(--paper-2);color:var(--ink-3);border-color:transparent}
+.btn.dim{opacity:.45}
+.btn:not([disabled]):active{filter:brightness(.93)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0;margin:0 -16px;padding-left:16px;padding-right:16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips.wrap{flex-wrap:wrap;overflow:visible;margin:0;padding:2px 0}
+.chip{display:inline-flex;align-items:center;gap:6px;flex:none;min-height:44px;padding:4px 15px;border-radius:22px;border:1.5px solid var(--line);
+  background:var(--paper);font-weight:600;font-size:15.5px;white-space:nowrap}
+.chip .av{width:28px;height:28px;font-size:12.5px;margin-left:-9px}
+.chip.on{background:var(--btn);border-color:var(--btn);color:var(--on-btn)}
+.chip.q{font-family:var(--hand);font-size:19px;color:var(--pen);padding-top:6px}
+.chip.danger{color:var(--out);border-color:var(--out)}
+.chip.sm{min-height:38px;font-size:14.5px;padding:2px 12px}
+.chip:active{background:var(--paper-2)}
+.chip.on:active{background:var(--btn)}
+.chip.need{animation:need .5s}
+@keyframes need{20%,60%{border-color:var(--out);box-shadow:0 0 0 3px var(--out-bg)}}
+.link{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 4px;font-weight:600;font-size:15.5px;color:var(--pen);text-decoration:underline;text-underline-offset:3px}
+.inp{width:100%;height:54px;padding:0 14px;border-radius:13px;border:1.5px solid var(--line);background:var(--paper);font-size:17.5px;min-width:0}
+.inp.big{height:60px;font-size:20px;font-weight:600}
+.inp:focus{outline:none;border-color:var(--pen);box-shadow:0 0 0 3px var(--hl)}
+.f-row{display:flex;gap:8px;align-items:center}
+.f-row .inp{flex:1}
+.f-row .btn{width:auto;flex:none;min-height:54px}
+.err{color:var(--out);font-weight:600;font-size:15px;margin:8px 2px}
+.lbl{font-size:14.5px;font-weight:600;color:var(--ink-2);margin:0 2px 7px}
+
+/* ── bottom tabs ── */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;background:var(--paper);
+  border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs-in{display:grid;grid-template-columns:repeat(3,1fr);width:100%;max-width:540px}
+.tab{position:relative;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:13.5px;font-weight:500;color:var(--ink-3)}
+.tab.on{color:var(--pen);font-weight:700}
+.tab.on::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--pen)}
+.tab .dot{position:absolute;top:10px;left:calc(50% + 9px);width:9px;height:9px;border-radius:50%;background:var(--out)}
+
+/* ── sheets ── */
+.sheet-wrap{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:rgba(6,12,30,.62);
+  padding-top:env(safe-area-inset-top,0px)}
+.sheet{width:100%;max-width:540px;max-height:100%;overflow-y:auto;overscroll-behavior:contain;background:var(--paper);color:var(--ink);border-radius:22px 22px 0 0;
+  padding:10px 16px calc(16px + env(safe-area-inset-bottom,0px));animation:up .2s ease-out}
+.sheet:focus{outline:none}
+.sheet.tall{height:100%;max-height:860px;display:flex;flex-direction:column}
+@keyframes up{from{transform:translateY(28px);opacity:.3}to{transform:none;opacity:1}}
+.sh-head{display:flex;align-items:center;gap:10px;min-height:48px;margin-bottom:6px}
+.sh-title{flex:1;min-width:0;font-size:20px;font-weight:700;line-height:1.2}
+.x{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--paper-2)}
+.warn-line{display:flex;gap:8px;align-items:flex-start;padding:9px 12px;margin-bottom:10px;border-radius:12px;background:#FFF3D1;color:#4A3504;font-size:14.5px;font-weight:600}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .warn-line{background:#3A2E10;color:#FFE3A1}}
+:root[data-theme="dark"] .warn-line{background:#3A2E10;color:#FFE3A1}
+.amt-big{display:flex;align-items:baseline;justify-content:center;gap:6px;min-height:68px;font-family:var(--hand);font-weight:700;font-size:56px;
+  line-height:1.15;color:var(--pen)}
+.amt-big .r{font-family:var(--ui);font-weight:500;font-size:28px;opacity:.6}
+.amt-big.empty .n{opacity:.22}
+.amt-big.out{color:var(--out)}
+.amt-big.void .n{text-decoration:line-through;opacity:.5}
+.amt-big.shake{animation:shake .32s}
+.split{display:grid;gap:8px;margin:4px 0 2px}
+.split-row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:54px;padding:6px 14px;border-radius:14px;border:2px solid var(--line)}
+.split-row.on{border-color:var(--pen);background:var(--paper-2)}
+.split-row span{font-weight:600;font-size:15.5px}
+.split-row b{font-family:var(--hand);font-size:30px;line-height:1;color:var(--pen)}
+.split-row.calc{border-style:dashed}
+.split-row.calc b{color:var(--cash)}
+.split-row.ptmr b{color:var(--ptm)}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:8px;flex:1 1 auto;min-height:200px;max-height:300px;margin:10px 0 12px}
+.sheet:not(.tall) .keypad{min-height:250px}
+.key{display:grid;place-items:center;min-height:44px;border-radius:14px;background:var(--paper-2);font-size:27px;font-weight:600;line-height:1}
+.key:active{background:var(--paper-3)}
+.how{text-align:center;font-weight:600;font-size:15.5px;color:var(--ink-2);margin-bottom:8px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:72px;border-radius:17px;font-weight:700;font-size:19px;line-height:1.15;
+  transition:opacity .15s}
+.mode .mi{display:flex;align-items:center;gap:7px}
+.mode .pm{font-family:var(--hand);font-size:21px;padding-top:3px}
+.mode small{font-size:13px;font-weight:500;opacity:.9}
+.mode.cash{background:var(--cash);color:var(--on-cash)}
+.mode.ptm{background:var(--ptm);color:var(--on-ptm)}
+.mode.dim{opacity:.4}
+.mode:active{filter:brightness(.92)}
+.sub-acts{display:flex;justify-content:center;margin-top:6px}
+.hint{min-height:22px;text-align:center;font-weight:600;font-size:15px;color:var(--out);margin-top:6px}
+.lock-note{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px;font-size:13.5px;color:var(--ink-2);text-align:center}
+.confirm{padding:14px;border-radius:16px;background:var(--paper-2);text-align:center}
+.confirm p{font-size:17px;font-weight:700;margin-bottom:12px}
+.confirm .btn-row .btn{min-height:54px}
+.save{margin-top:10px}
+.box{padding:12px 14px;border-radius:14px;background:var(--paper-2)}
+.box-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;min-height:38px}
+.box-row span{font-size:15.5px;font-weight:600;color:var(--ink-2)}
+.box-row b{font-family:var(--hand);font-size:28px;line-height:1.1;color:var(--pen);white-space:nowrap}
+.box-row.big b{font-size:34px}
+.box-row.good span,.box-row.good b{color:var(--cash)}
+.box-row.bad span,.box-row.bad b{color:var(--out)}
+.box hr{border:0;border-top:2px solid var(--ink);margin:4px 0}
+.why{margin-top:10px;font-size:14.5px;color:var(--ink-2)}
+.ask{font-size:17px;font-weight:600;margin:6px 2px 0;text-align:center}
+.done{display:flex;flex-direction:column;align-items:center;gap:20px;padding:24px 0 8px;flex:1;justify-content:center}
+.done-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;text-align:center}
+.done-nums small{display:block;font-size:13px;color:var(--ink-2)}
+.done-nums b{font-size:19px;font-weight:700;white-space:nowrap}
+.done-acts{display:grid;gap:10px;width:100%}
+.done p{text-align:center;color:var(--ink-2);font-size:15px}
+.pin-dots{display:flex;justify-content:center;gap:18px;margin:16px 0 10px}
+.pin-dots i{width:18px;height:18px;border-radius:50%;border:2px solid var(--ink-2)}
+.pin-dots i.on{background:var(--ink);border-color:var(--ink)}
+.pin-dots.shake{animation:shake .32s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.pin-msg{text-align:center;min-height:24px;font-size:15.5px;color:var(--ink-2)}
+.pin-msg.bad{color:var(--out);font-weight:700}
+.e-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:4px}
+.tag{display:inline-flex;align-items:center;gap:5px;min-height:32px;padding:2px 13px;border-radius:16px;background:var(--paper-2);font-weight:600;font-size:15px}
+.tag.cash{background:var(--cash);color:var(--on-cash)} .tag.ptm{background:var(--ptm);color:var(--on-ptm)} .tag.out{background:var(--out);color:var(--on-out)}
+.facts{margin-top:14px;display:grid;gap:6px}
+.fact{display:flex;align-items:flex-start;gap:9px;font-size:15px;color:var(--ink-2)}
+.fact svg{margin-top:2px}
+.fact.bad{color:var(--out);font-weight:600}
+.fact.good{color:var(--cash);font-weight:600}
+.e-sec{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.e-q{font-weight:600;margin-bottom:10px}
+.e-acts{display:grid;gap:10px}
+.notes-grid{display:grid;gap:8px;margin:6px 0 12px}
+.nrow{display:grid;grid-template-columns:76px 1fr 96px;align-items:center;gap:10px}
+.nrow b{font-weight:700;font-size:18px}
+.nrow .inp{height:50px;text-align:center;font-size:19px}
+.nrow span{text-align:right;font-family:var(--hand);font-weight:700;font-size:21px;color:var(--pen);white-space:nowrap}
+.ntot{display:flex;justify-content:space-between;align-items:baseline;padding:10px 2px;border-top:2px solid var(--ink);font-weight:700}
+.ntot b{font-family:var(--hand);font-size:30px;color:var(--pen)}
+.ta{width:100%;min-height:180px;margin:4px 0 12px;padding:12px;border-radius:13px;border:1.5px solid var(--line);background:var(--paper-2);font-size:15px;color:inherit}
+.steps{display:grid;gap:14px;margin:6px 0 18px}
+.steps li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.steps .tn{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--btn);color:var(--on-btn);font-weight:700}
+
+/* who */
+.who-list{display:grid;gap:10px}
+.who-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:70px;padding:10px 14px;border-radius:18px;background:var(--paper-2);text-align:left}
+.who-btn:active{background:var(--paper-3)}
+.who-btn.on{outline:2.5px solid var(--pen)}
+.who-n{flex:1;min-width:0;font-size:19px;font-weight:700;line-height:1.2}
+.who-n small{display:block;font-size:14px;font-weight:500;color:var(--ink-2)}
+.who-sep{height:1px;background:var(--line);margin:6px 0}
+.who-btn>svg:last-child{color:var(--pen)}
+
+/* lang screen */
+.lang-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:30px 22px calc(30px + env(safe-area-inset-bottom,0px));color:var(--on-cover)}
+.logo{font-family:var(--hand);font-weight:700;font-size:44px;line-height:1.1;position:relative;display:inline-block;align-self:flex-start;padding-bottom:10px}
+.logo svg{position:absolute;left:-2%;bottom:0;width:104%;height:11px;color:var(--gold)}
+.lang-ask{font-size:19px;font-weight:600;color:var(--on-cover-2);line-height:1.5;margin:6px 0 4px}
+.lang-btn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;min-height:78px;padding:12px 18px;border-radius:18px;background:var(--cover-2);color:var(--on-cover)}
+.lang-btn b{font-size:24px;font-weight:700;line-height:1.2}
+.lang-btn small{font-size:15px;color:var(--on-cover-2)}
+.lang-btn:active{background:var(--cover-line)}
+
+/* setup */
+.steps-bar{display:flex;gap:6px;margin-top:14px}
+.steps-bar i{flex:1;height:5px;border-radius:3px;background:var(--cover-line)}
+.steps-bar i.on{background:var(--gold)}
+.q{display:block;font-size:22px;font-weight:700;line-height:1.25}
+.qs{margin-top:6px;font-size:15.5px;color:var(--ink-2)}
+.su-body{display:grid;gap:14px}
+.su-list{display:grid;gap:8px}
+.su-list li{display:flex;align-items:center;gap:12px;min-height:56px;padding:6px 6px 6px 12px;border-radius:14px;background:var(--paper-2);font-weight:600;font-size:17px}
+.su-list li span:nth-child(2){flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.su-nav{display:grid;grid-template-columns:auto 1fr;gap:10px;margin-top:22px}
+.su-nav .btn.line{width:auto;padding:8px 20px}
+
+/* old pages */
+.mh{font-size:15px;font-weight:700;color:var(--ink-2);margin:22px 2px 4px}
+.mh:first-child{margin-top:0}
+.dl{display:grid;grid-template-columns:1.25fr 1fr 1fr 22px;align-items:end;gap:2px 8px;width:100%;padding:12px 2px;border-bottom:1px solid var(--rule)}
+.dl .hand{font-size:23px;line-height:1.1;color:var(--pen)}
+.dl small{display:block;font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dl .v{display:block;font-size:17px;font-weight:700;white-space:nowrap}
+.dl .st{align-self:center;justify-self:end}
+.dl .st.ok{color:var(--cash)} .dl .st.bad{color:var(--out)} .dl .st.mid{color:var(--ink-3)}
+.dl .dl-x{grid-column:1/-1;display:flex;align-items:center;gap:6px;margin-top:4px;font-size:14px;font-weight:600;color:var(--out)}
+.empty{padding:36px 8px;text-align:center;color:var(--ink-2)}
+.more{margin-top:18px}
+
+/* owner */
+.oc-l{font-size:14px;color:var(--on-cover-2);margin-top:14px}
+.oc-v{font-size:40px;font-weight:700;line-height:1.1;color:var(--gold)}
+.own-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.own-acts .wide{grid-column:1/-1}
+.sec{margin-top:28px}
+.sec:first-child{margin-top:2px}
+.sec h2{font-size:18px;font-weight:700;margin-bottom:6px}
+.look{display:flex;align-items:center;gap:10px;min-height:58px;padding:6px 0;border-bottom:1px solid var(--rule)}
+.look-main{flex:1;display:flex;align-items:center;gap:10px;min-width:0;min-height:46px;text-align:left}
+.look-main>svg{color:var(--out)}
+.look-t{flex:1;min-width:0}
+.look b{display:block;font-weight:600;font-size:15.5px;line-height:1.25}
+.look small{display:block;font-size:13.5px;color:var(--ink-2)}
+.look .hand{font-size:17px;color:var(--pen);white-space:nowrap}
+.fine{display:flex;align-items:center;gap:8px;color:var(--cash);font-weight:600;font-size:15.5px;min-height:40px}
+.mnav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.mnav b{font-size:18px;font-weight:700}
+.mnav button{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--paper-2)}
+.mnav button[disabled]{opacity:.35}
+.mtot{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px;border-radius:14px;background:var(--paper-2)}
+.mtot small{display:block;font-size:13px;color:var(--ink-2)}
+.mtot b{font-size:18px;font-weight:700;white-space:nowrap}
+.tbl-wrap{overflow-x:auto;margin-top:8px}
+.tbl{width:100%;border-collapse:collapse;min-width:330px}
+.tbl th{font-size:13px;font-weight:500;color:var(--ink-2);text-align:right;padding:8px 4px}
+.tbl td{padding:10px 4px;border-top:1px solid var(--rule);text-align:right;font-weight:600;white-space:nowrap;vertical-align:top}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl td small{display:block;font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.tbl td small.o{color:var(--out)}
+.tbl td.o{color:var(--out)}
+.mini{font-size:13.5px;color:var(--ink-2);margin-top:10px}
+.tool{display:flex;align-items:center;gap:12px;width:100%;min-height:58px;border-bottom:1px solid var(--rule);font-weight:600;font-size:16px}
+.tool span{flex:1}
+.tool small{display:block;font-size:13.5px;font-weight:500;color:var(--ink-2)}
+.tool>svg:first-child{color:var(--pen)}
+.tool>svg:last-child{color:var(--ink-3)}
+.st-list li{display:flex;align-items:center;gap:10px;min-height:62px;border-bottom:1px solid var(--rule)}
+.st-list .nm{flex:1;min-width:0;font-weight:700;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st-list .nm small{display:block;font-size:13px;font-weight:500;color:var(--ink-2)}
+
+/* misc */
+.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px 28px;text-align:center;color:var(--on-cover)}
+.center .logo{align-self:center}
+.center p{color:var(--on-cover-2);font-size:16.5px;max-width:32ch}
+.spin{width:30px;height:30px;border-radius:50%;border:3px solid var(--cover-line);border-top-color:var(--gold);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:90;transform:translate(-50%,14px);opacity:0;pointer-events:none;
+  display:flex;align-items:center;gap:10px;width:max-content;max-width:min(92vw,500px);padding:8px 8px 8px 16px;min-height:52px;border-radius:16px;background:var(--ink);color:var(--paper);
+  font-weight:600;font-size:15.5px;transition:opacity .18s,transform .18s}
+.toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.toast .tm{flex:1;min-width:0;padding:6px 0}
+.toast button{flex:none;min-height:40px;padding:0 14px;border-radius:12px;background:var(--gold);color:var(--gold-ink);font-weight:700}
+.toast:not(:has(button)){padding-right:16px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (max-height:640px){
+  .sheet.tall .amt-big{min-height:54px;font-size:46px}
+  .sheet.tall .keypad{min-height:168px;gap:6px;margin:6px 0 8px}
+  .sheet.tall .lock-note{display:none}
+  .mode{min-height:62px}
+}
+@media (max-width:350px){
+  .cta-t b{font-size:19px}
+  .cv-strip dd{font-size:17px}
+  .ledger{padding-left:28px}
+}
+
+/* v3: Google sign-in, Gmail list */
+.tabs-in{grid-template-columns:repeat(var(--tabs,3),1fr)}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;padding:8px 18px;border-radius:18px;background:#fff;color:#1F1F1F;
+  font-weight:700;font-size:18px;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.gbtn svg{color:#1A73E8}
+.gbtn:active{filter:brightness(.94)}
+.sign-help{font-size:14.5px;color:var(--on-cover-2)}
+.err.light{color:#FFB4AC}
+.center-acts{display:grid;gap:10px;width:100%;max-width:340px;margin-top:6px}
+.center p b{color:var(--on-cover)}
+.loading-line{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--ink-2);margin:4px 2px 12px}
+.spin.sm{width:18px;height:18px;border-width:2.5px;border-color:var(--line);border-top-color:var(--pen)}
+.add-box{display:grid;gap:8px;padding:12px;border-radius:16px;background:var(--paper-2)}
+.add-box .btn{width:100%}
+.su-n{flex:1;min-width:0;overflow:hidden}
+.su-n,.su-n small{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.su-n small{display:block;font-size:13px;font-weight:500;color:var(--ink-2)}
+.st-row{display:flex;align-items:center;gap:12px;width:100%;min-height:62px;text-align:left}
+.st-list .nm small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn.danger-line{border:1.5px solid var(--out);color:var(--out)}
+.fact .av{width:28px;height:28px;font-size:12.5px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="sheet-root"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+(() => {
+'use strict';
+
+/* ═══════════════════════ YOUR SETTINGS ═══════════════════════
+   Paste the firebaseConfig from Firebase here (SETUP guide, step 4).
+   While it is empty, the app runs as a demo that saves on this phone only. */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAOSKZV4RZzFN76LToe2uuo7maNQBrwmv4",
+  authDomain: "salon-copy.firebaseapp.com",
+  projectId: "salon-copy",
+  storageBucket: "salon-copy.firebasestorage.app",
+  messagingSenderId: "563795242247",
+  appId: "1:563795242247:web:95c94f100814303c8929a2"
+};
+/* ═════════════════════════════════════════════════════════════ */
+const FIREBASE_VERSION = '10.12.2';
+
+/* ════════════════════════════════════════════════════════════════════
+   Salon Copy — the salon's cash copy on every staff phone.
+
+   Protection lives in the database rules on Google's server (firestore.rules),
+   so it holds whatever app, phone or copy of this file someone uses:
+   • Only the owner and the Gmails the owner added can open the copy.
+   • Entries can only be added: no edit, no delete. A cancelled entry stays
+     crossed out with who and when. The writer can cancel within 2 minutes;
+     after that only the owner, and only on the same day.
+   • Time and date come from Google's clock, so a phone's wrong date does nothing.
+   • Old pages are locked for everyone.
+   • Cash is counted blind and every count is kept.
+   • Owner cash moves, Paytm checks, staff and settings: owner only.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ───────── helpers ───────── */
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const pad2 = n => String(n).padStart(2, '0');
+const isObj = v => !!v && typeof v === 'object' && !Array.isArray(v);
+const merge = (a, b) => { const o = Object.assign({}, a); for (const k in b) o[k] = isObj(b[k]) ? merge(isObj(o[k]) ? o[k] : {}, b[k]) : b[k]; return o; };
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const withTimeout = (p, ms) => Promise.race([Promise.resolve(p), new Promise((_, rej) => setTimeout(() => rej({ code: 'timeout' }), ms))]);
+const LS = 'salonCopy:';
+const lsGet = k => { try { return localStorage.getItem(LS + k); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(LS + k, v); return true; } catch (e) { return false; } };
+const lsDel = k => { try { localStorage.removeItem(LS + k); } catch (e) {} };
+const digits = s => String(s == null ? '' : s).replace(/\D/g, '');
+const buzz = () => { try { navigator.vibrate && navigator.vibrate(18); } catch (e) {} };
+const okEmail = s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+const normEmail = s => String(s || '').trim().toLowerCase();
+
+/* time: India time, a salon day runs 4 am to 4 am (the database rules use the same clock) */
+const CLK = { off: 0, fixed: false };
+const now = () => Date.now() + CLK.off;
+const SHIFT = 90 * 60e3;                     // UTC + 5:30 − 4:00
+const IST = 330 * 60e3;
+const dkOf = ms => { const d = new Date(ms + SHIFT); return d.getUTCFullYear() * 10000 + (d.getUTCMonth() + 1) * 100 + d.getUTCDate(); };
+const dkY = dk => Math.floor(dk / 10000), dkM = dk => Math.floor(dk / 100) % 100, dkD = dk => dk % 100;
+const dkStart = dk => Date.UTC(dkY(dk), dkM(dk) - 1, dkD(dk)) - SHIFT;
+const dkAdd = (dk, n) => dkOf(dkStart(dk) + n * 864e5 + 6 * 3600e3);
+const todayDk = () => dkOf(now());
+const handDate = dk => dkD(dk) + '/' + dkM(dk) + '/' + String(dkY(dk)).slice(2);
+const weekdayIdx = dk => new Date(Date.UTC(dkY(dk), dkM(dk) - 1, dkD(dk))).getUTCDay();
+const clock = ts => { const d = new Date(ts + IST), h = d.getUTCHours(); return ((h + 11) % 12 + 1) + ':' + pad2(d.getUTCMinutes()) + (h < 12 ? ' am' : ' pm'); };
+const mmss = ms => { const s = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(s / 60) + ':' + pad2(s % 60); };
+const ymOf = dk => Math.floor(dk / 100);
+const ymAdd = (ym, n) => { let y = Math.floor(ym / 100), m = ym % 100 - 1 + n; y += Math.floor(m / 12); m = ((m % 12) + 12) % 12; return y * 100 + m + 1; };
+const ymRange = ym => [ym * 100 + 1, ym * 100 + new Date(Date.UTC(Math.floor(ym / 100), ym % 100, 0)).getUTCDate()];
+
+function num(n) {
+  n = Math.round(Number(n) || 0);
+  let s = String(Math.abs(n));
+  if (s.length > 3) s = s.slice(0, -3).replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + s.slice(-3);
+  return (n < 0 ? '−' : '') + s;
+}
+const rs = n => (Number(n) < 0 ? '−' : '') + '₹' + num(Math.abs(Number(n) || 0));
+const uid = () => now().toString(36) + Math.random().toString(36).slice(2, 7);
+let DEVICE = lsGet('dev');
+if (!DEVICE) { DEVICE = Math.random().toString(36).slice(2, 10); lsSet('dev', DEVICE); }
+
+const AV = ['#D9672E', '#228467', '#7553C4', '#C23E77', '#2B78BE', '#8F7414', '#4F7F2A', '#B0473B'];
+function avColor(id) {
+  const i = S.shop ? staffList(true).map(x => x.id).indexOf(id) : -1;
+  if (i >= 0) return AV[i % AV.length];
+  let h = 0; for (const c of String(id)) h = (h * 31 + c.charCodeAt(0)) | 0; return AV[Math.abs(h) % AV.length];
+}
+function firstChar(s) {
+  try { if (window.Intl && Intl.Segmenter) { const it = new Intl.Segmenter().segment(s)[Symbol.iterator]().next(); if (it.value) return it.value.segment; } } catch (e) {}
+  return Array.from(s)[0] || '?';
+}
+function initial(name) {
+  const parts = String(name || '?').trim().split(/[\s.@]+/).filter(Boolean);
+  if (!parts.length) return '?';
+  return (firstChar(parts[0]) + (parts.length > 1 ? firstChar(parts[1]) : '')).toUpperCase();
+}
+
+/* ───────── icons ───────── */
+const svg = (d, w, sw) => `<svg viewBox="0 0 24 24" width="${w || 20}" height="${w || 20}" fill="none" stroke="currentColor" stroke-width="${sw || 2.2}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const ICON = {
+  plus: svg('<path d="M12 5v14M5 12h14"/>', 30, 3.2),
+  plusSm: svg('<path d="M12 5v14M5 12h14"/>', 18, 3),
+  minus: svg('<path d="M5 12h14"/>', 20, 3),
+  lock: svg('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>', 18),
+  lockBig: svg('<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>', 28, 2),
+  x: svg('<path d="M6 6l12 12M18 6L6 18"/>', 22, 2.4),
+  del: svg('<path d="M21 5H9l-6 7 6 7h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z"/><path d="M17 9.5l-5 5M12 9.5l5 5"/>', 28),
+  left: svg('<path d="M15 5l-7 7 7 7"/>', 20, 2.6),
+  right: svg('<path d="M9 5l7 7-7 7"/>', 20, 2.6),
+  down: svg('<path d="M6 9l6 6 6-6"/>', 18, 2.6),
+  page: svg('<path d="M7 3h8l4 4v14H7z"/><path d="M10 12h6M10 16h6"/>', 24, 2),
+  book: svg('<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 8h6"/>', 24, 2),
+  key: svg('<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l3 3"/>', 18),
+  keyTab: svg('<circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l3 3"/>', 24, 2),
+  check: svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 20, 2.8),
+  checkBig: svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 22, 3),
+  globe: svg('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/>', 18, 1.9),
+  cash: svg('<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/>', 24),
+  send: svg('<path d="M21 3L10 14M21 3l-7 18-4-7-7-4z"/>', 18),
+  down2: svg('<path d="M12 4v11M7 11l5 5 5-5M5 20h14"/>', 20),
+  flag: svg('<path d="M5 21V4M5 4h12l-2.5 4L17 12H5"/>', 18),
+  alert: svg('<path d="M12 4l9.5 16h-19z"/><path d="M12 10v4M12 17.3v.2"/>', 20),
+  users: svg('<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 5.5a3.2 3.2 0 0 1 0 5.6M18 14.5c1.9.9 3 2.9 3 5.5"/>', 20),
+  user: svg('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>', 22),
+  shop: svg('<path d="M4 10l1.5-5h13L20 10M5 10v10h14V10M4 10h16M10 20v-5h4v5"/>', 20),
+  cloud: svg('<path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 10.2 3.9 3.9 0 0 1 17.5 18z"/>', 16),
+  phone: svg('<rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18h2"/>', 18),
+  wifiOff: svg('<path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 12.6a10 10 0 0 1 4.3-2.3M12.8 10a10 10 0 0 1 6.2 2.6M2 9a15 15 0 0 1 4.2-2.6M10.7 5.6A15 15 0 0 1 22 9"/><path d="M12 20h.01"/>', 18),
+  time: svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', 16),
+  timeBig: svg('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', 28, 2),
+  pen: svg('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>', 18),
+  mail: svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/>', 18),
+  tag: svg('<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.4"/>', 20),
+  coins: svg('<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/>', 18),
+  undo: svg('<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>', 18),
+  logout: svg('<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h11"/>', 18)
+};
+const SQUIGGLE = '<svg viewBox="0 0 120 11" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7C28 2 62 10 118 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
+
+/* ───────── words: English, हिन्दी, ଓଡ଼ିଆ ───────── */
+const STR = {
+en: {
+  _name: 'English', _sample: 'Payment received',
+  wd: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  mo: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  loading: 'Opening your copy…', slow: 'Still connecting. Check the internet.', loadingShort: 'Loading…',
+  noLoad: 'Could not open. Check the internet and open the link again.',
+  signTitle: 'Sign in with Google', signSub: 'Use the Gmail the owner added for you.', signBtn: 'Sign in with Google',
+  signHelp: 'If nothing opens, open this link in Chrome.', inApp: 'Google sign-in does not work inside WhatsApp or Instagram. Tap ⋮ and choose Open in Chrome.',
+  signFail: 'Sign-in did not finish. Try again.',
+  notListed: '{e} is not on this salon’s list.', notListedSub: 'Ask the owner to add this Gmail, or sign in with the right one.',
+  tryAgain: 'Try again', otherGmail: 'Use another Gmail', signOut: 'Sign out', signedIn: 'Signed in as {e}',
+  waitOwner: 'The owner has not started the copy yet. Ask the owner to open this link first.',
+  ownerOnlySetup: 'Only the owner’s Gmail can start the copy. You are signed in as {e}.',
+  dbLost: 'Connection problem. Close this page and open it again.',
+  storageWarn: 'This browser is not keeping data. Open this page in Chrome.',
+  clockFixed: 'This phone’s clock is wrong. The copy is using the correct time.',
+  demoNote: 'Demo: saved on this phone only. To use it on every phone, follow the setup guide.',
+  today: 'Today', pages: 'Old pages', owner: 'Owner',
+  whoTitle: 'Who is using this phone?', whoSub: 'In the demo, choose who you are to try it like a staff phone.',
+  shared: 'Shared salon phone', sharedSub: 'Many people use this phone', ownerPhone: 'Owner', phoneIs: 'This phone: {n}',
+  youToday: 'You today: {c} customers, {a}',
+  payBtn: 'Payment received', payBtnSub: 'Tap after every customer pays',
+  outBtn: 'Money taken from cash',
+  tip1: 'Customer paid? Tap the yellow button.', tip2: 'Type the amount.', tip3: 'Tap Cash or {p}. It saves and locks.', tipOk: 'Got it',
+  total: 'Total', cash: 'Cash', cashToday: 'Cash today', taken: 'Money taken', earlier: 'Earlier cash', shouldBe: 'Should be in hand', inHand: 'Cash in hand',
+  ownTook: 'Owner took', ownAdd: 'Owner added', shopExp: 'Shop expense',
+  empty: 'No payments yet today',
+  counted: 'Counted {t}', matches: 'Cash matches', short: 'Short {a}', extra: 'Extra {a}',
+  afterCount: 'Changed after counting. Count again.', notRecounted: 'Changed after counting',
+  closedStamp: 'Closed', notCountedStamp: 'Not counted',
+  countBtn: 'Count cash and close', recountBtn: 'Count cash again',
+  legend: '(P) means {p}. No mark means cash. Tap any amount to see when it was written.',
+  modeCloud: 'Saved on Google. Every phone sees the same page.', modeLocal: 'Saved on this phone only.',
+  offline: 'No internet. New entries wait on this phone and go to Google later.', waiting: '{n} waiting for internet',
+  payTitle: 'Payment received', whose: 'Whose customer?', howPaid: 'How was it paid? Tap to save.',
+  typeFirst: 'Type the amount first', pickWhoFirst: 'First tap whose customer',
+  splitLink: 'Part cash, part {p}', splitOff: 'Only one way', ptmPart: '{p} part', cashPart: 'Cash part', splitSave: 'Save {a}', splitBad: 'The {p} part must be less than the total',
+  bigAsk: '{a}. Is this right?', yesSave: 'Yes, save', change: 'Change',
+  dupAsk: 'The same {a} was just saved. Is this a new customer?', dupYes: 'Yes, new customer', no: 'No',
+  closedWarn: 'Today’s page is closed. If you add this, the cash must be counted again.',
+  lockNote: 'After saving, it cannot be changed',
+  saved: 'Saved {a} {m}', savedOut: 'Saved: {a} taken', undo: 'Undo', undone: 'Cancelled. It stays on the page, crossed out.',
+  queued: 'Saved on this phone. It goes to Google when the internet is back.',
+  saveFail: 'Not saved. Check the internet and try again.', needNet: 'This needs internet. Try again when it is back.',
+  refused: 'Not saved: {a}, {n}. Write it again.', refusedWhy: 'The phone was offline past 4 am, or its date is wrong. Turn on automatic date and time.',
+  outTitle: 'Money taken from cash', whoTook: 'Who took it?', whatFor: 'What for?',
+  r_adv: 'Advance', r_sal: 'Salary', r_tea: 'Tea / snacks', r_petrol: 'Petrol', r_items: 'Shop items', r_refund: 'Customer refund', r_other: 'Other', r_home: 'Taken home', r_bank: 'Bank deposit', r_change: 'Change money',
+  saveOut: 'Save {a} taken', saveOwnOut: 'Save {a} taken by owner', saveOwnIn: 'Save {a} added by owner',
+  writtenAt: 'Written at {t}, {d}', writtenBy: 'Written by {n} at {t}, {d}',
+  waitingNet: 'Waiting for internet', lockedNote: 'Locked. Nobody can change this.',
+  selfCancel: 'Wrong? Cancel it', selfLeft: 'You can cancel it for {t} more', cancelAsk: 'Cancel this entry? It stays on the page crossed out, so the owner can see it.',
+  yesCancel: 'Yes, cancel', keep: 'No, keep it', cancelledSelf: 'Cancelled by the writer at {t}', cancelledOwner: 'Cancelled by the owner at {t}',
+  wrongQ: 'Something wrong? Tell the owner', r_amt: 'Wrong amount', r_name: 'Wrong name', r_mode: 'Cash or {p} is wrong', r_twice: 'Written twice',
+  flagged: 'The owner will see this', flaggedAs: 'Marked wrong: {r}',
+  ownCancel: 'Cancel it (owner)', ownRewrite: 'Cancel and write the right one (owner)',
+  pastLocked: 'Old pages can’t be changed by anyone. To fix the cash, the owner can take or add cash on today’s page.',
+  countTitle: 'Count cash and close', countAsk: 'Count all the money in the cash box and type the total.', countNotes: 'Help me count notes', coins: 'Coins', useAmt: 'Use {a}',
+  check: 'Check', typeCount: 'Type the counted cash', youCounted: 'You counted', countAgain: 'Count again', closeDay: 'Close the day', closeShort: 'Close with {a} short', closeExtra: 'Close with {a} extra',
+  shortWhy: 'Check for money taken but not written, or a {p} payment written as cash.', extraWhy: 'Check for a payment that was not written.',
+  dayClosed: 'Day closed', ownerSees: 'The owner can see this page on their phone.',
+  share: 'Share', shareTitle: 'Share this page', whatsapp: 'Send on WhatsApp', copyText: 'Copy text', copied: 'Copied', moreApps: 'Other apps',
+  noPages: 'No pages in this month.', back: 'Back',
+  cashNow: 'Cash in hand now', takeCash: 'Take cash', addCash: 'Add cash', checkPtmToday: 'Check today’s {p}',
+  look: 'Needs a look', allGood: 'Nothing to check in the last 7 days', seenOk: 'OK',
+  lk_flag: 'Marked wrong: {r}', lk_void: 'Entry cancelled', lk_short: 'Cash short {a}', lk_extra: 'Cash extra {a}', lk_notCounted: 'Cash was not counted', lk_tries: 'Count changed: {v}',
+  lk_ptmLess: '{p} app has {a} less than written', lk_ptmMore: '{p} app has {a} more than written',
+  customers: 'Customers', payments: 'Payments', took: 'Took', name: 'Name', nCancelled: '{n} cancelled',
+  shopTotal: 'Shop expenses',
+  manage: 'Manage', staff: 'Staff and Gmails', addPhone: 'Add a staff phone', salonName: 'Salon name', onlineName: 'Online payment name', download: 'Download {m}',
+  ptmTitle: 'Check {p}', ptmAsk: 'Open your {p} app. How much came on {d}?', ptmWritten: 'Written in the copy', ptmApp: '{p} app', ptmMatch: '{p} matches', ptmLess: '{a} less in the {p} app', ptmMore: '{a} more in the {p} app', ptmLessWhy: 'Someone may have written a cash payment as {p}.', ptmMoreWhy: 'A {p} payment may not be written in the copy.',
+  addName: 'New person’s name', gmailOpt: 'Their Gmail, to use their own phone (optional)', add: 'Add', noLogin: 'No Gmail yet',
+  leftJob: 'Left job', leftList: 'Left the job', bringBack: 'Bring back', since: 'since {d}', edit: 'Change',
+  leftAsk: '{n} left the job?', leftKeep: 'Old pages keep the name. They won’t show for new payments.', leftTook: 'This month {n} took {a} from cash.', leftLogin: 'Their Gmail login stops working right away.', yesLeft: 'Yes, {n} left',
+  logins: 'Shared phone logins', loginsSub: 'Gmails that can write for anyone, like the counter phone.',
+  badEmail: 'Type a full Gmail address, like name@gmail.com', emailTaken: 'This Gmail is already added',
+  dupName: 'This name is already there. Add a letter, like {n} B.', needOne: 'Keep at least one name', save: 'Save', close: 'Close', remove: 'Remove',
+  helpTitle: 'Add a staff phone', help1: 'In Staff and Gmails, add their Gmail next to their name.', help2: 'Send them this page’s link on WhatsApp.', help3: 'They open it in Chrome and sign in with that Gmail. Their name is filled in by itself.', help4: 'In Chrome, tap ⋮ then Add to Home screen, so it opens like an app.', helpLeave: 'When someone leaves: Staff and Gmails, then Left job. Their login stops at once.',
+  suStep: 'Step {n} of 3', next: 'Next',
+  su1: 'What is your salon’s name?', su1ph: 'Salon name',
+  su2: 'Who serves customers?', su2sub: 'Add every person, you too if you also work. Add their Gmail if they will use their own phone.', su2ph: 'Name', su2mail: 'Gmail (optional)',
+  su3: 'How much cash is in the cash box right now?', su3sub: 'It becomes the earlier cash on the first page. 0 is fine.',
+  suDone: 'Start the copy', eStaff: 'Add at least one name'
+},
+hi: {
+  _name: 'हिन्दी', _sample: 'पेमेंट मिला',
+  wd: ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],
+  mo: ['जनवरी', 'फ़रवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'],
+  loading: 'आपकी कॉपी खुल रही है…', slow: 'अभी जुड़ रहा है। इंटरनेट देखें।', loadingShort: 'लोड हो रहा है…',
+  noLoad: 'नहीं खुला। इंटरनेट देखें और लिंक फिर से खोलें।',
+  signTitle: 'Google से लॉगिन करें', signSub: 'वही Gmail चुनें जो मालिक ने आपके लिए जोड़ा है।', signBtn: 'Google से लॉगिन करें',
+  signHelp: 'कुछ न खुले तो यह लिंक Chrome में खोलें।', inApp: 'WhatsApp या Instagram के अंदर Google लॉगिन नहीं चलता। ⋮ दबाकर Chrome में खोलें।',
+  signFail: 'लॉगिन पूरा नहीं हुआ। फिर कोशिश करें।',
+  notListed: '{e} इस सैलून की लिस्ट में नहीं है।', notListedSub: 'मालिक से यह Gmail जुड़वाएँ, या सही Gmail से लॉगिन करें।',
+  tryAgain: 'फिर कोशिश करें', otherGmail: 'दूसरा Gmail इस्तेमाल करें', signOut: 'लॉगआउट करें', signedIn: '{e} से लॉगिन है',
+  waitOwner: 'मालिक ने अभी कॉपी शुरू नहीं की है। पहले मालिक यह लिंक खोलें।',
+  ownerOnlySetup: 'कॉपी सिर्फ़ मालिक के Gmail से शुरू हो सकती है। आप {e} से लॉगिन हैं।',
+  dbLost: 'कनेक्शन में दिक्कत। पेज बंद करके फिर खोलें।',
+  storageWarn: 'यह ब्राउज़र डेटा नहीं रख रहा। यह पेज Chrome में खोलें।',
+  clockFixed: 'इस फ़ोन की घड़ी गलत है। कॉपी सही समय इस्तेमाल कर रही है।',
+  demoNote: 'डेमो: सिर्फ़ इस फ़ोन में सेव होता है। हर फ़ोन पर चलाने के लिए सेटअप गाइड देखें।',
+  today: 'आज', pages: 'पुराने पन्ने', owner: 'मालिक',
+  whoTitle: 'यह फ़ोन कौन चला रहा है?', whoSub: 'डेमो में चुनें कि आप कौन हैं, ताकि स्टाफ़ के फ़ोन की तरह देख सकें।',
+  shared: 'सैलून का साझा फ़ोन', sharedSub: 'इसे कई लोग चलाते हैं', ownerPhone: 'मालिक', phoneIs: 'यह फ़ोन: {n}',
+  youToday: 'आज आप: {c} ग्राहक, {a}',
+  payBtn: 'पेमेंट मिला', payBtnSub: 'हर ग्राहक के पैसे देने के बाद दबाएँ',
+  outBtn: 'कैश से पैसे लिए',
+  tip1: 'ग्राहक ने पैसे दिए? पीला बटन दबाएँ।', tip2: 'रकम लिखें।', tip3: 'कैश या {p} दबाएँ। सेव और लॉक हो जाएगा।', tipOk: 'समझ गया',
+  total: 'कुल', cash: 'कैश', cashToday: 'आज का कैश', taken: 'पैसे लिए', earlier: 'पहले का कैश', shouldBe: 'हाथ में होना चाहिए', inHand: 'हाथ में कैश',
+  ownTook: 'मालिक ने लिए', ownAdd: 'मालिक ने रखे', shopExp: 'दुकान का खर्च',
+  empty: 'आज अभी कोई पेमेंट नहीं',
+  counted: '{t} पर गिना', matches: 'कैश सही है', short: '{a} कम', extra: '{a} ज़्यादा',
+  afterCount: 'गिनने के बाद बदला है। फिर से गिनें।', notRecounted: 'गिनने के बाद बदला है',
+  closedStamp: 'बंद', notCountedStamp: 'नहीं गिना',
+  countBtn: 'कैश गिनें और बंद करें', recountBtn: 'कैश फिर से गिनें',
+  legend: '(P) यानी {p}। बिना निशान यानी कैश। कब लिखा, देखने के लिए रकम दबाएँ।',
+  modeCloud: 'Google पर सेव है। हर फ़ोन पर एक ही पन्ना दिखता है।', modeLocal: 'सिर्फ़ इस फ़ोन में सेव है।',
+  offline: 'इंटरनेट नहीं है। नई एंट्री इसी फ़ोन में रुकेंगी और बाद में Google पर जाएँगी।', waiting: '{n} इंटरनेट का इंतज़ार कर रही हैं',
+  payTitle: 'पेमेंट मिला', whose: 'किसका ग्राहक?', howPaid: 'कैसे दिया? दबाते ही सेव होगा।',
+  typeFirst: 'पहले रकम लिखें', pickWhoFirst: 'पहले चुनें किसका ग्राहक है',
+  splitLink: 'कुछ कैश, कुछ {p}', splitOff: 'एक ही तरीके से', ptmPart: '{p} वाला हिस्सा', cashPart: 'कैश वाला हिस्सा', splitSave: '{a} सेव करें', splitBad: '{p} वाला हिस्सा कुल से कम होना चाहिए',
+  bigAsk: '{a}। क्या यह सही है?', yesSave: 'हाँ, सेव करें', change: 'बदलें',
+  dupAsk: 'यही {a} अभी-अभी सेव हुआ था। क्या यह नया ग्राहक है?', dupYes: 'हाँ, नया ग्राहक', no: 'नहीं',
+  closedWarn: 'आज का पन्ना बंद है। यह जोड़ने पर कैश फिर से गिनना होगा।',
+  lockNote: 'सेव होने के बाद बदला नहीं जा सकता',
+  saved: '{a} {m} सेव हुआ', savedOut: '{a} लिए, सेव हुआ', undo: 'वापस लें', undone: 'रद्द हुआ। पन्ने पर कटा हुआ दिखेगा।',
+  queued: 'इस फ़ोन में सेव है। इंटरनेट आते ही Google पर चला जाएगा।',
+  saveFail: 'सेव नहीं हुआ। इंटरनेट देखकर फिर कोशिश करें।', needNet: 'इसके लिए इंटरनेट चाहिए। इंटरनेट आने पर फिर कोशिश करें।',
+  refused: 'सेव नहीं हुआ: {a}, {n}। फिर से लिखें।', refusedWhy: 'फ़ोन सुबह 4 बजे के बाद तक ऑफ़लाइन रहा, या उसकी तारीख गलत है। ऑटोमैटिक तारीख और समय चालू करें।',
+  outTitle: 'कैश से पैसे लिए', whoTook: 'किसने लिए?', whatFor: 'किसलिए?',
+  r_adv: 'एडवांस', r_sal: 'तनख्वाह', r_tea: 'चाय-नाश्ता', r_petrol: 'पेट्रोल', r_items: 'दुकान का सामान', r_refund: 'ग्राहक को वापस', r_other: 'और कुछ', r_home: 'घर ले गए', r_bank: 'बैंक में जमा', r_change: 'छुट्टे पैसे',
+  saveOut: '{a} लिए, सेव करें', saveOwnOut: 'मालिक ने {a} लिए, सेव करें', saveOwnIn: 'मालिक ने {a} रखे, सेव करें',
+  writtenAt: '{t} पर लिखा, {d}', writtenBy: '{n} ने {t} पर लिखा, {d}',
+  waitingNet: 'इंटरनेट का इंतज़ार', lockedNote: 'लॉक है। कोई बदल नहीं सकता।',
+  selfCancel: 'गलत है? रद्द करें', selfLeft: 'आप {t} तक रद्द कर सकते हैं', cancelAsk: 'यह एंट्री रद्द करें? यह पन्ने पर कटी हुई रहेगी, ताकि मालिक देख सकें।',
+  yesCancel: 'हाँ, रद्द करें', keep: 'नहीं, रहने दें', cancelledSelf: 'लिखने वाले ने {t} पर रद्द की', cancelledOwner: 'मालिक ने {t} पर रद्द की',
+  wrongQ: 'कुछ गलत है? मालिक को बताएँ', r_amt: 'रकम गलत', r_name: 'नाम गलत', r_mode: 'कैश/{p} गलत', r_twice: 'दो बार लिखा',
+  flagged: 'मालिक को यह दिखेगा', flaggedAs: 'गलत बताया: {r}',
+  ownCancel: 'रद्द करें (मालिक)', ownRewrite: 'रद्द करके सही लिखें (मालिक)',
+  pastLocked: 'पुराने पन्ने कोई नहीं बदल सकता। कैश ठीक करने के लिए मालिक आज के पन्ने पर कैश ले या रख सकते हैं।',
+  countTitle: 'कैश गिनें और बंद करें', countAsk: 'गल्ले का पूरा कैश गिनें और कुल रकम लिखें।', countNotes: 'नोट गिनने में मदद', coins: 'सिक्के', useAmt: '{a} लें',
+  check: 'मिलाएँ', typeCount: 'गिना हुआ कैश लिखें', youCounted: 'आपने गिना', countAgain: 'फिर से गिनें', closeDay: 'दिन बंद करें', closeShort: '{a} कम के साथ बंद करें', closeExtra: '{a} ज़्यादा के साथ बंद करें',
+  shortWhy: 'देखें: किसी ने पैसे लिए पर लिखा नहीं, या {p} वाला पेमेंट कैश में लिखा गया।', extraWhy: 'देखें: कोई पेमेंट लिखना रह गया।',
+  dayClosed: 'दिन बंद हुआ', ownerSees: 'मालिक यह पन्ना अपने फ़ोन पर देख सकते हैं।',
+  share: 'भेजें', shareTitle: 'यह पन्ना भेजें', whatsapp: 'WhatsApp पर भेजें', copyText: 'टेक्स्ट कॉपी करें', copied: 'कॉपी हो गया', moreApps: 'दूसरे ऐप',
+  noPages: 'इस महीने कोई पन्ना नहीं।', back: 'पीछे',
+  cashNow: 'अभी हाथ में कैश', takeCash: 'कैश लें', addCash: 'कैश रखें', checkPtmToday: 'आज का {p} मिलाएँ',
+  look: 'इन्हें देखें', allGood: 'पिछले 7 दिन में देखने लायक कुछ नहीं', seenOk: 'ठीक है',
+  lk_flag: 'गलत बताया: {r}', lk_void: 'एंट्री रद्द हुई', lk_short: 'कैश {a} कम', lk_extra: 'कैश {a} ज़्यादा', lk_notCounted: 'कैश नहीं गिना गया', lk_tries: 'गिनती बदली: {v}',
+  lk_ptmLess: '{p} ऐप में लिखे से {a} कम', lk_ptmMore: '{p} ऐप में लिखे से {a} ज़्यादा',
+  customers: 'ग्राहक', payments: 'पेमेंट', took: 'लिए', name: 'नाम', nCancelled: '{n} रद्द',
+  shopTotal: 'दुकान का खर्च',
+  manage: 'सेटिंग', staff: 'स्टाफ़ और Gmail', addPhone: 'स्टाफ़ का फ़ोन जोड़ें', salonName: 'सैलून का नाम', onlineName: 'ऑनलाइन पेमेंट का नाम', download: '{m} डाउनलोड करें',
+  ptmTitle: '{p} मिलाएँ', ptmAsk: 'अपना {p} ऐप खोलें। {d} को कितना आया?', ptmWritten: 'कॉपी में लिखा', ptmApp: '{p} ऐप', ptmMatch: '{p} सही है', ptmLess: '{p} ऐप में {a} कम', ptmMore: '{p} ऐप में {a} ज़्यादा', ptmLessWhy: 'हो सकता है किसी ने कैश पेमेंट को {p} लिख दिया।', ptmMoreWhy: 'हो सकता है कोई {p} पेमेंट कॉपी में नहीं लिखा गया।',
+  addName: 'नए व्यक्ति का नाम', gmailOpt: 'उनका Gmail, ताकि वे अपने फ़ोन से लिख सकें (ज़रूरी नहीं)', add: 'जोड़ें', noLogin: 'अभी Gmail नहीं',
+  leftJob: 'काम छोड़ा', leftList: 'काम छोड़ चुके', bringBack: 'वापस लाएँ', since: '{d} से', edit: 'बदलें',
+  leftAsk: '{n} ने काम छोड़ दिया?', leftKeep: 'पुराने पन्नों में नाम रहेगा। नए पेमेंट में नहीं दिखेंगे।', leftTook: 'इस महीने {n} ने कैश से {a} लिए।', leftLogin: 'उनका Gmail लॉगिन तुरंत बंद हो जाएगा।', yesLeft: 'हाँ, {n} ने छोड़ा',
+  logins: 'साझा फ़ोन के लॉगिन', loginsSub: 'ऐसे Gmail जो किसी के लिए भी लिख सकें, जैसे काउंटर का फ़ोन।',
+  badEmail: 'पूरा Gmail लिखें, जैसे name@gmail.com', emailTaken: 'यह Gmail पहले से जुड़ा है',
+  dupName: 'यह नाम पहले से है। एक अक्षर जोड़ें, जैसे {n} B।', needOne: 'कम से कम एक नाम रखें', save: 'सेव करें', close: 'बंद करें', remove: 'हटाएँ',
+  helpTitle: 'स्टाफ़ का फ़ोन जोड़ें', help1: 'स्टाफ़ और Gmail में उनके नाम के साथ उनका Gmail जोड़ें।', help2: 'इस पेज का लिंक उन्हें WhatsApp पर भेजें।', help3: 'वे इसे Chrome में खोलें और उसी Gmail से लॉगिन करें। उनका नाम अपने-आप भर जाएगा।', help4: 'Chrome में ⋮ दबाएँ, फिर Add to Home screen, ताकि यह ऐप की तरह खुले।', helpLeave: 'कोई काम छोड़े तो: स्टाफ़ और Gmail, फिर काम छोड़ा। उनका लॉगिन तुरंत बंद हो जाएगा।',
+  suStep: '{n} / 3', next: 'आगे',
+  su1: 'आपके सैलून का नाम क्या है?', su1ph: 'सैलून का नाम',
+  su2: 'ग्राहकों का काम कौन करता है?', su2sub: 'हर व्यक्ति जोड़ें, आप भी काम करते हैं तो अपना भी। जो अपने फ़ोन से लिखेंगे, उनका Gmail भी डालें।', su2ph: 'नाम', su2mail: 'Gmail (ज़रूरी नहीं)',
+  su3: 'अभी गल्ले में कितना कैश है?', su3sub: 'पहले पन्ने पर यह पहले का कैश बनेगा। 0 भी चलेगा।',
+  suDone: 'कॉपी शुरू करें', eStaff: 'कम से कम एक नाम जोड़ें'
+},
+or: {
+  _name: 'ଓଡ଼ିଆ', _sample: 'ପେମେଣ୍ଟ ମିଳିଲା',
+  wd: ['ରବିବାର', 'ସୋମବାର', 'ମଙ୍ଗଳବାର', 'ବୁଧବାର', 'ଗୁରୁବାର', 'ଶୁକ୍ରବାର', 'ଶନିବାର'],
+  mo: ['ଜାନୁଆରୀ', 'ଫେବୃଆରୀ', 'ମାର୍ଚ୍ଚ', 'ଅପ୍ରେଲ', 'ମଇ', 'ଜୁନ', 'ଜୁଲାଇ', 'ଅଗଷ୍ଟ', 'ସେପ୍ଟେମ୍ବର', 'ଅକ୍ଟୋବର', 'ନଭେମ୍ବର', 'ଡିସେମ୍ବର'],
+  loading: 'ଆପଣଙ୍କ ଖାତା ଖୋଲୁଛି…', slow: 'ଏବେ ବି ସଂଯୋଗ ହେଉଛି। ଇଣ୍ଟରନେଟ୍ ଦେଖନ୍ତୁ।', loadingShort: 'ଲୋଡ୍ ହେଉଛି…',
+  noLoad: 'ଖୋଲିଲା ନାହିଁ। ଇଣ୍ଟରନେଟ୍ ଦେଖି ଲିଙ୍କ୍ ପୁଣି ଖୋଲନ୍ତୁ।',
+  signTitle: 'Google ରେ ଲଗଇନ୍ କରନ୍ତୁ', signSub: 'ମାଲିକ ଆପଣଙ୍କ ପାଇଁ ଯୋଡ଼ିଥିବା Gmail ବାଛନ୍ତୁ।', signBtn: 'Google ରେ ଲଗଇନ୍ କରନ୍ତୁ',
+  signHelp: 'କିଛି ନଖୋଲିଲେ ଏହି ଲିଙ୍କ୍ Chrome ରେ ଖୋଲନ୍ତୁ।', inApp: 'WhatsApp କିମ୍ବା Instagram ଭିତରେ Google ଲଗଇନ୍ ଚାଲେ ନାହିଁ। ⋮ ଦବାଇ Chrome ରେ ଖୋଲନ୍ତୁ।',
+  signFail: 'ଲଗଇନ୍ ସରିଲା ନାହିଁ। ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।',
+  notListed: '{e} ଏହି ସେଲୁନର ତାଲିକାରେ ନାହିଁ।', notListedSub: 'ମାଲିକଙ୍କୁ ଏହି Gmail ଯୋଡ଼ିବାକୁ କୁହନ୍ତୁ, କିମ୍ବା ଠିକ୍ Gmail ରେ ଲଗଇନ୍ କରନ୍ତୁ।',
+  tryAgain: 'ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ', otherGmail: 'ଅନ୍ୟ Gmail ବ୍ୟବହାର କରନ୍ତୁ', signOut: 'ଲଗଆଉଟ୍ କରନ୍ତୁ', signedIn: '{e} ରେ ଲଗଇନ୍ ଅଛି',
+  waitOwner: 'ମାଲିକ ଏଯାଏଁ ଖାତା ଆରମ୍ଭ କରିନାହାନ୍ତି। ପ୍ରଥମେ ମାଲିକ ଏହି ଲିଙ୍କ୍ ଖୋଲନ୍ତୁ।',
+  ownerOnlySetup: 'ଖାତା କେବଳ ମାଲିକଙ୍କ Gmail ରୁ ଆରମ୍ଭ ହୋଇପାରିବ। ଆପଣ {e} ରେ ଲଗଇନ୍ ଅଛନ୍ତି।',
+  dbLost: 'ସଂଯୋଗରେ ସମସ୍ୟା। ପେଜ୍ ବନ୍ଦ କରି ପୁଣି ଖୋଲନ୍ତୁ।',
+  storageWarn: 'ଏହି ବ୍ରାଉଜର ଡାଟା ରଖୁନାହିଁ। ଏହି ପେଜ୍ Chrome ରେ ଖୋଲନ୍ତୁ।',
+  clockFixed: 'ଏହି ଫୋନର ଘଣ୍ଟା ଭୁଲ୍। ଖାତା ଠିକ୍ ସମୟ ବ୍ୟବହାର କରୁଛି।',
+  demoNote: 'ଡେମୋ: କେବଳ ଏହି ଫୋନରେ ସେଭ୍ ହୁଏ। ସବୁ ଫୋନରେ ଚଳାଇବାକୁ ସେଟଅପ୍ ଗାଇଡ୍ ଦେଖନ୍ତୁ।',
+  today: 'ଆଜି', pages: 'ପୁରୁଣା ପୃଷ୍ଠା', owner: 'ମାଲିକ',
+  whoTitle: 'ଏହି ଫୋନ୍ କିଏ ବ୍ୟବହାର କରୁଛନ୍ତି?', whoSub: 'ଡେମୋରେ ଆପଣ କିଏ ବାଛନ୍ତୁ, ଯେମିତି କର୍ମଚାରୀଙ୍କ ଫୋନ୍ ପରି ଦେଖିପାରିବେ।',
+  shared: 'ସେଲୁନର ସାଝା ଫୋନ୍', sharedSub: 'ଅନେକ ଲୋକ ଏହା ବ୍ୟବହାର କରନ୍ତି', ownerPhone: 'ମାଲିକ', phoneIs: 'ଏହି ଫୋନ୍: {n}',
+  youToday: 'ଆଜି ଆପଣ: {c} ଗ୍ରାହକ, {a}',
+  payBtn: 'ପେମେଣ୍ଟ ମିଳିଲା', payBtnSub: 'ପ୍ରତି ଗ୍ରାହକ ଟଙ୍କା ଦେବା ପରେ ଦବାନ୍ତୁ',
+  outBtn: 'କ୍ୟାସରୁ ଟଙ୍କା ନିଆଗଲା',
+  tip1: 'ଗ୍ରାହକ ଟଙ୍କା ଦେଲେ? ହଳଦିଆ ବଟନ୍ ଦବାନ୍ତୁ।', tip2: 'ଟଙ୍କା ଲେଖନ୍ତୁ।', tip3: 'କ୍ୟାସ୍ କିମ୍ବା {p} ଦବାନ୍ତୁ। ସେଭ୍ ଓ ଲକ୍ ହୋଇଯିବ।', tipOk: 'ବୁଝିଲି',
+  total: 'ମୋଟ', cash: 'କ୍ୟାସ୍', cashToday: 'ଆଜିର କ୍ୟାସ୍', taken: 'ଟଙ୍କା ନିଆଗଲା', earlier: 'ଆଗର କ୍ୟାସ୍', shouldBe: 'ହାତରେ ଥିବା ଉଚିତ', inHand: 'ହାତରେ କ୍ୟାସ୍',
+  ownTook: 'ମାଲିକ ନେଲେ', ownAdd: 'ମାଲିକ ରଖିଲେ', shopExp: 'ଦୋକାନ ଖର୍ଚ୍ଚ',
+  empty: 'ଆଜି ଏଯାଏଁ କୌଣସି ପେମେଣ୍ଟ ନାହିଁ',
+  counted: '{t} ରେ ଗଣାଗଲା', matches: 'କ୍ୟାସ୍ ଠିକ୍ ଅଛି', short: '{a} କମ୍', extra: '{a} ଅଧିକ',
+  afterCount: 'ଗଣିବା ପରେ ବଦଳିଛି। ପୁଣି ଗଣନ୍ତୁ।', notRecounted: 'ଗଣିବା ପରେ ବଦଳିଛି',
+  closedStamp: 'ବନ୍ଦ', notCountedStamp: 'ଗଣାଯାଇନାହିଁ',
+  countBtn: 'କ୍ୟାସ୍ ଗଣି ବନ୍ଦ କରନ୍ତୁ', recountBtn: 'କ୍ୟାସ୍ ପୁଣି ଗଣନ୍ତୁ',
+  legend: '(P) ମାନେ {p}। ଚିହ୍ନ ନଥିଲେ କ୍ୟାସ୍। କେବେ ଲେଖାଗଲା ଦେଖିବାକୁ ଟଙ୍କା ଉପରେ ଦବାନ୍ତୁ।',
+  modeCloud: 'Google ରେ ସେଭ୍ ଅଛି। ସବୁ ଫୋନରେ ସମାନ ପୃଷ୍ଠା ଦେଖାଯାଏ।', modeLocal: 'କେବଳ ଏହି ଫୋନରେ ସେଭ୍ ଅଛି।',
+  offline: 'ଇଣ୍ଟରନେଟ୍ ନାହିଁ। ନୂଆ ଏଣ୍ଟ୍ରି ଏହି ଫୋନରେ ରହିବ ଓ ପରେ Google କୁ ଯିବ।', waiting: '{n} ଇଣ୍ଟରନେଟ୍ ପାଇଁ ଅପେକ୍ଷା କରୁଛି',
+  payTitle: 'ପେମେଣ୍ଟ ମିଳିଲା', whose: 'କାହାର ଗ୍ରାହକ?', howPaid: 'କେମିତି ଦେଲେ? ଦବାଇଲେ ସେଭ୍ ହେବ।',
+  typeFirst: 'ପ୍ରଥମେ ଟଙ୍କା ଲେଖନ୍ତୁ', pickWhoFirst: 'ପ୍ରଥମେ କାହାର ଗ୍ରାହକ ବାଛନ୍ତୁ',
+  splitLink: 'କିଛି କ୍ୟାସ୍, କିଛି {p}', splitOff: 'ଗୋଟିଏ ପ୍ରକାରରେ', ptmPart: '{p} ଅଂଶ', cashPart: 'କ୍ୟାସ୍ ଅଂଶ', splitSave: '{a} ସେଭ୍ କରନ୍ତୁ', splitBad: '{p} ଅଂଶ ମୋଟଠାରୁ କମ୍ ହେବା ଦରକାର',
+  bigAsk: '{a}। ଏହା ଠିକ୍ କି?', yesSave: 'ହଁ, ସେଭ୍ କରନ୍ତୁ', change: 'ବଦଳାନ୍ତୁ',
+  dupAsk: 'ଏହି {a} ଏବେ ଏବେ ସେଭ୍ ହୋଇଥିଲା। ଏହା ନୂଆ ଗ୍ରାହକ କି?', dupYes: 'ହଁ, ନୂଆ ଗ୍ରାହକ', no: 'ନା',
+  closedWarn: 'ଆଜିର ପୃଷ୍ଠା ବନ୍ଦ ଅଛି। ଏହା ଯୋଡ଼ିଲେ କ୍ୟାସ୍ ପୁଣି ଗଣିବାକୁ ପଡ଼ିବ।',
+  lockNote: 'ସେଭ୍ ହେବା ପରେ ବଦଳାଯାଇ ପାରିବ ନାହିଁ',
+  saved: '{a} {m} ସେଭ୍ ହେଲା', savedOut: '{a} ନିଆଗଲା, ସେଭ୍ ହେଲା', undo: 'ଫେରାନ୍ତୁ', undone: 'ବାତିଲ୍ ହେଲା। ପୃଷ୍ଠାରେ କଟା ହୋଇ ରହିବ।',
+  queued: 'ଏହି ଫୋନରେ ସେଭ୍ ଅଛି। ଇଣ୍ଟରନେଟ୍ ଆସିଲେ Google କୁ ଯିବ।',
+  saveFail: 'ସେଭ୍ ହେଲା ନାହିଁ। ଇଣ୍ଟରନେଟ୍ ଦେଖି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।', needNet: 'ଏଥିପାଇଁ ଇଣ୍ଟରନେଟ୍ ଦରକାର। ଇଣ୍ଟରନେଟ୍ ଆସିଲେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।',
+  refused: 'ସେଭ୍ ହେଲା ନାହିଁ: {a}, {n}। ପୁଣି ଲେଖନ୍ତୁ।', refusedWhy: 'ଫୋନ ସକାଳ 4 ଟା ପରେ ବି ଅଫଲାଇନ୍ ଥିଲା, କିମ୍ବା ତାର ତାରିଖ ଭୁଲ୍। ଅଟୋମାଟିକ୍ ତାରିଖ ଓ ସମୟ ଚାଲୁ କରନ୍ତୁ।',
+  outTitle: 'କ୍ୟାସରୁ ଟଙ୍କା ନିଆଗଲା', whoTook: 'କିଏ ନେଲେ?', whatFor: 'କାହିଁକି?',
+  r_adv: 'ଆଡଭାନ୍ସ', r_sal: 'ଦରମା', r_tea: 'ଚା / ଜଳଖିଆ', r_petrol: 'ପେଟ୍ରୋଲ', r_items: 'ଦୋକାନ ଜିନିଷ', r_refund: 'ଗ୍ରାହକଙ୍କୁ ଫେରସ୍ତ', r_other: 'ଅନ୍ୟ', r_home: 'ଘରକୁ ନେଲେ', r_bank: 'ବ୍ୟାଙ୍କରେ ଜମା', r_change: 'ଖୁଚୁରା ଟଙ୍କା',
+  saveOut: '{a} ନିଆଗଲା, ସେଭ୍ କରନ୍ତୁ', saveOwnOut: 'ମାଲିକ {a} ନେଲେ, ସେଭ୍ କରନ୍ତୁ', saveOwnIn: 'ମାଲିକ {a} ରଖିଲେ, ସେଭ୍ କରନ୍ତୁ',
+  writtenAt: '{t} ରେ ଲେଖାଗଲା, {d}', writtenBy: '{n} {t} ରେ ଲେଖିଲେ, {d}',
+  waitingNet: 'ଇଣ୍ଟରନେଟ୍ ପାଇଁ ଅପେକ୍ଷା', lockedNote: 'ଲକ୍ ଅଛି। କେହି ବଦଳାଇ ପାରିବେ ନାହିଁ।',
+  selfCancel: 'ଭୁଲ୍ ହେଲା? ବାତିଲ୍ କରନ୍ତୁ', selfLeft: 'ଆଉ {t} ପର୍ଯ୍ୟନ୍ତ ବାତିଲ୍ କରିପାରିବେ', cancelAsk: 'ଏହି ଏଣ୍ଟ୍ରି ବାତିଲ୍ କରିବେ? ଏହା ପୃଷ୍ଠାରେ କଟା ହୋଇ ରହିବ, ଯେମିତି ମାଲିକ ଦେଖିପାରିବେ।',
+  yesCancel: 'ହଁ, ବାତିଲ୍ କରନ୍ତୁ', keep: 'ନା, ରଖନ୍ତୁ', cancelledSelf: 'ଲେଖିଥିବା ଲୋକ {t} ରେ ବାତିଲ୍ କଲେ', cancelledOwner: 'ମାଲିକ {t} ରେ ବାତିଲ୍ କଲେ',
+  wrongQ: 'କିଛି ଭୁଲ୍ ଅଛି? ମାଲିକଙ୍କୁ ଜଣାନ୍ତୁ', r_amt: 'ଟଙ୍କା ଭୁଲ୍', r_name: 'ନାମ ଭୁଲ୍', r_mode: 'କ୍ୟାସ୍/{p} ଭୁଲ୍', r_twice: 'ଦୁଇଥର ଲେଖାଯାଇଛି',
+  flagged: 'ମାଲିକ ଏହା ଦେଖିବେ', flaggedAs: 'ଭୁଲ୍ ବୋଲି ଜଣାଯାଇଛି: {r}',
+  ownCancel: 'ବାତିଲ୍ କରନ୍ତୁ (ମାଲିକ)', ownRewrite: 'ବାତିଲ୍ କରି ଠିକ୍‌ଟି ଲେଖନ୍ତୁ (ମାଲିକ)',
+  pastLocked: 'ପୁରୁଣା ପୃଷ୍ଠା କେହି ବଦଳାଇ ପାରିବେ ନାହିଁ। କ୍ୟାସ୍ ଠିକ୍ କରିବାକୁ ମାଲିକ ଆଜିର ପୃଷ୍ଠାରେ କ୍ୟାସ୍ ନେଇ କିମ୍ବା ରଖିପାରିବେ।',
+  countTitle: 'କ୍ୟାସ୍ ଗଣି ବନ୍ଦ କରନ୍ତୁ', countAsk: 'କ୍ୟାସ୍ ବାକ୍ସର ସବୁ ଟଙ୍କା ଗଣି ମୋଟ ଲେଖନ୍ତୁ।', countNotes: 'ନୋଟ୍ ଗଣିବାରେ ସାହାଯ୍ୟ', coins: 'ମୁଦ୍ରା', useAmt: '{a} ନିଅନ୍ତୁ',
+  check: 'ମିଳାନ୍ତୁ', typeCount: 'ଗଣିଥିବା କ୍ୟାସ୍ ଲେଖନ୍ତୁ', youCounted: 'ଆପଣ ଗଣିଲେ', countAgain: 'ପୁଣି ଗଣନ୍ତୁ', closeDay: 'ଦିନ ବନ୍ଦ କରନ୍ତୁ', closeShort: '{a} କମ୍ ସହ ବନ୍ଦ କରନ୍ତୁ', closeExtra: '{a} ଅଧିକ ସହ ବନ୍ଦ କରନ୍ତୁ',
+  shortWhy: 'ଦେଖନ୍ତୁ: କେହି ଟଙ୍କା ନେଇ ଲେଖିନାହାନ୍ତି, କିମ୍ବା {p} ପେମେଣ୍ଟକୁ କ୍ୟାସ୍ ଲେଖାଯାଇଛି।', extraWhy: 'ଦେଖନ୍ତୁ: କୌଣସି ପେମେଣ୍ଟ ଲେଖିବାକୁ ରହିଯାଇଛି।',
+  dayClosed: 'ଦିନ ବନ୍ଦ ହେଲା', ownerSees: 'ମାଲିକ ଏହି ପୃଷ୍ଠା ନିଜ ଫୋନରେ ଦେଖିପାରିବେ।',
+  share: 'ପଠାନ୍ତୁ', shareTitle: 'ଏହି ପୃଷ୍ଠା ପଠାନ୍ତୁ', whatsapp: 'WhatsApp ରେ ପଠାନ୍ତୁ', copyText: 'ଲେଖା କପି କରନ୍ତୁ', copied: 'କପି ହେଲା', moreApps: 'ଅନ୍ୟ ଆପ୍',
+  noPages: 'ଏହି ମାସରେ କୌଣସି ପୃଷ୍ଠା ନାହିଁ।', back: 'ପଛକୁ',
+  cashNow: 'ଏବେ ହାତରେ କ୍ୟାସ୍', takeCash: 'କ୍ୟାସ୍ ନିଅନ୍ତୁ', addCash: 'କ୍ୟାସ୍ ରଖନ୍ତୁ', checkPtmToday: 'ଆଜିର {p} ମିଳାନ୍ତୁ',
+  look: 'ଏଗୁଡ଼ିକ ଦେଖନ୍ତୁ', allGood: 'ଗତ 7 ଦିନରେ ଦେଖିବା ଭଳି କିଛି ନାହିଁ', seenOk: 'ଠିକ୍ ଅଛି',
+  lk_flag: 'ଭୁଲ୍ ବୋଲି ଜଣାଯାଇଛି: {r}', lk_void: 'ଏଣ୍ଟ୍ରି ବାତିଲ୍ ହେଲା', lk_short: 'କ୍ୟାସ୍ {a} କମ୍', lk_extra: 'କ୍ୟାସ୍ {a} ଅଧିକ', lk_notCounted: 'କ୍ୟାସ୍ ଗଣାଯାଇନଥିଲା', lk_tries: 'ଗଣନା ବଦଳାଗଲା: {v}',
+  lk_ptmLess: '{p} ଆପରେ ଲେଖାଠାରୁ {a} କମ୍', lk_ptmMore: '{p} ଆପରେ ଲେଖାଠାରୁ {a} ଅଧିକ',
+  customers: 'ଗ୍ରାହକ', payments: 'ପେମେଣ୍ଟ', took: 'ନେଲେ', name: 'ନାମ', nCancelled: '{n} ବାତିଲ୍',
+  shopTotal: 'ଦୋକାନ ଖର୍ଚ୍ଚ',
+  manage: 'ସେଟିଂସ୍', staff: 'କର୍ମଚାରୀ ଓ Gmail', addPhone: 'କର୍ମଚାରୀଙ୍କ ଫୋନ୍ ଯୋଡ଼ନ୍ତୁ', salonName: 'ସେଲୁନର ନାମ', onlineName: 'ଅନଲାଇନ୍ ପେମେଣ୍ଟର ନାମ', download: '{m} ଡାଉନଲୋଡ୍ କରନ୍ତୁ',
+  ptmTitle: '{p} ମିଳାନ୍ତୁ', ptmAsk: 'ଆପଣଙ୍କ {p} ଆପ୍ ଖୋଲନ୍ତୁ। {d} ରେ କେତେ ଆସିଲା?', ptmWritten: 'ଖାତାରେ ଲେଖା', ptmApp: '{p} ଆପ୍', ptmMatch: '{p} ଠିକ୍ ଅଛି', ptmLess: '{p} ଆପରେ {a} କମ୍', ptmMore: '{p} ଆପରେ {a} ଅଧିକ', ptmLessWhy: 'କେହି କ୍ୟାସ୍ ପେମେଣ୍ଟକୁ {p} ଲେଖିଥାଇପାରନ୍ତି।', ptmMoreWhy: 'କୌଣସି {p} ପେମେଣ୍ଟ ଖାତାରେ ଲେଖାଯାଇନଥାଇପାରେ।',
+  addName: 'ନୂଆ ଲୋକଙ୍କ ନାମ', gmailOpt: 'ତାଙ୍କ Gmail, ଯେମିତି ସେ ନିଜ ଫୋନରୁ ଲେଖିପାରିବେ (ଜରୁରୀ ନୁହେଁ)', add: 'ଯୋଡ଼ନ୍ତୁ', noLogin: 'ଏଯାଏଁ Gmail ନାହିଁ',
+  leftJob: 'କାମ ଛାଡ଼ିଲେ', leftList: 'କାମ ଛାଡ଼ିଥିବା', bringBack: 'ଫେରାଇ ଆଣନ୍ତୁ', since: '{d} ଠାରୁ', edit: 'ବଦଳାନ୍ତୁ',
+  leftAsk: '{n} କାମ ଛାଡ଼ିଦେଲେ?', leftKeep: 'ପୁରୁଣା ପୃଷ୍ଠାରେ ନାମ ରହିବ। ନୂଆ ପେମେଣ୍ଟରେ ଦେଖାଯିବେ ନାହିଁ।', leftTook: 'ଏହି ମାସରେ {n} କ୍ୟାସରୁ {a} ନେଇଛନ୍ତି।', leftLogin: 'ତାଙ୍କ Gmail ଲଗଇନ୍ ତୁରନ୍ତ ବନ୍ଦ ହୋଇଯିବ।', yesLeft: 'ହଁ, {n} ଛାଡ଼ିଲେ',
+  logins: 'ସାଝା ଫୋନର ଲଗଇନ୍', loginsSub: 'ଏପରି Gmail ଯିଏ ଯେକାହା ପାଇଁ ଲେଖିପାରିବ, ଯେମିତି କାଉଣ୍ଟର ଫୋନ୍।',
+  badEmail: 'ପୂରା Gmail ଲେଖନ୍ତୁ, ଯେମିତି name@gmail.com', emailTaken: 'ଏହି Gmail ଆଗରୁ ଯୋଡ଼ାଯାଇଛି',
+  dupName: 'ଏହି ନାମ ଆଗରୁ ଅଛି। ଗୋଟିଏ ଅକ୍ଷର ଯୋଡ଼ନ୍ତୁ, ଯେମିତି {n} B।', needOne: 'ଅତିକମରେ ଗୋଟିଏ ନାମ ରଖନ୍ତୁ', save: 'ସେଭ୍ କରନ୍ତୁ', close: 'ବନ୍ଦ କରନ୍ତୁ', remove: 'ହଟାନ୍ତୁ',
+  helpTitle: 'କର୍ମଚାରୀଙ୍କ ଫୋନ୍ ଯୋଡ଼ନ୍ତୁ', help1: 'କର୍ମଚାରୀ ଓ Gmail ରେ ତାଙ୍କ ନାମ ସହ ତାଙ୍କ Gmail ଯୋଡ଼ନ୍ତୁ।', help2: 'ଏହି ପେଜର ଲିଙ୍କ୍ ତାଙ୍କୁ WhatsApp ରେ ପଠାନ୍ତୁ।', help3: 'ସେ ଏହାକୁ Chrome ରେ ଖୋଲି ସେହି Gmail ରେ ଲଗଇନ୍ କରିବେ। ତାଙ୍କ ନାମ ନିଜେ ଭରିଯିବ।', help4: 'Chrome ରେ ⋮ ଦବାନ୍ତୁ, ତାପରେ Add to Home screen, ଯେମିତି ଆପ୍ ପରି ଖୋଲିବ।', helpLeave: 'କେହି କାମ ଛାଡ଼ିଲେ: କର୍ମଚାରୀ ଓ Gmail, ତାପରେ କାମ ଛାଡ଼ିଲେ। ତାଙ୍କ ଲଗଇନ୍ ତୁରନ୍ତ ବନ୍ଦ ହେବ।',
+  suStep: '{n} / 3', next: 'ଆଗକୁ',
+  su1: 'ଆପଣଙ୍କ ସେଲୁନର ନାମ କ’ଣ?', su1ph: 'ସେଲୁନର ନାମ',
+  su2: 'ଗ୍ରାହକଙ୍କ କାମ କିଏ କରନ୍ତି?', su2sub: 'ପ୍ରତ୍ୟେକଙ୍କୁ ଯୋଡ଼ନ୍ତୁ, ଆପଣ ବି କାମ କଲେ ନିଜକୁ ବି। ଯିଏ ନିଜ ଫୋନରୁ ଲେଖିବେ, ତାଙ୍କ Gmail ବି ଦିଅନ୍ତୁ।', su2ph: 'ନାମ', su2mail: 'Gmail (ଜରୁରୀ ନୁହେଁ)',
+  su3: 'ଏବେ କ୍ୟାସ୍ ବାକ୍ସରେ କେତେ ଟଙ୍କା ଅଛି?', su3sub: 'ପ୍ରଥମ ପୃଷ୍ଠାରେ ଏହା ଆଗର କ୍ୟାସ୍ ହେବ। 0 ବି ଚଳିବ।',
+  suDone: 'ଖାତା ଆରମ୍ଭ କରନ୍ତୁ', eStaff: 'ଅତିକମରେ ଗୋଟିଏ ନାମ ଯୋଡ଼ନ୍ତୁ'
+}
+};
+const onl = () => (S.shop && S.shop.online) || 'Paytm';
+function t(k, v) {
+  const Lx = STR[S.lang] || STR.en;
+  let s = Lx[k] != null ? Lx[k] : STR.en[k] != null ? STR.en[k] : k;
+  const vars = Object.assign({ p: onl() }, v || {});
+  for (const key in vars) s = s.split('{' + key + '}').join(vars[key]);
+  return s;
+}
+const L = () => STR[S.lang] || STR.en;
+const longDate = dk => L().wd[weekdayIdx(dk)] + ', ' + dkD(dk) + ' ' + L().mo[dkM(dk) - 1] + (dkY(dk) !== dkY(todayDk()) ? ' ' + dkY(dk) : '');
+const weekday = dk => L().wd[weekdayIdx(dk)];
+const monthName = ym => L().mo[ym % 100 - 1] + ' ' + Math.floor(ym / 100);
+const modeName = m => m === 'ptm' ? onl() : t('cash');
+
+/* ───────── state ───────── */
+const UNDO_MS = 2 * 60e3, BIG = 5000;
+const PERSON_WHY = ['adv', 'sal', 'tea', 'other'], SHOP_WHY = ['tea', 'petrol', 'items', 'refund', 'other'];
+const OWN_OUT_WHY = ['home', 'bank', 'other'], OWN_IN_WHY = ['change', 'other'];
+const FLAG_WHY = ['amt', 'name', 'mode', 'twice'];
+const NOTES = [500, 200, 100, 50, 20, 10];
+const ONLINE_CHOICES = ['Paytm', 'PhonePe', 'Google Pay', 'UPI'];
+const S = {
+  phase: 'loading', mode: FIREBASE_CONFIG && FIREBASE_CONFIG.projectId ? 'cloud' : 'demo',
+  store: null, user: null, member: undefined, isOwner: false,
+  shop: undefined, members: {}, entries: {}, counts: {}, ptm: {},
+  loadedDk: {}, countsAll: false, gotDay: false, gotCounts: false, ver: 0, todayDk: null, dataStarted: false,
+  tab: 'today', viewDay: null, pagesYm: null, ownerYm: null, busy: 0,
+  lang: STR[lsGet('lang')] ? lsGet('lang') : null,
+  fresh: {}, slow: false, dbErr: '', persist: true, online: navigator.onLine !== false, refused: [], signErr: '',
+  setup: { step: 1, name: '', staff: [{ name: 'Rupesh', email: '' }, { name: 'R.S', email: '' }], cash: '', err: '', busy: false }
+};
+
+/* ───────── storage: Google (Firebase) or demo on this phone ───────── */
+const tsVal = v => v == null ? null : typeof v === 'number' ? v : typeof v.toMillis === 'function' ? v.toMillis() : null;
+function normDoc(id, d, pending) {
+  if (!d) return null;
+  const o = Object.assign({ id }, d);
+  o.at = tsVal(d.at);
+  delete o.cancel;
+  if (d.cancel) o.void = Object.assign({}, d.cancel, { at: tsVal(d.cancel.at) });
+  if (d.flag) o.flag = Object.assign({}, d.flag, { at: tsVal(d.flag.at) });
+  if (d.closed != null) o.closed = tsVal(d.closed);
+  o.pending = !!pending;
+  return o;
+}
+function makeCloud(fb) {
+  const auth = fb.auth(), db = fb.firestore(), FV = fb.firestore.FieldValue;
+  const docs = q => q.docs.map(d => normDoc(d.id, d.data({ serverTimestamps: 'estimate' }), d.metadata.hasPendingWrites)).filter(Boolean);
+  const live = (q, cb, err) => q.onSnapshot({ includeMetadataChanges: true }, s => cb(docs(s), s.metadata), err);
+  return {
+    stamp: () => FV.serverTimestamp(),
+    onUser: cb => auth.onAuthStateChanged(u => cb(u ? { uid: u.uid, email: normEmail(u.email), name: u.displayName || '' } : null)),
+    async signIn() {
+      const p = new fb.auth.GoogleAuthProvider();
+      p.setCustomParameters({ prompt: 'select_account' });
+      try { await auth.signInWithPopup(p); }
+      catch (e) {
+        const c = (e && e.code) || '';
+        if (/popup-blocked|operation-not-supported|web-storage-unsupported/.test(c)) return auth.signInWithRedirect(p);
+        if (/popup-closed-by-user|cancelled-popup-request/.test(c)) return;
+        throw e;
+      }
+    },
+    redirectResult: () => auth.getRedirectResult(),
+    signOut: () => auth.signOut(),
+    watchShop: (cb, err) => db.doc('shop/main').onSnapshot(s => cb(s.exists ? s.data() : null, s.metadata), err),
+    getMember: async e => { const s = await db.doc('members/' + e).get(); return s.exists ? s.data() : null; },
+    watchMember: (e, cb, err) => db.doc('members/' + e).onSnapshot(s => cb(s.exists ? s.data() : null), err),
+    watchMembers: (cb, err) => db.collection('members').onSnapshot(q => { const o = {}; q.docs.forEach(d => { o[d.id] = d.data(); }); cb(o); }, err),
+    setMember: (e, v) => db.doc('members/' + e).set(v, { merge: true }),
+    setShop: v => db.doc('shop/main').set(v),
+    mergeShop: p => db.doc('shop/main').set(p, { merge: true }),
+    watchDay: (dk, cb, err) => live(db.collection('entries').where('dk', '==', dk), cb, err),
+    watchCounts: (cb, err) => live(db.collection('counts').orderBy('at', 'desc').limit(40), cb, err),
+    watchPtm: (cb, err) => live(db.collection('ptm').orderBy('at', 'desc').limit(60), cb, err),
+    async range(col, a, b) { return docs(await db.collection(col).where('dk', '>=', a).where('dk', '<=', b).get()); },
+    async lastCountBefore(dk) { return docs(await db.collection('counts').where('dk', '<', dk).orderBy('dk', 'desc').limit(1).get())[0] || null; },
+    add: (col, id, v) => db.collection(col).doc(id).set(v),
+    patch: (col, id, v) => db.collection(col).doc(id).update(v)
+  };
+}
+function makeDemo() {
+  const K = LS + 'demo:', cols = ['shop', 'members', 'entries', 'counts', 'ptm'];
+  const rd = k => { try { return JSON.parse(localStorage.getItem(K + k) || 'null'); } catch (e) { return null; } };
+  const load = () => ({ shop: rd('shop'), members: rd('members') || {}, entries: rd('entries') || {}, counts: rd('counts') || {}, ptm: rd('ptm') || {} });
+  let data = load();
+  const subs = new Set();
+  const fire = () => subs.forEach(f => f());
+  const save = () => { cols.forEach(k => { try { localStorage.setItem(K + k, JSON.stringify(data[k])); } catch (e) { S.persist = false; } }); setTimeout(fire, 0); };
+  try { window.addEventListener('storage', e => { if (e.key && e.key.indexOf(K) === 0) { data = load(); fire(); } }); } catch (e) {}
+  try { localStorage.setItem(K + 'probe', '1'); localStorage.removeItem(K + 'probe'); } catch (e) { S.persist = false; }
+  const list = col => Object.keys(data[col]).map(id => normDoc(id, data[col][id], false));
+  const real = v => JSON.parse(JSON.stringify(v), (k, x) => (x && x.__ts) ? now() : x);
+  const sub = f => { subs.add(f); setTimeout(f, 0); return () => subs.delete(f); };
+  return {
+    stamp: () => ({ __ts: 1 }),
+    onUser: cb => setTimeout(() => cb({ uid: 'demo', email: 'demo', name: '' }), 0),
+    signIn: async () => {}, redirectResult: async () => null, signOut: async () => {},
+    watchShop: cb => sub(() => cb(data.shop, { fromCache: false })),
+    getMember: async e => data.members[e] || null,
+    watchMember: (e, cb) => sub(() => cb(data.members[e] || null)),
+    watchMembers: cb => sub(() => cb(Object.assign({}, data.members))),
+    async setMember(e, v) { data.members[e] = merge(data.members[e] || {}, real(v)); save(); },
+    async setShop(v) { data.shop = real(v); save(); },
+    async mergeShop(p) { data.shop = merge(data.shop || {}, real(p)); save(); },
+    watchDay: (dk, cb) => sub(() => cb(list('entries').filter(e => e.dk === dk), {})),
+    watchCounts: cb => sub(() => cb(list('counts').sort((a, b) => b.at - a.at).slice(0, 40), {})),
+    watchPtm: cb => sub(() => cb(list('ptm').sort((a, b) => b.at - a.at).slice(0, 60), {})),
+    async range(col, a, b) { return list(col).filter(x => x.dk >= a && x.dk <= b); },
+    async lastCountBefore(dk) { return list('counts').filter(c => c.dk < dk).sort((a, b) => b.dk - a.dk)[0] || null; },
+    async add(col, id, v) { data[col][id] = real(v); save(); },
+    async patch(col, id, v) { if (!data[col][id]) throw { code: 'not-found' }; data[col][id] = merge(data[col][id], real(v)); save(); }
+  };
+}
+
+/* ───────── loading data ───────── */
+let unsubs = [], dayUnsub = null, slowTimer = null;
+function stopAll() {
+  unsubs.concat([dayUnsub]).forEach(u => { try { if (typeof u === 'function') u(); } catch (e) {} });
+  unsubs = []; dayUnsub = null; S.dataStarted = false;
+}
+function resetData() {
+  Object.assign(S, { shop: undefined, member: undefined, isOwner: false, members: {}, entries: {}, counts: {}, ptm: {}, loadedDk: {}, countsAll: false, gotDay: false, gotCounts: false, dbErr: '', refused: [] });
+  S.ver++;
+}
+function onListenErr(err) {
+  const c = (err && err.code) || '';
+  if (/permission/.test(c)) { stopAll(); S.phase = 'notlisted'; }
+  else S.dbErr = t('dbLost');
+  render();
+}
+function startAccess() {
+  stopAll(); resetData();
+  S.phase = 'loading'; S.slow = false; render();
+  clearTimeout(slowTimer); slowTimer = setTimeout(() => { if (S.phase === 'loading') { S.slow = true; render(); } }, 10000);
+  const email = S.user.email;
+  unsubs.push(S.store.watchMember(email, m => { S.member = m; checkAccess(); render(); }, () => {}));
+  unsubs.push(S.store.watchShop(async (shop, meta) => {
+    if (!shop && meta && meta.fromCache) return;
+    S.shop = shop;
+    if (!shop) {
+      let m = null; try { m = await S.store.getMember(email); } catch (e) {}
+      S.phase = m && m.active !== false ? 'waitowner' : 'setup';
+      return render();
+    }
+    S.isOwner = S.mode === 'demo' || (shop.owners || []).indexOf(email) >= 0;
+    if (S.phase === 'setup' || S.phase === 'waitowner') S.phase = 'loading';
+    if (!S.dataStarted) startData();
+    S.ver++; checkAccess(); render();
+    if (sheet && sheet.live) drawSheet();
+  }, onListenErr));
+}
+function checkAccess() {
+  if (S.mode === 'demo' || !S.shop) return;
+  if (!S.isOwner && (S.member === null || (S.member && S.member.active === false))) { stopAll(); S.phase = 'notlisted'; }
+}
+function startData() {
+  S.dataStarted = true;
+  S.todayDk = todayDk();
+  subscribeDay();
+  unsubs.push(S.store.watchCounts(list => {
+    const ids = {};
+    list.forEach(c => { ids[c.id] = 1; S.counts[c.id] = c; });
+    for (const id in S.counts) if (S.counts[id].pending && !ids[id]) delete S.counts[id];
+    S.countsAll = list.length < 40; S.gotCounts = true; dataChanged();
+  }, onListenErr));
+  if (S.isOwner) {
+    unsubs.push(S.store.watchPtm(list => { list.forEach(p => { S.ptm[p.id] = p; }); dataChanged(); }, onListenErr));
+    unsubs.push(S.store.watchMembers(m => { S.members = m || {}; render(); if (sheet && sheet.live) drawSheet(); }, () => {}));
+  }
+}
+function subscribeDay() {
+  if (dayUnsub) { try { dayUnsub(); } catch (e) {} }
+  const dk = S.todayDk;
+  dayUnsub = S.store.watchDay(dk, list => {
+    for (const id in S.entries) if (S.entries[id].dk === dk) delete S.entries[id];
+    list.forEach(e => { S.entries[e.id] = e; });
+    S.loadedDk[dk] = true; S.gotDay = true; dataChanged();
+  }, onListenErr);
+}
+let opening = false;
+async function dataChanged() {
+  S.ver++;
+  if (S.gotDay && S.gotCounts && S.phase === 'loading' && !opening) {
+    opening = true;
+    try { await ensureOpening(S.todayDk); } catch (e) { S.dbErr = t('dbLost'); }
+    opening = false; clearTimeout(slowTimer); S.phase = 'app';
+  }
+  render();
+  if (sheet && sheet.live) drawSheet();
+}
+/* load all entries and counts for whole days a..b, once */
+async function ensureSpan(a, b) {
+  if (a > b) return;
+  let need = false;
+  for (let dk = a; dk <= b; dk = dkAdd(dk, 1)) if (!S.loadedDk[dk]) { need = true; break; }
+  if (!need) return;
+  const got = await withTimeout(Promise.all([S.store.range('entries', a, b), S.store.range('counts', a, b), S.isOwner ? S.store.range('ptm', a, b) : Promise.resolve([])]), 20000);
+  got[0].forEach(e => { if (!(e.dk === S.todayDk && S.entries[e.id])) S.entries[e.id] = e; });
+  got[1].forEach(c => { S.counts[c.id] = c; });
+  got[2].forEach(p => { S.ptm[p.id] = p; });
+  for (let dk = a; dk <= b; dk = dkAdd(dk, 1)) if (dk !== S.todayDk) S.loadedDk[dk] = true;
+  S.ver++;
+}
+/* the cash at the start of a day needs the last count before it and everything after that count */
+async function ensureOpening(dk) {
+  let last = null;
+  for (const id in S.counts) { const c = S.counts[id]; if (c.dk < dk && (!last || c.at > last.at)) last = c; }
+  if (!last && !S.countsAll) { last = await withTimeout(S.store.lastCountBefore(dk), 15000); if (last) S.counts[last.id] = last; }
+  const start = (S.shop && S.shop.startDk) || dk;
+  await ensureSpan(last ? Math.max(last.dk, start) : start, dkAdd(dk, -1));
+}
+async function loadFor(fn) {
+  S.busy++; render();
+  try { await fn(); } catch (e) { toast(ICON.alert + ' ' + t('saveFail')); }
+  S.busy--; render();
+}
+const loadMonth = ym => loadFor(async () => { const [a, b] = ymRange(ym); await ensureOpening(a); await ensureSpan(a, Math.min(b, dkAdd(S.todayDk, -1))); });
+const loadOwner = () => loadFor(async () => { const a = dkAdd(S.todayDk, -6); await ensureOpening(a); await ensureSpan(a, dkAdd(S.todayDk, -1)); const ym = S.ownerYm || ymOf(S.todayDk); const r = ymRange(ym); await ensureSpan(r[0], Math.min(r[1], dkAdd(S.todayDk, -1))); });
+
+/* ───────── the sums ───────── */
+const eff = e => e.t === 'pay' ? (e.mode === 'ptm' ? 0 : e.amt) : (e.t === 'out' || e.t === 'own_out') ? -e.amt : e.t === 'own_in' ? e.amt : 0;
+const byAt = (a, b) => (a.at - b.at) || (a.id < b.id ? -1 : 1);
+let cache = { ver: -1 };
+function lists() {
+  if (cache.ver === S.ver) return cache;
+  const E = Object.values(S.entries).filter(e => e && e.t && typeof e.amt === 'number' && e.amt > 0 && typeof e.at === 'number').sort(byAt);
+  const C = Object.values(S.counts).filter(c => c && typeof c.counted === 'number' && typeof c.at === 'number').sort(byAt);
+  cache = { ver: S.ver, E, C, days: {} };
+  return cache;
+}
+/* cash in the box at moment T: the last count before T, plus everything written after it */
+function cashAt(T) {
+  const { E, C } = lists();
+  let c = null;
+  for (const x of C) { if (x.at <= T) c = x; else break; }
+  let sum = c ? c.counted : (Number(S.shop && S.shop.openingCash) || 0);
+  const t0 = c ? c.at : -Infinity;
+  for (const e of E) {
+    if (e.at > T) break;
+    const alive = !(e.void && e.void.at != null && e.void.at <= T);
+    if (e.at > t0) { if (alive) sum += eff(e); }
+    else if (e.void && e.void.at > t0 && e.void.at <= T) sum -= eff(e);
+  }
+  return sum;
+}
+function dayCalc(dk) {
+  const Lc = lists();
+  if (Lc.days[dk]) return Lc.days[dk];
+  const start = dkStart(dk), end = start + 864e5, isToday = dk === S.todayDk;
+  const r = { dk, list: Lc.E.filter(e => e.dk === dk), total: 0, ptm: 0, taken: 0, ownOut: 0, ownIn: 0, n: 0, flags: 0, voids: 0, pending: 0 };
+  for (const e of r.list) {
+    if (e.pending) r.pending++;
+    if (e.void) { r.voids++; continue; }
+    if (e.flag) r.flags++;
+    if (e.t === 'pay') { r.total += e.amt; r.n++; if (e.mode === 'ptm') r.ptm += e.amt; }
+    else if (e.t === 'out') r.taken += e.amt;
+    else if (e.t === 'own_out') r.ownOut += e.amt;
+    else if (e.t === 'own_in') r.ownIn += e.amt;
+  }
+  r.opening = cashAt(start - 1);
+  r.cash = r.total - r.ptm;
+  r.expected = r.opening + r.cash - r.taken - r.ownOut + r.ownIn;
+  r.counts = Lc.C.filter(c => c.dk === dk);
+  const last = r.last = r.counts[r.counts.length - 1] || null;
+  if (last) {
+    let expAt = r.opening;
+    for (const e of r.list) if (e.at <= last.at && !(e.void && e.void.at <= last.at)) expAt += eff(e);
+    r.expAt = expAt; r.diff = last.counted - expAt;
+    r.stale = r.list.some(e => e.at > last.at || (e.void && e.void.at > last.at));
+    r.closed = last.closed != null && !r.stale;
+    r.recounts = [];
+    for (let i = 1; i < r.counts.length; i++) {
+      const a = r.counts[i - 1], b = r.counts[i];
+      const between = r.list.some(e => (e.at > a.at && e.at <= b.at) || (e.void && e.void.at > a.at && e.void.at <= b.at));
+      if (!between && a.counted !== b.counted) r.recounts.push([a.counted, b.counted]);
+    }
+  }
+  r.carry = cashAt(isToday ? Infinity : end - 1);
+  r.checks = Object.values(S.ptm).filter(p => p.dk === dk && typeof p.amount === 'number').sort(byAt);
+  r.ptmCheck = r.checks[r.checks.length - 1] || null;
+  r.ptmDiff = r.ptmCheck ? r.ptmCheck.amount - r.ptm : null;
+  Lc.days[dk] = r;
+  return r;
+}
+const dayHas = dk => lists().E.some(e => e.dk === dk) || lists().C.some(c => c.dk === dk);
+
+/* staff */
+const staffMap = () => (S.shop && S.shop.staff) || {};
+function staffList(includeLeft) {
+  const m = staffMap();
+  return Object.keys(m).map(id => Object.assign({ id }, m[id])).filter(s => s && s.name && (includeLeft || s.active !== false))
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
+}
+const staffById = id => { const s = staffMap()[id]; return s && s.name ? Object.assign({ id }, s) : null; };
+const activeStaff = id => { const s = staffById(id); return s && s.active !== false ? s : null; };
+const staffName = id => (staffById(id) || {}).name || '';
+function whoName(e) {
+  if (e.t === 'own_out' || e.t === 'own_in') return t('owner');
+  if (e.who === 'shop') return t('shopExp');
+  return staffName(e.who) || e.name || '?';
+}
+function meId() {
+  if (S.mode === 'demo') { const m = lsGet('me'); return m && activeStaff(m) ? m : null; }
+  const s = S.member && S.member.active !== false && S.member.staff;
+  return s && activeStaff(s) ? s : null;
+}
+function quickAmts() {
+  const freq = {};
+  lists().E.slice(-400).forEach(e => { if (e.t === 'pay' && !e.void) freq[e.amt] = (freq[e.amt] || 0) + 1; });
+  const top = Object.keys(freq).map(Number).sort((a, b) => (freq[b] - freq[a]) || (a - b)).slice(0, 6);
+  for (const b of [100, 150, 200, 50, 300, 500]) { if (top.length >= 6) break; if (top.indexOf(b) < 0) top.push(b); }
+  return top.sort((a, b) => a - b);
+}
+function emailOwnerOf(email) {
+  for (const s of staffList(true)) if (s.email === email) return s.name;
+  return '';
+}
+
+/* ───────── writing ───────── */
+const online = () => S.mode === 'demo' || navigator.onLine !== false;
+function stampOf() { return { at: S.store.stamp(), by: S.user.uid, email: S.user.email }; }
+function sendEntries(map) {
+  Object.keys(map).forEach(id => {
+    const e = map[id];
+    S.store.add('entries', id, e).catch(err => refusedEntry(e, err));
+  });
+  return online() ? 'saved' : 'queued';
+}
+function refusedEntry(e, err) {
+  const what = rs(e.amt) + (e.t === 'pay' ? ' ' + modeName(e.mode) : '');
+  S.refused.push(t('refused', { a: what, n: whoName(e) }));
+  render(); toast(ICON.alert + ' ' + t('refused', { a: what, n: whoName(e) }));
+}
+async function patchEntry(id, data) {
+  const p = S.store.patch('entries', id, data);
+  if (!online()) { p.catch(() => {}); return; }
+  await withTimeout(p, 12000);
+}
+function failText() { return online() ? t('saveFail') : t('needNet'); }
+
+/* ───────── drawing ───────── */
+const app = $('#app'), root = $('#sheet-root'), toastEl = $('#toast');
+let lastHTML = '';
+function render() {
+  document.documentElement.lang = S.lang || 'en';
+  const ph = S.lang ? S.phase : 'lang';
+  if (S.tab === 'owner' && !S.isOwner) S.tab = 'today';
+  let html;
+  if (ph === 'lang') html = langHTML();
+  else if (ph === 'loading') html = centerHTML('<div class="spin"></div>', t('loading') + (S.slow ? '<br>' + t('slow') : ''));
+  else if (ph === 'noload') html = centerHTML(ICON.alert, t('noLoad'));
+  else if (ph === 'signin') html = signinHTML();
+  else if (ph === 'notlisted') html = centerHTML(ICON.lockBig, `<b>${t('notListed', { e: esc(S.user ? S.user.email : '') })}</b><br>${t('notListedSub')}`, `<div class="center-acts"><button class="btn gold" data-act="retry">${t('tryAgain')}</button><button class="btn ghost" data-act="signout">${ICON.logout}<span>${t('otherGmail')}</span></button></div>`);
+  else if (ph === 'waitowner') html = centerHTML(ICON.timeBig, t('waitOwner'), `<div class="center-acts"><button class="btn gold" data-act="retry">${t('tryAgain')}</button><button class="btn ghost" data-act="signout">${ICON.logout}<span>${t('otherGmail')}</span></button></div>`);
+  else if (ph === 'setup') html = setupHTML();
+  else if (S.tab === 'owner') html = ownerHTML();
+  else if (S.tab === 'pages') html = S.viewDay ? dayHTML(S.viewDay) : pagesHTML();
+  else html = todayHTML();
+  if (html === lastHTML) return;
+  const ae = document.activeElement, fid = ae && app.contains(ae) && ae.id ? ae.id : null;
+  let sel = null; try { sel = fid && ae.selectionStart != null ? [ae.selectionStart, ae.selectionEnd] : null; } catch (e) {}
+  app.innerHTML = html; lastHTML = html;
+  if (fid) { const n = document.getElementById(fid); if (n) { try { n.focus({ preventScroll: true }); if (sel) n.setSelectionRange(sel[0], sel[1]); } catch (e) {} } }
+}
+let toastTimer = null, toastCb = null;
+function toast(html, action) {
+  toastCb = action ? action.fn : null;
+  toastEl.innerHTML = `<span class="tm">${html}</span>` + (action ? `<button data-act="toast-act">${action.label}</button>` : '');
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toastEl.classList.remove('show'); toastCb = null; }, action ? 9000 : 3600);
+}
+const hideToast = () => { clearTimeout(toastTimer); toastEl.classList.remove('show'); toastCb = null; };
+const centerHTML = (icon, msg, extra) => `<div class="center"><div class="logo">Salon Copy${SQUIGGLE}</div>${icon}<p>${msg}</p>${extra || ''}</div>`;
+const langBtn = () => `<button class="pill" data-act="lang" aria-label="Language">${ICON.globe}<span>${L()._name}</span></button>`;
+const avHTML = (id, name, cls) => `<span class="av ${cls || ''}" style="--av:${avColor(id)}">${esc(initial(name))}</span>`;
+function meChip() {
+  const id = meId(), st = id && activeStaff(id);
+  const name = st ? st.name : S.isOwner ? t('ownerPhone') : t('shared');
+  const av = st ? avHTML(id, st.name) : `<span class="av ghost">${S.isOwner ? ICON.key : ICON.users}</span>`;
+  return `<button class="me-chip" data-act="account" aria-label="${esc(S.user ? S.user.email : '')}">${av}<span class="me-n">${esc(name)}</span>${ICON.down}</button>`;
+}
+function tabsHTML() {
+  const tab = (id, icon, label, extra) => `<button class="tab ${S.tab === id ? 'on' : ''}" data-act="tab" data-tab="${id}" ${S.tab === id ? 'aria-current="page"' : ''}>${icon}<span>${label}</span>${extra || ''}</button>`;
+  const dot = S.isOwner && S.tab !== 'owner' && lookItems().length ? '<i class="dot"></i>' : '';
+  return `<nav class="tabs"><div class="tabs-in" style="--tabs:${S.isOwner ? 3 : 2}">${tab('today', ICON.page, t('today'))}${tab('pages', ICON.book, t('pages'))}${S.isOwner ? tab('owner', ICON.keyTab, t('owner'), dot) : ''}</div></nav>`;
+}
+function bannersHTML() {
+  const out = [];
+  if (S.mode === 'demo') out.push(`<div class="note warn">${ICON.phone}<div><b>${t('demoNote')}</b></div></div>`);
+  if (S.dbErr) out.push(`<div class="note bad">${ICON.alert}<div><b>${esc(S.dbErr)}</b></div></div>`);
+  if (S.mode === 'demo' && !S.persist) out.push(`<div class="note bad">${ICON.alert}<div><b>${t('storageWarn')}</b></div></div>`);
+  const waiting = lists().E.filter(e => e.pending).length;
+  if (S.mode === 'cloud' && (!S.online || waiting)) out.push(`<div class="note warn">${ICON.wifiOff}<div><b>${!S.online ? t('offline') : ''} ${waiting ? t('waiting', { n: waiting }) : ''}</b></div></div>`);
+  if (S.refused.length) out.push(`<div class="note bad">${ICON.alert}<div><b>${S.refused.map(esc).join('<br>')}</b><p>${t('refusedWhy')}</p><div class="note-acts"><button class="chip" data-act="refused-ok">${ICON.check}${t('tipOk')}</button></div></div></div>`);
+  if (CLK.fixed && Math.abs(CLK.off) > 10 * 60e3) out.push(`<div class="note warn">${ICON.time}<div><b>${t('clockFixed')}</b></div></div>`);
+  return out.length ? `<div class="notes-stack">${out.join('')}</div>` : '';
+}
+function coverHTML(dk, r, left) {
+  return `<header class="cover">
+    <div class="cv-top">${left}<div class="cv-right">${langBtn()}</div></div>
+    <div class="cv-date"><span class="hand">${handDate(dk)}${SQUIGGLE}</span><div class="cv-week">${esc(longDate(dk))}</div></div>
+    <dl class="cv-strip">
+      <div><dt>${t('total')}</dt><dd>${rs(r.total)}</dd></div>
+      <div><dt>${esc(onl())} (P)</dt><dd>${rs(r.ptm)}</dd></div>
+      <div class="hi"><dt>${t('inHand')}</dt><dd>${rs(r.carry)}</dd></div>
+    </dl></header>`;
+}
+const modeLine = () => `<p class="modeline">${S.mode === 'cloud' ? ICON.cloud : ICON.phone}<span>${t(S.mode === 'cloud' ? 'modeCloud' : 'modeLocal')}</span></p>`;
+const loadingLine = () => S.busy ? `<p class="loading-line"><span class="spin sm"></span>${t('loadingShort')}</p>` : '';
+
+/* ── language, sign in ── */
+function langHTML() {
+  return `<div class="lang-wrap"><div class="logo">Salon Copy${SQUIGGLE}</div>
+    <p class="lang-ask">Choose language<br>भाषा चुनें<br>ଭାଷା ବାଛନ୍ତୁ</p>
+    ${Object.keys(STR).map(k => `<button class="lang-btn" data-act="pick-lang" data-l="${k}"><b>${STR[k]._name}</b><small>${STR[k]._sample}</small></button>`).join('')}</div>`;
+}
+function signinHTML() {
+  const inApp = /FBAN|FBAV|Instagram|Line\/|; wv\)/i.test(navigator.userAgent || '');
+  return `<div class="lang-wrap"><div class="logo">Salon Copy${SQUIGGLE}</div>
+    <h1 class="cv-h1">${t('signTitle')}</h1><p class="lang-ask">${t('signSub')}</p>
+    ${inApp ? `<div class="note warn">${ICON.alert}<div><b>${t('inApp')}</b></div></div>` : ''}
+    <button class="gbtn" data-act="signin">${ICON.user}<span>${t('signBtn')}</span></button>
+    ${S.signErr ? `<p class="err light">${esc(S.signErr)}</p>` : ''}
+    <p class="sign-help">${t('signHelp')}</p>
+    <div>${langBtn()}</div></div>`;
+}
+
+/* ── first-time setup ── */
+function setupHTML() {
+  const s = S.setup, n = s.step;
+  let body = '';
+  if (n === 1) body = `<label class="q" for="su-name">${t('su1')}</label><input class="inp big" id="su-name" data-su="name" maxlength="30" autocomplete="off" enterkeyhint="next" placeholder="${t('su1ph')}" value="${esc(s.name)}">`;
+  else if (n === 2) body = `<div><p class="q">${t('su2')}</p><p class="qs">${t('su2sub')}</p></div>
+      <div class="add-box"><input class="inp" id="su-add" data-su="dn" maxlength="16" autocomplete="off" enterkeyhint="next" placeholder="${t('su2ph')}" value="${esc(s.dn || '')}"><input class="inp" id="su-mail" data-su="dm" type="email" inputmode="email" autocapitalize="off" autocomplete="off" enterkeyhint="done" placeholder="${t('su2mail')}" value="${esc(s.dm || '')}"><button class="btn navy sm" data-act="su-add">${ICON.plusSm}<span>${t('add')}</span></button></div>
+      <ul class="su-list">${s.staff.map((p, i) => `<li><span class="av" style="--av:${AV[i % AV.length]}">${esc(initial(p.name))}</span><span class="su-n">${esc(p.name)}<small>${p.email ? esc(p.email) : t('noLogin')}</small></span><button class="x" data-act="su-rm" data-i="${i}" aria-label="${t('remove')} ${esc(p.name)}">${ICON.x}</button></li>`).join('')}</ul>`;
+  else body = `<div><p class="q">${t('su3')}</p><p class="qs">${t('su3sub')}</p></div><div class="amt-big ${s.cash ? '' : 'empty'}"><span class="r">₹</span><span class="n">${num(Number(s.cash) || 0)}</span></div>${keypadHTML('00')}`;
+  const nav = `<div class="su-nav">${n > 1 ? `<button class="btn line" data-act="su-back">${ICON.left}<span>${t('back')}</span></button>` : '<span></span>'}${n < 3 ? `<button class="btn gold" data-act="su-next"><span>${t('next')}</span>${ICON.right}</button>` : `<button class="btn gold" data-act="su-done" ${s.busy ? 'disabled' : ''}>${ICON.check}<span>${t('suDone')}</span></button>`}</div>`;
+  return `<header class="cover"><div class="cv-top"><div class="cv-name">Salon Copy</div><div class="cv-right">${langBtn()}</div></div>
+    <div class="steps-bar">${[1, 2, 3].map(i => `<i class="${i <= n ? 'on' : ''}"></i>`).join('')}</div><p class="cv-sub">${t('suStep', { n })}</p></header>
+    <main class="paper bare">${S.mode === 'demo' ? `<div class="notes-stack"><div class="note warn">${ICON.phone}<div><b>${t('demoNote')}</b></div></div></div>` : ''}<div class="su-body">${body}</div><p class="err" role="alert">${esc(s.err)}</p>${nav}</main>`;
+}
+
+/* ── one amount on the page ── */
+function amtHTML(e, dk) {
+  const cls = 'amt-line' + (e.void ? ' void' : '') + (S.fresh[e.id] ? ' fresh' : '');
+  return `<button class="${cls}" data-act="entry" data-dk="${dk}" data-id="${e.id}" aria-label="${num(e.amt)} ${esc(modeName(e.mode))}"><span class="a">${num(e.amt)}</span>${e.mode === 'ptm' ? '<span class="p">(P)</span>' : ''}${e.pending ? `<span class="mk w">${ICON.time}</span>` : ''}${e.flag && !e.void ? '<span class="mk q">?</span>' : ''}</button>`;
+}
+const rowHTML = (label, value, cls) => `<div class="lg-row ${cls || ''}"><span class="lb"><span>${label}</span></span><span class="vl">${value}</span></div>`;
+function moveHTML(e, dk) {
+  const isIn = e.t === 'own_in';
+  const who = e.t === 'out' ? (e.who === 'shop' ? (e.why ? t('r_' + e.why) : t('shopExp')) : whoName(e)) : t(isIn ? 'ownAdd' : 'ownTook');
+  const why = e.t === 'out' && e.who !== 'shop' && e.why ? t('r_' + e.why) : (e.t !== 'out' && e.why ? t('r_' + e.why) : '');
+  const cls = 'lg-row ' + (isIn ? '' : 'out') + (e.void ? ' void' : '') + (S.fresh[e.id] ? ' fresh' : '');
+  return `<button class="${cls}" data-act="entry" data-dk="${dk}" data-id="${e.id}"><span class="lb"><span>${esc(who)}</span>${why ? `<i>${esc(why)}</i>` : ''}${e.pending ? `<i>${ICON.time}</i>` : ''}${e.flag && !e.void ? '<span class="mk q">?</span>' : ''}</span><span class="vl">${isIn ? '+' : '−'} ${num(e.amt)}</span></button>`;
+}
+/* the ruled page: one column per person, then the sum, the way the paper copy does it */
+function ledgerHTML(dk, r, isToday) {
+  const cols = [], idx = {};
+  const col = (id, name) => { if (!(id in idx)) { idx[id] = cols.length; cols.push({ id, name, items: [], total: 0 }); } return cols[idx[id]]; };
+  if (isToday) staffList().forEach(s => col(s.id, s.name));
+  const order = {}; staffList(true).forEach(s => { order[s.id] = s.order || 0; });
+  r.list.filter(e => e.t === 'pay').map(e => e.who).filter((w, i, a) => a.indexOf(w) === i && !(w in idx))
+    .sort((a, b) => (order[a] || 9e15) - (order[b] || 9e15))
+    .forEach(w => { const s = staffById(w); col(w, s ? s.name : (r.list.find(e => e.who === w) || {}).name || '?'); });
+  r.list.forEach(e => { if (e.t === 'pay') { const x = cols[idx[e.who]]; x.items.push(e); if (!e.void) x.total += e.amt; } });
+  let h = `<section class="ledger" aria-label="${esc(handDate(dk))}">`;
+  if (cols.length) {
+    h += `<div class="cols">`;
+    for (const x of cols) {
+      h += `<div class="col"><div class="col-h"><span>${esc(x.name)}</span></div>${x.items.map(e => amtHTML(e, dk)).join('')}`;
+      h += x.items.length ? `<div class="col-t">${num(x.total)}</div>` : `<div class="lg-gap"></div>`;
+      h += `</div>`;
+    }
+    h += `</div>`;
+  }
+  if (!r.list.some(e => e.t === 'pay')) h += rowHTML(t('empty'), '', 'muted');
+  const moves = r.list.filter(e => e.t !== 'pay');
+  if (moves.length) { h += `<div class="lg-gap"></div>`; moves.forEach(e => { h += moveHTML(e, dk); }); }
+  h += `<div class="lg-gap"></div>`;
+  h += rowHTML(t('total'), num(r.total));
+  h += rowHTML(esc(onl()) + ' (P)', '− ' + num(r.ptm));
+  h += rowHTML(t(isToday ? 'cashToday' : 'cash'), num(r.cash), 'sum');
+  if (r.taken) h += rowHTML(t('taken'), '− ' + num(r.taken), 'out');
+  if (r.ownOut) h += rowHTML(t('ownTook'), '− ' + num(r.ownOut), 'out');
+  if (r.ownIn) h += rowHTML(t('ownAdd'), '+ ' + num(r.ownIn));
+  h += rowHTML(t('earlier'), '+ ' + num(r.opening));
+  h += rowHTML(t(r.last ? 'shouldBe' : 'inHand'), num(r.expected), 'final');
+  if (r.last) {
+    h += rowHTML(t('counted', { t: clock(r.last.at) }), num(r.last.counted));
+    h += r.diff === 0 ? rowHTML(t('matches'), ICON.check, 'good') : rowHTML(r.diff < 0 ? t('short', { a: rs(-r.diff) }) : t('extra', { a: rs(r.diff) }), (r.diff < 0 ? '− ' : '+ ') + num(Math.abs(r.diff)), 'bad');
+    if (r.stale) { h += rowHTML(t(isToday ? 'afterCount' : 'notRecounted'), '', 'muted'); h += rowHTML(t('inHand'), num(r.carry), 'sum'); }
+  }
+  h += `</section>`;
+  if (r.closed) h += `<div class="stamp-row"><div class="stamp ${r.diff ? 'bad' : ''}"><span>${t('closedStamp')}</span><small>${clock(r.last.closed || r.last.at)}</small></div></div>`;
+  else if (!isToday && !r.last) h += `<div class="stamp-row"><div class="stamp bad"><span>${t('notCountedStamp')}</span></div></div>`;
+  return h;
+}
+
+/* ── Today ── */
+function todayHTML() {
+  const dk = S.todayDk, r = dayCalc(dk), me = meId(), meS = me && activeStaff(me);
+  let h = coverHTML(dk, r, meChip());
+  h += `<main class="paper">${bannersHTML()}`;
+  if (meS) {
+    const mine = r.list.filter(e => e.t === 'pay' && !e.void && e.who === me);
+    h += `<p class="mine">${avHTML(me, meS.name)}<span>${t('youToday', { c: mine.length, a: rs(mine.reduce((s, e) => s + e.amt, 0)) })}</span></p>`;
+  }
+  h += `<button class="cta" data-act="pay"><span class="cta-i">${ICON.plus}</span><span class="cta-t"><b>${t('payBtn')}</b><small>${t('payBtnSub')}</small></span></button>`;
+  h += `<button class="cta2" data-act="out">${ICON.minus}<span>${t('outBtn')}</span></button>`;
+  if (!lsGet('tips')) h += `<div class="tips"><ol><li><span class="tn">1</span><span>${t('tip1')}</span></li><li><span class="tn">2</span><span>${t('tip2')}</span></li><li><span class="tn">3</span><span>${t('tip3')}</span></li></ol><button class="chip" data-act="tips-ok">${ICON.check}${t('tipOk')}</button></div>`;
+  h += ledgerHTML(dk, r, true);
+  if (!r.closed) h += `<button class="btn navy count-btn" data-act="count">${ICON.lock}<span>${t(r.last && r.stale ? 'recountBtn' : 'countBtn')}</span></button>`;
+  else h += `<div class="row-acts"><button class="chip" data-act="share-day" data-dk="${dk}">${ICON.send}${t('share')}</button><button class="chip" data-act="count">${t('recountBtn')}</button></div>`;
+  h += `<p class="legend">${t('legend')}</p>${modeLine()}</main>${tabsHTML()}`;
+  return h;
+}
+
+/* ── Old pages ── */
+function dayIssues(dk) {
+  const r = dayCalc(dk), bad = [];
+  if (!r.last) bad.push(t('lk_notCounted'));
+  else if (r.diff) bad.push(r.diff < 0 ? t('lk_short', { a: rs(-r.diff) }) : t('lk_extra', { a: rs(r.diff) }));
+  if (r.flags) bad.push(t('flaggedAs', { r: r.flags }));
+  if (r.ptmDiff) bad.push(r.ptmDiff < 0 ? t('lk_ptmLess', { a: rs(-r.ptmDiff) }) : t('lk_ptmMore', { a: rs(r.ptmDiff) }));
+  return bad;
+}
+function monthNav(ym, act) {
+  const cur = ymOf(S.todayDk);
+  return `<div class="mnav"><button data-act="${act}" data-d="-1" aria-label="Previous month">${ICON.left}</button><b>${esc(monthName(ym))}</b><button data-act="${act}" data-d="1" aria-label="Next month" ${ym >= cur ? 'disabled' : ''}>${ICON.right}</button></div>`;
+}
+function pagesHTML() {
+  const ym = S.pagesYm || ymOf(S.todayDk), [a, b] = ymRange(ym);
+  const keys = []; for (let dk = Math.min(b, dkAdd(S.todayDk, -1)); dk >= a; dk = dkAdd(dk, -1)) if (dayHas(dk)) keys.push(dk);
+  let h = `<header class="cover"><div class="cv-top">${meChip()}<div class="cv-right">${langBtn()}</div></div><h1 class="cv-h1">${t('pages')}</h1></header><main class="paper">${bannersHTML()}${monthNav(ym, 'pages-month')}${loadingLine()}`;
+  if (!keys.length && !S.busy) h += `<p class="empty">${t('noPages')}</p>`;
+  for (const dk of keys) {
+    const r = dayCalc(dk), bad = dayIssues(dk);
+    const st = bad.length ? `<span class="st bad">${ICON.alert}</span>` : `<span class="st ok">${ICON.check}</span>`;
+    h += `<button class="dl" data-act="open-day" data-dk="${dk}">
+      <span><b class="hand">${handDate(dk)}</b><small>${esc(weekday(dk))}</small></span>
+      <span><small>${t('total')}</small><b class="v">${rs(r.total)}</b></span>
+      <span><small>${t('inHand')}</small><b class="v">${rs(r.carry)}</b></span>${st}
+      ${bad.length ? `<span class="dl-x">${esc(bad.join(', '))}</span>` : ''}</button>`;
+  }
+  return h + `</main>${tabsHTML()}`;
+}
+function dayHTML(dk) {
+  const r = dayCalc(dk);
+  let h = coverHTML(dk, r, `<button class="pill" data-act="back-pages">${ICON.left}<span>${t('pages')}</span></button>`) + `<main class="paper">${loadingLine()}${ledgerHTML(dk, r, false)}`;
+  h += `<div class="row-acts"><button class="chip" data-act="share-day" data-dk="${dk}">${ICON.send}${t('share')}</button>`;
+  if (S.isOwner) h += `<button class="chip" data-act="ptm-check" data-dk="${dk}">${ICON.check}${t('ptmTitle')}</button>`;
+  h += `</div><p class="legend">${t('legend')}</p></main>${tabsHTML()}`;
+  return h;
+}
+
+/* ── Owner ── */
+function seenMap() { try { return JSON.parse(lsGet('seen') || '{}'); } catch (e) { return {}; } }
+function lookItems() {
+  const seen = seenMap(), out = [], td = S.todayDk;
+  const add = (key, it) => { if (!seen[key]) out.push(Object.assign({ key }, it)); };
+  for (let i = 0; i < 7; i++) {
+    const dk = dkAdd(td, -i);
+    if (i > 0 && !S.loadedDk[dk]) continue;
+    const r = dayCalc(dk);
+    r.list.forEach(e => {
+      const what = whoName(e) + ', ' + rs(e.amt) + (e.mode === 'ptm' ? ' (P)' : '');
+      if (e.flag && !e.void) add(dk + ':f:' + e.id, { dk, id: e.id, text: t('lk_flag', { r: t('r_' + e.flag.why) }), sub: what });
+      if (e.void) add(dk + ':v:' + e.id, { dk, id: e.id, text: t('lk_void'), sub: what + ', ' + t(e.void.self ? 'cancelledSelf' : 'cancelledOwner', { t: clock(e.void.at) }) });
+    });
+    if (r.last && r.diff) add(dk + ':d:' + r.last.id, { dk, text: r.diff < 0 ? t('lk_short', { a: rs(-r.diff) }) : t('lk_extra', { a: rs(r.diff) }), sub: t('counted', { t: clock(r.last.at) }) });
+    if (!r.last && dk < td && r.list.length) add(dk + ':nc', { dk, text: t('lk_notCounted') });
+    (r.recounts || []).forEach((p, j) => add(dk + ':rc:' + j, { dk, text: t('lk_tries', { v: num(p[0]) + ' → ' + num(p[1]) }) }));
+    if (r.ptmDiff) add(dk + ':p:' + r.ptmCheck.id, { dk, text: r.ptmDiff < 0 ? t('lk_ptmLess', { a: rs(-r.ptmDiff) }) : t('lk_ptmMore', { a: rs(r.ptmDiff) }) });
+  }
+  return out.slice(0, 40);
+}
+function monthData(ym) {
+  const [a, b] = ymRange(ym), m = { total: 0, ptm: 0, cash: 0, shop: 0, own: 0, days: 0, by: {}, order: [] };
+  const who = id => { if (!m.by[id]) { m.by[id] = { id, total: 0, n: 0, took: 0, why: {}, voids: 0 }; m.order.push(id); } return m.by[id]; };
+  staffList().forEach(s => who(s.id));
+  const seenDays = {};
+  lists().E.forEach(e => {
+    if (e.dk < a || e.dk > b) return;
+    seenDays[e.dk] = 1;
+    if (e.void) { if (e.t === 'pay') who(e.who).voids++; return; }
+    if (e.t === 'pay') { const x = who(e.who); x.total += e.amt; x.n++; m.total += e.amt; if (e.mode === 'ptm') m.ptm += e.amt; }
+    else if (e.t === 'out') { if (e.who === 'shop') m.shop += e.amt; else { const x = who(e.who); x.took += e.amt; x.why[e.why || 'other'] = (x.why[e.why || 'other'] || 0) + e.amt; } }
+    else if (e.t === 'own_out') m.own += e.amt;
+    else if (e.t === 'own_in') m.own -= e.amt;
+  });
+  m.cash = m.total - m.ptm; m.days = Object.keys(seenDays).length;
+  return m;
+}
+function ownerHTML() {
+  const td = S.todayDk, r = dayCalc(td), ym = S.ownerYm || ymOf(td), m = monthData(ym), look = lookItems();
+  let h = `<header class="cover"><div class="cv-top">${meChip()}<div class="cv-right">${langBtn()}</div></div>
+    <div class="oc-l">${t('cashNow')}</div><div class="oc-v">${rs(r.carry)}</div>
+    <div class="own-acts"><button class="btn gold sm" data-act="own-out">${ICON.minus}<span>${t('takeCash')}</span></button><button class="btn ghost sm" data-act="own-in">${ICON.plusSm}<span>${t('addCash')}</span></button>
+    <button class="btn ghost sm wide" data-act="ptm-check" data-dk="${td}">${ICON.check}<span>${t('checkPtmToday')}</span></button></div></header>`;
+  h += `<main class="paper">${bannersHTML()}${loadingLine()}<section class="sec"><h2>${t('look')}</h2>`;
+  if (!look.length) h += `<p class="fine">${ICON.check}<span>${t('allGood')}</span></p>`;
+  for (const it of look) {
+    h += `<div class="look"><button class="look-main" data-act="${it.id ? 'entry' : 'open-day'}" data-dk="${it.dk}" ${it.id ? `data-id="${it.id}"` : ''}>${ICON.alert}<span class="look-t"><b>${esc(it.text)}</b>${it.sub ? `<small>${esc(it.sub)}</small>` : ''}</span><span class="hand">${handDate(it.dk)}</span></button><button class="chip sm" data-act="seen" data-key="${esc(it.key)}">${t('seenOk')}</button></div>`;
+  }
+  h += `</section><section class="sec">${monthNav(ym, 'owner-month')}`;
+  if (!m.days) h += `<p class="empty">${t('noPages')}</p>`;
+  else {
+    h += `<div class="mtot"><div><small>${t('total')}</small><b>${rs(m.total)}</b></div><div><small>${esc(onl())} (P)</small><b>${rs(m.ptm)}</b></div><div><small>${t('cash')}</small><b>${rs(m.cash)}</b></div></div>`;
+    h += `<div class="tbl-wrap"><table class="tbl"><thead><tr><th>${t('name')}</th><th>${t('customers')}</th><th>${t('payments')}</th><th>${t('took')}</th></tr></thead><tbody>`;
+    for (const id of m.order) {
+      const b = m.by[id], s = staffById(id);
+      const whys = Object.keys(b.why).map(w => t('r_' + w) + ' ' + num(b.why[w])).join(', ');
+      h += `<tr><td>${esc(s ? s.name : '?')}${s && s.active === false ? `<small>${t('leftList')}</small>` : ''}${b.voids ? `<small class="o">${t('nCancelled', { n: b.voids })}</small>` : ''}</td><td>${b.n}</td><td>${rs(b.total)}</td><td class="${b.took ? 'o' : ''}">${b.took ? rs(b.took) : '0'}${whys ? `<small>${esc(whys)}</small>` : ''}</td></tr>`;
+    }
+    if (m.shop) h += `<tr><td>${t('shopTotal')}</td><td></td><td></td><td class="o">${rs(m.shop)}</td></tr>`;
+    if (m.own) h += `<tr><td>${t('ownTook')}</td><td></td><td></td><td>${rs(m.own)}</td></tr>`;
+    h += `</tbody></table></div>`;
+  }
+  const tool = (act, icon, label, sub) => `<button class="tool" data-act="${act}">${icon}<span>${label}${sub ? `<small>${sub}</small>` : ''}</span>${ICON.right}</button>`;
+  h += `</section><section class="sec"><h2>${t('manage')}</h2>`;
+  h += tool('staff', ICON.users, t('staff'), esc(staffList().map(s => s.name).join(', ')));
+  h += tool('help', ICON.phone, t('addPhone'));
+  h += tool('salon', ICON.shop, t('salonName'), esc(S.shop.name || ''));
+  h += tool('online', ICON.tag, t('onlineName'), esc(onl()));
+  if (m.days) h += tool('csv', ICON.down2, t('download', { m: esc(monthName(ym)) }));
+  h += modeLine();
+  return h + `</section></main>${tabsHTML()}`;
+}
+
+/* ───────── sheets ───────── */
+let sheet = null;
+function openSheet(def) {
+  if (sheet && sheet.onClose) sheet.onClose();
+  sheet = def;
+  if (!$('.sheet-wrap', root)) root.innerHTML = `<div class="sheet-wrap" data-act="sheet-bg"><div class="sheet" role="dialog" aria-modal="true" tabindex="-1"></div></div>`;
+  document.documentElement.classList.add('has-sheet');
+  hideToast(); drawSheet();
+  const el = $('.sheet', root); if (el) { el.scrollTop = 0; try { el.focus({ preventScroll: true }); } catch (e) {} }
+}
+function drawSheet() {
+  const el = $('.sheet', root); if (!el || !sheet) return;
+  el.className = 'sheet ' + (sheet.cls || '');
+  const keep = [].map.call(el.querySelectorAll('[data-keep]'), n => [n.dataset.keep, n.scrollLeft, n.tagName === 'INPUT' ? n.value : null, document.activeElement === n]);
+  el.innerHTML = sheet.render();
+  keep.forEach(k => { const n = el.querySelector('[data-keep="' + k[0] + '"]'); if (!n) return; n.scrollLeft = k[1]; if (k[2] != null && n.tagName === 'INPUT') n.value = k[2]; if (k[3]) { try { n.focus({ preventScroll: true }); } catch (e) {} } });
+}
+function closeSheet() {
+  if (sheet && sheet.onClose) sheet.onClose();
+  sheet = null; root.innerHTML = '';
+  document.documentElement.classList.remove('has-sheet');
+}
+const headHTML = title => `<div class="sh-head"><h2 class="sh-title">${title}</h2><button class="x" data-act="sheet-close" aria-label="${t('close')}">${ICON.x}</button></div>`;
+function keypadHTML(corner) {
+  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', corner, '0', 'back'];
+  return `<div class="keypad">${keys.map(k => k === 'back' ? `<button class="key" data-act="key" data-key="back" aria-label="Delete">${ICON.del}</button>` : k ? `<button class="key" data-act="key" data-key="${k}">${k}</button>` : '<span></span>').join('')}</div>`;
+}
+function typeKey(str, key, max) {
+  if (key === 'back') return str.slice(0, -1);
+  const s = (str + key).replace(/^0+/, '');
+  return s.length > max ? str : s;
+}
+const lockNote = () => `<p class="lock-note">${ICON.lock}<span>${t('lockNote')}</span></p>`;
+const whoChips = (sel, extra) => `<div class="chips wrap" data-keep="who">${staffList().map(s => `<button class="chip ${s.id === sel ? 'on' : ''}" data-act="who-pick" data-id="${s.id}" aria-pressed="${s.id === sel}">${avHTML(s.id, s.name)}${esc(s.name)}</button>`).join('')}${extra || ''}</div>`;
+
+/* Payment received: whose customer → amount → tap Cash or Paytm (that tap saves) */
+function openPay(pre) {
+  pre = pre || {};
+  const st = { who: pre.who || meId(), amt: pre.amt ? String(pre.amt) : '', split: false, ptm: '', field: 'amt', confirm: null, busy: false, hint: '', shake: false, needWho: false };
+  const dk = S.todayDk;
+  openSheet({
+    cls: 'tall',
+    render() {
+      const amt = Number(st.amt) || 0, r = dayCalc(dk);
+      let h = headHTML(t('payTitle'));
+      if (r.closed) h += `<div class="warn-line">${ICON.alert}<span>${t('closedWarn')}</span></div>`;
+      h += `<p class="lbl">${t('whose')}</p>` + whoChips(st.who);
+      if (!st.split) {
+        h += `<div class="amt-big ${amt ? '' : 'empty'} ${st.shake ? 'shake' : ''}" aria-live="polite"><span class="r">₹</span><span class="n">${num(amt)}</span></div>`;
+        h += `<div class="chips" data-keep="quick">${quickAmts().map(a => `<button class="chip q" data-act="quick" data-a="${a}">${num(a)}</button>`).join('')}</div>`;
+      } else {
+        const p = Number(st.ptm) || 0;
+        h += `<div class="split"><button class="split-row ${st.field === 'amt' ? 'on' : ''}" data-act="field" data-f="amt"><span>${t('total')}</span><b>₹${num(amt)}</b></button>
+          <button class="split-row ptmr ${st.field === 'ptm' ? 'on' : ''}" data-act="field" data-f="ptm"><span>${t('ptmPart')} (P)</span><b>₹${num(p)}</b></button>
+          <div class="split-row calc"><span>${t('cashPart')}</span><b>₹${num(Math.max(0, amt - p))}</b></div></div>`;
+      }
+      h += keypadHTML('00');
+      if (st.confirm) {
+        const c = st.confirm;
+        h += `<div class="confirm"><p>${c.text}</p><div class="btn-row"><button class="btn line" data-act="${c.noAct || 'conf-no'}">${c.noLabel || t('change')}</button><button class="btn ${c.mode === 'ptm' ? 'navy' : 'green'}" data-act="conf-yes">${c.yesLabel}</button></div></div>`;
+      } else if (!st.split) {
+        h += `<p class="how">${t('howPaid')}</p><div class="modes">
+          <button class="mode cash ${amt && st.who ? '' : 'dim'}" data-act="mode" data-m="cash" ${st.busy ? 'disabled' : ''}><span class="mi">${ICON.cash}<span>${t('cash')}</span></span><small>${amt ? rs(amt) : '&nbsp;'}</small></button>
+          <button class="mode ptm ${amt && st.who ? '' : 'dim'}" data-act="mode" data-m="ptm" ${st.busy ? 'disabled' : ''}><span class="mi"><span class="pm">(P)</span><span>${esc(onl())}</span></span><small>${amt ? rs(amt) : '&nbsp;'}</small></button></div>
+          <div class="sub-acts"><button class="link" data-act="split-on">${t('splitLink')}</button></div>`;
+      } else {
+        const p = Number(st.ptm) || 0, ok = amt && p && p < amt && st.who && !st.busy;
+        h += `<button class="btn gold" data-act="split-save" ${ok ? '' : 'disabled'}>${ok ? ICON.lock : ''}<span>${ok ? t('splitSave', { a: rs(amt) }) : (p >= amt && p ? t('splitBad') : t('typeFirst'))}</span></button>
+          <div class="sub-acts"><button class="link" data-act="split-off">${t('splitOff')}</button></div>`;
+      }
+      h += `<p class="hint" role="alert">${esc(st.hint)}</p>` + lockNote();
+      st.shake = false;
+      return h;
+    },
+    key(k) { if (!st.busy && k !== 'enter') this.on('key', { dataset: { key: k } }); },
+    on(act, el) {
+      if (st.busy) return;
+      if (act === 'key') { st.confirm = null; st.hint = ''; if (st.field === 'ptm') st.ptm = typeKey(st.ptm, el.dataset.key, 6); else st.amt = typeKey(st.amt, el.dataset.key, 6); }
+      else if (act === 'quick') { st.amt = el.dataset.a; st.confirm = null; st.hint = ''; }
+      else if (act === 'who-pick') { st.who = el.dataset.id; st.hint = ''; st.needWho = false; }
+      else if (act === 'field') st.field = el.dataset.f;
+      else if (act === 'split-on') { st.split = true; st.field = Number(st.amt) ? 'ptm' : 'amt'; st.hint = ''; }
+      else if (act === 'split-off') { st.split = false; st.ptm = ''; st.field = 'amt'; }
+      else if (act === 'conf-no') st.confirm = null;
+      else if (act === 'conf-close') { closeSheet(); render(); return; }
+      else if (act === 'conf-yes') { const c = st.confirm; st.confirm = null; return save(c.mode, c.skip); }
+      else if (act === 'mode') return save(el.dataset.m, 0);
+      else if (act === 'split-save') return save('split', 0);
+      drawSheet();
+    }
+  });
+  function save(mode, skip) {
+    if (!st.who) { st.hint = t('pickWhoFirst'); drawSheet(); const row = $('.sheet .chips'); if (row) row.querySelectorAll('.chip').forEach(c => { c.classList.remove('need'); void c.offsetWidth; c.classList.add('need'); }); return; }
+    if (!(Number(st.amt) > 0)) { st.hint = t('typeFirst'); st.shake = true; return drawSheet(); }
+    const amt = Number(st.amt), label = mode === 'split' ? rs(amt) : rs(amt) + ' ' + modeName(mode);
+    if (skip < 1 && amt >= BIG) { st.confirm = { mode, skip: 1, text: t('bigAsk', { a: label }), yesLabel: t('yesSave') }; return drawSheet(); }
+    if (skip < 2 && mode !== 'split') {
+      const recent = dayCalc(dk).list.filter(e => e.t === 'pay' && !e.void && e.who === st.who && e.amt === amt && e.mode === mode && now() - e.at < 60e3).pop();
+      if (recent) { st.confirm = { mode, skip: 2, text: t('dupAsk', { a: label }), yesLabel: t('dupYes'), noLabel: t('no'), noAct: 'conf-close' }; return drawSheet(); }
+    }
+    st.busy = true;
+    const base = Object.assign({ t: 'pay', who: st.who, name: staffName(st.who), dk, cat: now(), dev: DEVICE }, stampOf());
+    const map = {};
+    if (mode === 'split') {
+      const p = Number(st.ptm), grp = uid();
+      map[uid()] = Object.assign({}, base, { amt: amt - p, mode: 'cash', grp });
+      map[uid()] = Object.assign({}, base, { amt: p, mode: 'ptm', grp });
+    } else map[uid()] = Object.assign({}, base, { amt, mode });
+    const res = sendEntries(map);
+    closeSheet();
+    afterSave(Object.keys(map), res, t('saved', { a: rs(amt), m: mode === 'split' ? '' : esc(modeName(mode)) }).trim());
+  }
+}
+function afterSave(ids, res, label) {
+  buzz();
+  ids.forEach(id => { S.fresh[id] = 1; });
+  setTimeout(() => { ids.forEach(id => { delete S.fresh[id]; }); }, 2000);
+  S.ver++; render();
+  toast((res === 'queued' ? ICON.wifiOff : ICON.lock) + ' ' + (res === 'queued' ? t('queued') : label), { label: t('undo'), fn: () => cancelOwn(ids) });
+  setTimeout(() => { const el = $('.fresh', app); if (el && el.scrollIntoView) { try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {} } }, 60);
+}
+/* the writer can cancel their own entry for 2 minutes; it stays crossed out */
+async function cancelOwn(ids) {
+  try {
+    await Promise.all(ids.map(id => patchEntry(id, { cancel: { at: S.store.stamp(), by: S.user.uid, self: true } })));
+    render(); toast(ICON.undo + ' ' + t('undone'));
+  } catch (e) { toast(ICON.alert + ' ' + failText()); }
+}
+
+/* Money out of the cash box */
+function openMoney(kind) {
+  const owner = kind === 'own_out' || kind === 'own_in';
+  const reasons = kind === 'own_out' ? OWN_OUT_WHY : kind === 'own_in' ? OWN_IN_WHY : null;
+  const st = { who: owner ? 'owner' : null, why: null, amt: '', busy: false, hint: '', shake: false };
+  const dk = S.todayDk;
+  openSheet({
+    cls: 'tall',
+    render() {
+      const amt = Number(st.amt) || 0, ok = amt > 0 && st.who && !st.busy, r = dayCalc(dk);
+      const label = !st.who ? t('whoTook') : !amt ? t('typeFirst')
+        : kind === 'own_out' ? t('saveOwnOut', { a: rs(amt) }) : kind === 'own_in' ? t('saveOwnIn', { a: rs(amt) }) : t('saveOut', { a: rs(amt) });
+      let h = headHTML(t(kind === 'own_out' ? 'takeCash' : kind === 'own_in' ? 'addCash' : 'outTitle'));
+      if (r.closed) h += `<div class="warn-line">${ICON.alert}<span>${t('closedWarn')}</span></div>`;
+      if (!owner) h += `<p class="lbl">${t('whoTook')}</p>` + whoChips(st.who, `<button class="chip ${st.who === 'shop' ? 'on' : ''}" data-act="who-pick" data-id="shop" aria-pressed="${st.who === 'shop'}">${ICON.shop}${t('shopExp')}</button>`);
+      const list = reasons || (st.who === 'shop' ? SHOP_WHY : st.who ? PERSON_WHY : null);
+      if (list) h += `<p class="lbl" style="margin-top:10px">${t('whatFor')}</p><div class="chips wrap" data-keep="why">${list.map(w => `<button class="chip ${st.why === w ? 'on' : ''}" data-act="why" data-w="${w}" aria-pressed="${st.why === w}">${t('r_' + w)}</button>`).join('')}</div>`;
+      h += `<div class="amt-big ${kind === 'own_in' ? '' : 'out'} ${amt ? '' : 'empty'} ${st.shake ? 'shake' : ''}" aria-live="polite"><span class="r">${kind === 'own_in' ? '+' : '−'} ₹</span><span class="n">${num(amt)}</span></div>`;
+      h += keypadHTML('00');
+      h += `<button class="btn ${kind === 'own_in' ? 'green' : 'red'} ${ok ? '' : 'dim'}" data-act="save" ${st.busy ? 'disabled' : ''}>${ok ? ICON.lock : ''}<span>${label}</span></button>`;
+      h += `<p class="hint" role="alert">${esc(st.hint)}</p>` + lockNote();
+      st.shake = false;
+      return h;
+    },
+    key(k) { if (!st.busy && k !== 'enter') this.on('key', { dataset: { key: k } }); },
+    on(act, el) {
+      if (st.busy) return;
+      if (act === 'key') { st.amt = typeKey(st.amt, el.dataset.key, 6); st.hint = ''; }
+      else if (act === 'who-pick') { const was = st.who; st.who = el.dataset.id; if (!was || (was === 'shop') !== (st.who === 'shop')) st.why = st.who === 'shop' ? null : 'adv'; st.hint = ''; }
+      else if (act === 'why') st.why = el.dataset.w;
+      else if (act === 'save') {
+        const amt = Number(st.amt) || 0;
+        if (!st.who) { st.hint = t('whoTook'); return drawSheet(); }
+        if (!amt) { st.hint = t('typeFirst'); st.shake = true; return drawSheet(); }
+        if (owner && !S.isOwner) { closeSheet(); render(); return; }
+        st.busy = true;
+        const e = Object.assign({ t: owner ? kind : 'out', who: st.who, amt, dk, cat: now(), dev: DEVICE }, stampOf());
+        if (!owner && st.who !== 'shop') e.name = staffName(st.who);
+        if (st.why) e.why = st.why;
+        const id = uid(), res = sendEntries({ [id]: e });
+        closeSheet(); afterSave([id], res, kind === 'own_in' ? t('saved', { a: '+ ' + rs(amt), m: '' }).trim() : t('savedOut', { a: rs(amt) }));
+        return;
+      }
+      drawSheet();
+    }
+  });
+}
+
+/* One entry: when it was written, and the only things that can happen to it */
+function openEntry(dk, id, ask) {
+  const st = { ask: ask || null, busy: false, err: '' };
+  const def = {
+    live: true,
+    render() {
+      const e = S.entries[id];
+      if (!e) return headHTML('');
+      const isPay = e.t === 'pay', isIn = e.t === 'own_in', isToday = e.dk === S.todayDk;
+      const mine = e.by === S.user.uid, left = UNDO_MS - (now() - e.at);
+      const canSelf = isToday && !e.void && mine && left > 0;
+      const canOwner = isToday && !e.void && S.isOwner && !e.pending;
+      let h = headHTML(isPay ? t('payTitle') : e.t === 'out' ? t('taken') : t(isIn ? 'ownAdd' : 'ownTook'));
+      h += `<div class="amt-big ${isPay || isIn ? '' : 'out'} ${e.void ? 'void' : ''}"><span class="r">${isPay ? '' : isIn ? '+ ' : '− '}₹</span><span class="n">${num(e.amt)}</span></div><div class="e-tags">`;
+      if (isPay) h += `<span class="tag ${e.mode === 'ptm' ? 'ptm' : 'cash'}">${e.mode === 'ptm' ? esc(onl()) + ' (P)' : t('cash')}</span>`;
+      h += `<span class="tag">${esc(whoName(e))}</span>${e.why ? `<span class="tag">${t('r_' + e.why)}</span>` : ''}</div>`;
+      const writer = S.isOwner && e.email && S.mode === 'cloud' ? (emailOwnerOf(e.email) ? emailOwnerOf(e.email) + ' (' + e.email + ')' : e.email) : '';
+      h += `<div class="facts"><p class="fact">${ICON.time}<span>${writer ? t('writtenBy', { n: esc(writer), t: clock(e.at), d: esc(longDate(e.dk)) }) : t('writtenAt', { t: clock(e.at), d: esc(longDate(e.dk)) })}</span></p>`;
+      if (e.pending) h += `<p class="fact">${ICON.wifiOff}<span>${t('waitingNet')}</span></p>`;
+      if (e.void) h += `<p class="fact bad">${ICON.x}<span>${t(e.void.self ? 'cancelledSelf' : 'cancelledOwner', { t: clock(e.void.at) })}</span></p>`;
+      else h += `<p class="fact">${ICON.lock}<span>${t('lockedNote')}</span></p>`;
+      if (e.flag) h += `<p class="fact bad">${ICON.flag}<span>${t('flaggedAs', { r: t('r_' + e.flag.why) })}</span></p>`;
+      h += `</div>`;
+      if (st.err) h += `<p class="err" role="alert">${esc(st.err)}</p>`;
+      if (st.ask) {
+        return h + `<div class="e-sec"><p class="e-q">${t('cancelAsk')}</p><div class="btn-row"><button class="btn line" data-act="ask-no">${t('keep')}</button><button class="btn red" data-act="ask-yes" ${st.busy ? 'disabled' : ''}>${t('yesCancel')}</button></div></div>`;
+      }
+      if (canSelf) h += `<div class="e-sec"><div class="e-acts"><button class="btn red sm" data-act="self">${ICON.undo}<span>${t('selfCancel')}</span></button></div><p class="lock-note">${t('selfLeft', { t: mmss(left) })}</p></div>`;
+      if (!e.void && !e.flag && !e.pending && isToday && (isPay || e.t === 'out')) {
+        h += `<div class="e-sec"><p class="e-q">${t('wrongQ')}</p><div class="chips wrap">${FLAG_WHY.filter(w => isPay || w !== 'mode').map(w => `<button class="chip" data-act="flag" data-why="${w}">${ICON.flag}${t('r_' + w)}</button>`).join('')}</div></div>`;
+      }
+      if (canOwner && !canSelf) h += `<div class="e-sec"><div class="e-acts"><button class="btn line sm" data-act="own-void">${ICON.key}<span>${t('ownCancel')}</span></button>${isPay ? `<button class="btn line sm" data-act="own-rewrite">${ICON.key}<span>${t('ownRewrite')}</span></button>` : ''}</div></div>`;
+      if (!isToday) h += `<div class="e-sec"><p class="fact">${ICON.lock}<span>${t('pastLocked')}</span></p></div>`;
+      return h;
+    },
+    async on(act, el) {
+      if (st.busy) return;
+      const e = S.entries[id];
+      if (!e) return;
+      if (act === 'self') { st.ask = 'self'; return drawSheet(); }
+      if (act === 'own-void') { st.ask = 'owner'; return drawSheet(); }
+      if (act === 'own-rewrite') { st.ask = 'rewrite'; return drawSheet(); }
+      if (act === 'ask-no') { st.ask = null; return drawSheet(); }
+      if (act === 'ask-yes') {
+        const self = st.ask === 'self', rewrite = st.ask === 'rewrite';
+        if (e.dk !== S.todayDk) return;
+        if (self && UNDO_MS - (now() - e.at) <= 0) { st.ask = null; return drawSheet(); }
+        if (!self && !S.isOwner) return;
+        st.busy = true; drawSheet();
+        try {
+          await patchEntry(id, { cancel: { at: S.store.stamp(), by: S.user.uid, self } });
+          closeSheet(); render(); toast(ICON.x + ' ' + t('undone'));
+          if (rewrite) openPay({ who: e.who, amt: e.amt });
+        } catch (err) { st.busy = false; st.err = failText(); drawSheet(); }
+        return;
+      }
+      if (act === 'flag') {
+        st.busy = true; drawSheet();
+        try { await patchEntry(id, { flag: { why: el.dataset.why, at: S.store.stamp(), by: S.user.uid } }); closeSheet(); render(); toast(ICON.flag + ' ' + t('flagged')); }
+        catch (err) { st.busy = false; st.err = failText(); drawSheet(); }
+      }
+    },
+    onClose() { clearInterval(def.timer); }
+  };
+  def.timer = setInterval(() => { if (sheet === def && !st.ask) drawSheet(); }, 1000);
+  openSheet(def);
+}
+
+/* Count the cash: blind first (type what you count), then compare, then close */
+function openCount() {
+  const dk = S.todayDk;
+  const st = { step: 'type', amt: '', touched: false, notes: {}, coins: '', busy: false, err: '', cid: null, rec: null };
+  const notesTotal = () => NOTES.reduce((s, n) => s + n * (Number(st.notes[n]) || 0), 0) + (Number(st.coins) || 0);
+  const withRec = () => {
+    if (!st.rec || S.counts[st.cid]) return dayCalc(dk);
+    S.counts[st.cid] = Object.assign({ id: st.cid }, st.rec); S.ver++;
+    const r = dayCalc(dk); delete S.counts[st.cid]; S.ver++;
+    return r;
+  };
+  openSheet({
+    cls: 'tall',
+    render() {
+      const r = withRec();
+      if (st.step === 'done') {
+        return headHTML(t('dayClosed')) + `<div class="done"><div class="stamp thunk ${r.diff ? 'bad' : ''}"><span>${t('closedStamp')}</span><small>${clock(now())}</small></div>
+          <div class="done-nums"><div><small>${t('total')}</small><b>${rs(r.total)}</b></div><div><small>${esc(onl())} (P)</small><b>${rs(r.ptm)}</b></div><div><small>${t('inHand')}</small><b>${rs(r.carry)}</b></div></div>
+          ${S.mode === 'cloud' ? `<p>${t('ownerSees')}</p>` : ''}
+          <div class="done-acts"><button class="btn gold" data-act="send">${ICON.send}<span>${t('share')}</span></button><button class="btn line" data-act="sheet-close">${t('close')}</button></div></div>`;
+      }
+      if (st.step === 'notes') {
+        return headHTML(t('countNotes')) + `<div class="notes-grid">${NOTES.map(n => `<label class="nrow"><b>₹${n} ×</b><input class="inp" data-keep="n${n}" data-note="${n}" inputmode="numeric" maxlength="4" autocomplete="off" value="${esc(st.notes[n] || '')}" placeholder="0"><span data-sub="${n}">${num(n * (Number(st.notes[n]) || 0))}</span></label>`).join('')}
+          <label class="nrow"><b>${t('coins')}</b><input class="inp" data-keep="coins" data-note="coins" inputmode="numeric" maxlength="5" autocomplete="off" value="${esc(st.coins)}" placeholder="0"><span data-sub="coins">${num(Number(st.coins) || 0)}</span></label></div>
+          <div class="ntot"><span>${t('total')}</span><b data-ntot>₹${num(notesTotal())}</b></div>
+          <div class="btn-row"><button class="btn line" data-act="notes-back">${t('back')}</button><button class="btn navy" data-act="notes-use" data-nuse>${t('useAmt', { a: rs(notesTotal()) })}</button></div>`;
+      }
+      if (st.step === 'result') {
+        const c = st.rec, diff = r.diff;
+        let h = headHTML(t('countTitle')) + `<div class="box"><div class="box-row"><span>${t('shouldBe')}</span><b>${rs(r.expAt)}</b></div><div class="box-row"><span>${t('youCounted')}</span><b>${rs(c.counted)}</b></div><hr>`;
+        h += diff === 0 ? `<div class="box-row big good"><span>${t('matches')}</span><b>${ICON.checkBig}</b></div>` : `<div class="box-row big bad"><span>${diff < 0 ? t('short', { a: '' }) : t('extra', { a: '' })}</span><b>${rs(Math.abs(diff))}</b></div>`;
+        h += `</div>`;
+        if (diff) h += `<p class="why">${t(diff < 0 ? 'shortWhy' : 'extraWhy')}</p>`;
+        h += `<div style="flex:1"></div>` + (st.err ? `<p class="err" role="alert">${esc(st.err)}</p>` : '');
+        h += `<div class="e-acts" style="margin-top:16px">${diff ? `<button class="btn line" data-act="again">${t('countAgain')}</button>` : ''}<button class="btn ${diff ? 'red' : 'navy'}" data-act="close-day" ${st.busy ? 'disabled' : ''}>${ICON.lock}<span>${diff === 0 ? t('closeDay') : diff < 0 ? t('closeShort', { a: rs(-diff) }) : t('closeExtra', { a: rs(diff) })}</span></button></div>`;
+        return h;
+      }
+      const amt = Number(st.amt) || 0;
+      return headHTML(t('countTitle')) + `<p class="ask">${t('countAsk')}</p>
+        <div class="amt-big ${st.touched ? '' : 'empty'}" aria-live="polite"><span class="r">₹</span><span class="n">${num(amt)}</span></div>
+        <div class="sub-acts"><button class="link" data-act="notes">${ICON.coins}${t('countNotes')}</button></div>
+        ${keypadHTML('00')}${st.err ? `<p class="err" role="alert">${esc(st.err)}</p>` : ''}
+        <button class="btn navy" data-act="check" ${st.touched && !st.busy ? '' : 'disabled'}><span>${st.touched ? t('check') : t('typeCount')}</span></button>`;
+    },
+    key(k) { if (st.step === 'type' && !st.busy) { if (k === 'enter') return this.on('check'); this.on('key', { dataset: { key: k } }); } },
+    input(el) {
+      const n = el.dataset.note; if (!n) return;
+      el.value = digits(el.value);
+      if (n === 'coins') st.coins = el.value; else st.notes[n] = el.value;
+      const sub = $('[data-sub="' + n + '"]', root); if (sub) sub.textContent = num(n === 'coins' ? Number(st.coins) || 0 : Number(n) * (Number(el.value) || 0));
+      const tot = $('[data-ntot]', root); if (tot) tot.textContent = '₹' + num(notesTotal());
+      const use = $('[data-nuse]', root); if (use) use.textContent = t('useAmt', { a: rs(notesTotal()) });
+    },
+    async on(act, el) {
+      if (st.busy) return;
+      if (act === 'send') return openShare(dk);
+      if (act === 'key') { st.amt = typeKey(st.amt, el.dataset.key, 7); st.touched = el.dataset.key === 'back' ? st.amt !== '' : true; }
+      else if (act === 'notes') st.step = 'notes';
+      else if (act === 'notes-back') st.step = 'type';
+      else if (act === 'notes-use') { st.amt = String(notesTotal() || ''); st.touched = true; st.step = 'type'; }
+      else if (act === 'again') { st.step = 'type'; st.amt = ''; st.touched = false; st.notes = {}; st.coins = ''; st.rec = null; st.cid = null; }
+      else if (act === 'check') {
+        if (!st.touched) return;
+        if (!online()) { st.err = t('needNet'); return drawSheet(); }
+        st.busy = true; st.err = ''; drawSheet();
+        const cid = uid(), counted = Number(st.amt) || 0, expected = dayCalc(dk).expected;
+        try {
+          await withTimeout(S.store.add('counts', cid, Object.assign({ dk, counted, expected, dev: DEVICE }, stampOf())), 15000);
+          st.cid = cid; st.rec = { dk, at: S.counts[cid] ? S.counts[cid].at : now(), counted, expected, by: S.user.uid };
+          st.busy = false; st.step = 'result';
+        } catch (err) { st.busy = false; st.err = failText(); }
+      }
+      else if (act === 'close-day') {
+        if (!online()) { st.err = t('needNet'); return drawSheet(); }
+        st.busy = true; st.err = ''; drawSheet();
+        try { await withTimeout(S.store.patch('counts', st.cid, { closed: S.store.stamp() }), 15000); st.busy = false; st.step = 'done'; buzz(); render(); }
+        catch (err) { st.busy = false; st.err = failText(); }
+      }
+      drawSheet();
+    }
+  });
+}
+
+/* Share a page as text (WhatsApp or copy) */
+function summaryText(dk) {
+  const r = dayCalc(dk), by = {}, order = [];
+  r.list.forEach(e => { if (e.t === 'pay' && !e.void) { if (!by[e.who]) { by[e.who] = { n: whoName(e), a: 0, c: 0 }; order.push(e.who); } by[e.who].a += e.amt; by[e.who].c++; } });
+  const out = [(S.shop.name || 'Salon') + ', ' + handDate(dk) + ' (' + weekday(dk) + ')', ''];
+  order.forEach(id => out.push(by[id].n + ': ' + rs(by[id].a) + ' (' + by[id].c + ')'));
+  out.push('', t('total') + ': ' + rs(r.total), onl() + ' (P): ' + rs(r.ptm), t('cash') + ': ' + rs(r.cash));
+  r.list.forEach(e => { if (e.t !== 'pay' && !e.void) out.push((e.t === 'own_in' ? '+ ' : '− ') + rs(e.amt) + ' ' + whoName(e) + (e.why ? ' (' + t('r_' + e.why) + ')' : '')); });
+  out.push(t('earlier') + ': ' + rs(r.opening), t(r.last ? 'shouldBe' : 'inHand') + ': ' + rs(r.expected));
+  if (r.last) out.push(t('counted', { t: clock(r.last.at) }) + ': ' + rs(r.last.counted) + (r.diff === 0 ? ' ✓' : ' (' + (r.diff < 0 ? t('short', { a: rs(-r.diff) }) : t('extra', { a: rs(r.diff) })) + ')'));
+  else if (dk < S.todayDk) out.push(t('lk_notCounted'));
+  if (r.voids) out.push(t('nCancelled', { n: r.voids }));
+  return out.join('\n');
+}
+function openShare(dk) {
+  const text = summaryText(dk);
+  openSheet({
+    render: () => headHTML(t('shareTitle')) + `<textarea class="ta" readonly>${esc(text)}</textarea><div class="e-acts">
+      <a class="btn green" href="https://wa.me/?text=${encodeURIComponent(text)}" target="_blank" rel="noopener">${ICON.send}<span>${t('whatsapp')}</span></a>
+      <button class="btn line" data-act="copy">${t('copyText')}</button>${navigator.share ? `<button class="btn line" data-act="more">${t('moreApps')}</button>` : ''}</div>`,
+    async on(act) {
+      if (act === 'copy') {
+        let ok = false;
+        try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {}
+        if (!ok) { const ta = $('.ta', root); if (ta) { try { ta.focus(); ta.select(); ok = document.execCommand('copy'); } catch (e) {} } }
+        if (ok) toast(ICON.check + ' ' + t('copied'));
+      }
+      if (act === 'more') { try { await navigator.share({ text }); } catch (e) {} }
+    }
+  });
+}
+
+/* Paytm check: owner types what the Paytm app shows, the copy compares */
+function openPtmCheck(dk) {
+  const st = { amt: '', touched: false, busy: false, err: '', rec: null };
+  openSheet({
+    cls: 'tall',
+    render() {
+      const r = dayCalc(dk);
+      if (st.rec) {
+        const diff = st.rec.amount - r.ptm;
+        let h = headHTML(t('ptmTitle')) + `<div class="box"><div class="box-row"><span>${t('ptmWritten')}</span><b>${rs(r.ptm)}</b></div><div class="box-row"><span>${t('ptmApp')}</span><b>${rs(st.rec.amount)}</b></div><hr>`;
+        h += diff === 0 ? `<div class="box-row big good"><span>${t('ptmMatch')}</span><b>${ICON.checkBig}</b></div></div>` : `<div class="box-row big bad"><span>${diff < 0 ? t('ptmLess', { a: '' }) : t('ptmMore', { a: '' })}</span><b>${rs(Math.abs(diff))}</b></div></div><p class="why">${t(diff < 0 ? 'ptmLessWhy' : 'ptmMoreWhy')}</p>`;
+        return h + `<div style="flex:1"></div><button class="btn line" data-act="sheet-close" style="margin-top:16px">${t('close')}</button>`;
+      }
+      return headHTML(t('ptmTitle')) + `<p class="ask">${t('ptmAsk', { d: handDate(dk) })}</p>
+        <div class="amt-big ${st.touched ? '' : 'empty'}"><span class="r">₹</span><span class="n">${num(Number(st.amt) || 0)}</span></div>${keypadHTML('00')}
+        ${st.err ? `<p class="err">${esc(st.err)}</p>` : ''}<button class="btn navy" data-act="check" ${st.touched && !st.busy ? '' : 'disabled'}>${t('check')}</button>`;
+    },
+    key(k) { if (!st.rec) { if (k === 'enter') return this.on('check'); this.on('key', { dataset: { key: k } }); } },
+    async on(act, el) {
+      if (st.busy) return;
+      if (act === 'key') { st.amt = typeKey(st.amt, el.dataset.key, 7); st.touched = el.dataset.key === 'back' ? st.amt !== '' : true; }
+      if (act === 'check' && st.touched) {
+        if (!online()) { st.err = t('needNet'); return drawSheet(); }
+        st.busy = true; drawSheet();
+        const rec = Object.assign({ dk, amount: Number(st.amt) || 0, written: dayCalc(dk).ptm }, stampOf());
+        try { await withTimeout(S.store.add('ptm', uid(), rec), 15000); st.rec = rec; st.busy = false; render(); }
+        catch (err) { st.busy = false; st.err = failText(); }
+      }
+      drawSheet();
+    }
+  });
+}
+
+/* small sheets */
+function openLang() {
+  openSheet({
+    render: () => headHTML('Language / भाषा / ଭାଷା') + `<div class="e-acts">${Object.keys(STR).map(k => `<button class="btn ${k === S.lang ? 'navy' : 'line'}" data-act="set-lang" data-l="${k}">${STR[k]._name}</button>`).join('')}</div>`,
+    on(act, el) { if (act === 'set-lang') { S.lang = el.dataset.l; lsSet('lang', S.lang); closeSheet(); render(); } }
+  });
+}
+function openAccount() {
+  openSheet({
+    live: true,
+    render() {
+      let h = headHTML(S.mode === 'demo' ? t('whoTitle') : t('signedIn', { e: esc(S.user.email) }));
+      if (S.mode === 'demo') {
+        const me = lsGet('me');
+        h += `<p class="qs" style="margin:0 2px 14px">${t('whoSub')}</p><div class="who-list">`;
+        h += staffList().map(s => `<button class="who-btn ${me === s.id ? 'on' : ''}" data-act="set-me" data-id="${s.id}">${avHTML(s.id, s.name, 'lg')}<span class="who-n">${esc(s.name)}</span>${me === s.id ? ICON.checkBig : ''}</button>`).join('');
+        h += `<div class="who-sep"></div><button class="who-btn ${!activeStaff(me) ? 'on' : ''}" data-act="set-me" data-id="">${`<span class="av lg ghost">${ICON.key}</span>`}<span class="who-n">${t('ownerPhone')}<small>${t('sharedSub')}</small></span>${!activeStaff(me) ? ICON.checkBig : ''}</button></div>`;
+        return h;
+      }
+      const me = meId();
+      if (me) h += `<p class="fact" style="margin-bottom:14px">${avHTML(me, staffName(me))}<span>${esc(staffName(me))}</span></p>`;
+      h += `<button class="btn line" data-act="signout">${ICON.logout}<span>${t('signOut')}</span></button>`;
+      return h;
+    },
+    on(act, el) {
+      if (act === 'set-me') { if (el.dataset.id) lsSet('me', el.dataset.id); else lsDel('me'); closeSheet(); render(); }
+      if (act === 'signout') { closeSheet(); doSignOut(); }
+    }
+  });
+}
+function doSignOut() { stopAll(); S.store.signOut().catch(() => {}); if (S.mode === 'demo') return; S.user = null; S.phase = 'signin'; render(); }
+
+/* staff and the Gmails that may write */
+function openStaff() {
+  const st = { err: '', ask: null, edit: null, busy: false };
+  const taken = (email, except) => {
+    if (!email) return false;
+    if (staffList(true).some(s => s.id !== except && s.email === email && s.active !== false)) return true;
+    const m = S.members[email];
+    return !!(m && m.active !== false && m.staff !== except && !(except && m.staff === except));
+  };
+  const nameTaken = (name, except) => staffList(true).some(s => s.id !== except && s.name.trim().toLowerCase() === name.toLowerCase());
+  const run = async fn => {
+    if (!S.isOwner) return false;
+    st.busy = true; drawSheet();
+    try { await withTimeout(fn(), 15000); st.err = ''; return true; }
+    catch (e) { st.err = failText(); return false; }
+    finally { st.busy = false; }
+  };
+  const readEmail = sel => { const i = $(sel, root); const v = i ? normEmail(i.value) : ''; return v; };
+  openSheet({
+    live: true,
+    render() {
+      let h = headHTML(t('staff'));
+      if (st.ask) {
+        const s = staffById(st.ask), took = (monthData(ymOf(S.todayDk)).by[st.ask] || {}).took || 0;
+        return h + `<div class="confirm" style="text-align:left"><p>${t('leftAsk', { n: esc(s.name) })}</p><div class="facts" style="margin:0 0 14px">
+          <p class="fact">${ICON.lock}<span>${t('leftKeep')}</span></p>${took ? `<p class="fact bad">${ICON.cash}<span>${t('leftTook', { n: esc(s.name), a: rs(took) })}</span></p>` : ''}
+          ${s.email ? `<p class="fact">${ICON.mail}<span>${t('leftLogin')}</span></p>` : ''}</div>
+          <div class="btn-row"><button class="btn line" data-act="no">${t('keep')}</button><button class="btn red" data-act="left-yes" ${st.busy ? 'disabled' : ''}>${t('yesLeft', { n: esc(s.name) })}</button></div></div>`;
+      }
+      if (st.edit) {
+        const s = staffById(st.edit);
+        return h + `<label class="lbl" for="e-name">${t('name')}</label><input class="inp big" id="e-name" data-keep="ename" maxlength="16" autocomplete="off" value="${esc(s.name)}">
+          <label class="lbl" for="e-mail" style="margin-top:14px">${t('gmailOpt')}</label><input class="inp" id="e-mail" data-keep="email" type="email" inputmode="email" autocapitalize="off" autocomplete="off" placeholder="name@gmail.com" value="${esc(s.email || '')}">
+          ${st.err ? `<p class="err">${esc(st.err)}</p>` : ''}
+          <div class="btn-row" style="margin-top:16px"><button class="btn line" data-act="no">${t('back')}</button><button class="btn navy" data-act="edit-save" ${st.busy ? 'disabled' : ''}>${t('save')}</button></div>
+          <button class="btn line sm danger-line" data-act="left" data-id="${s.id}" style="margin-top:22px">${t('leftJob')}</button>`;
+      }
+      const list = staffList(), left = staffList(true).filter(s => s.active === false);
+      h += `<ul class="st-list">${list.map(s => `<li><button class="st-row" data-act="edit" data-id="${s.id}">${avHTML(s.id, s.name, 'lg')}<span class="nm">${esc(s.name)}<small>${s.email ? esc(s.email) : t('noLogin')}</small></span><span class="chip sm">${ICON.pen}${t('edit')}</span></button></li>`).join('')}</ul>`;
+      h += `<div class="add-box" style="margin-top:14px"><input class="inp" data-keep="stadd" maxlength="16" autocomplete="off" placeholder="${t('addName')}"><input class="inp" data-keep="stmail" type="email" inputmode="email" autocapitalize="off" autocomplete="off" placeholder="${t('su2mail')}"><button class="btn navy sm" data-act="add" ${st.busy ? 'disabled' : ''}>${ICON.plusSm}<span>${t('add')}</span></button></div>`;
+      if (st.err) h += `<p class="err" role="alert">${esc(st.err)}</p>`;
+      if (S.mode === 'cloud') {
+        const shared = Object.keys(S.members).filter(e => S.members[e] && S.members[e].active !== false && !S.members[e].staff);
+        h += `<p class="lbl" style="margin-top:24px">${t('logins')}</p><p class="qs" style="margin:-4px 2px 8px">${t('loginsSub')}</p>`;
+        h += `<ul class="st-list">${shared.map(e => `<li><span class="av lg ghost">${ICON.users}</span><span class="nm">${esc(e)}</span><button class="chip sm danger" data-act="rm-login" data-e="${esc(e)}">${t('remove')}</button></li>`).join('')}</ul>`;
+        h += `<div class="f-row" style="margin-top:8px"><input class="inp" data-keep="lgmail" type="email" inputmode="email" autocapitalize="off" autocomplete="off" placeholder="name@gmail.com"><button class="btn navy sm" data-act="add-login" ${st.busy ? 'disabled' : ''}>${t('add')}</button></div>`;
+      }
+      if (left.length) h += `<p class="lbl" style="margin-top:24px">${t('leftList')}</p><ul class="st-list">${left.map(s => `<li><span class="av lg ghost">${esc(initial(s.name))}</span><span class="nm">${esc(s.name)}${s.leftAt ? `<small>${t('since', { d: handDate(dkOf(s.leftAt)) })}</small>` : ''}</span><button class="chip sm" data-act="back" data-id="${s.id}">${t('bringBack')}</button></li>`).join('')}</ul>`;
+      return h;
+    },
+    async on(act, el) {
+      if (st.busy) return;
+      if (act === 'add') {
+        const ni = $('[data-keep="stadd"]', root), name = ni ? ni.value.trim().replace(/\s+/g, ' ').slice(0, 16) : '', email = readEmail('[data-keep="stmail"]');
+        if (!name) { if (ni) ni.focus(); return; }
+        if (nameTaken(name)) { st.err = t('dupName', { n: name }); return drawSheet(); }
+        if (email && !okEmail(email)) { st.err = t('badEmail'); return drawSheet(); }
+        if (taken(email)) { st.err = t('emailTaken'); return drawSheet(); }
+        const id = 's' + uid();
+        const ok = await run(async () => {
+          await S.store.mergeShop({ staff: { [id]: { name, order: now(), active: true, addedAt: now(), email: email || null } } });
+          if (email) await S.store.setMember(email, { name, staff: id, active: true, addedAt: now() });
+        });
+        if (ok) { const a = $('[data-keep="stadd"]', root), b = $('[data-keep="stmail"]', root); if (a) a.value = ''; if (b) b.value = ''; }
+      }
+      else if (act === 'edit') { st.edit = el.dataset.id; st.err = ''; }
+      else if (act === 'edit-save') {
+        const s = staffById(st.edit), ni = $('[data-keep="ename"]', root), name = ni ? ni.value.trim().replace(/\s+/g, ' ').slice(0, 16) : '', email = readEmail('[data-keep="email"]');
+        if (!name) return;
+        if (nameTaken(name, s.id)) { st.err = t('dupName', { n: name }); return drawSheet(); }
+        if (email && !okEmail(email)) { st.err = t('badEmail'); return drawSheet(); }
+        if (email !== (s.email || '') && taken(email, s.id)) { st.err = t('emailTaken'); return drawSheet(); }
+        const ok = await run(async () => {
+          await S.store.mergeShop({ staff: { [s.id]: { name, email: email || null } } });
+          if (s.email && s.email !== email) await S.store.setMember(s.email, { active: false });
+          if (email) await S.store.setMember(email, { name, staff: s.id, active: true, addedAt: now() });
+        });
+        if (ok) st.edit = null;
+      }
+      else if (act === 'left') { if (staffList().length < 2) { st.err = t('needOne'); st.edit = null; } else { st.ask = el.dataset.id; st.edit = null; st.err = ''; } }
+      else if (act === 'left-yes') {
+        const s = staffById(st.ask);
+        const ok = await run(async () => {
+          await S.store.mergeShop({ staff: { [s.id]: { active: false, leftAt: now() } } });
+          if (s.email) await S.store.setMember(s.email, { active: false });
+        });
+        if (ok) st.ask = null;
+      }
+      else if (act === 'back') {
+        const s = staffById(el.dataset.id);
+        await run(async () => {
+          await S.store.mergeShop({ staff: { [s.id]: { active: true, leftAt: null } } });
+          if (s.email && !taken(s.email, s.id)) await S.store.setMember(s.email, { name: s.name, staff: s.id, active: true });
+        });
+      }
+      else if (act === 'add-login') {
+        const email = readEmail('[data-keep="lgmail"]');
+        if (!okEmail(email)) { st.err = t('badEmail'); return drawSheet(); }
+        if (taken(email)) { st.err = t('emailTaken'); return drawSheet(); }
+        if (await run(() => S.store.setMember(email, { name: '', staff: null, active: true, addedAt: now() }))) { const i = $('[data-keep="lgmail"]', root); if (i) i.value = ''; }
+      }
+      else if (act === 'rm-login') await run(() => S.store.setMember(el.dataset.e, { active: false }));
+      else if (act === 'no') { st.ask = null; st.edit = null; st.err = ''; }
+      drawSheet(); render();
+    }
+  });
+}
+function openHelp() {
+  openSheet({
+    render: () => headHTML(t('helpTitle')) + `<ol class="steps">${[1, 2, 3, 4].map(i => `<li><span class="tn">${i}</span><span>${t('help' + i)}</span></li>`).join('')}</ol>
+      <div class="note">${ICON.users}<div><b>${t('helpLeave')}</b></div></div><button class="btn line" data-act="sheet-close" style="margin-top:16px">${t('close')}</button>`
+  });
+}
+function openSalon() {
+  const st = { err: '' };
+  openSheet({
+    render: () => headHTML(t('salonName')) + `<input class="inp big" data-keep="salon" data-enter="save" maxlength="30" autocomplete="off" value="${esc(S.shop.name || '')}">`
+      + (st.err ? `<p class="err">${esc(st.err)}</p>` : '') + `<button class="btn navy" data-act="save" style="margin-top:14px">${t('save')}</button>`,
+    async on(act) {
+      if (act !== 'save' || !S.isOwner) return;
+      const inp = $('[data-keep="salon"]', root), name = inp ? inp.value.trim().slice(0, 30) : '';
+      if (!name) return;
+      try { await withTimeout(S.store.mergeShop({ name }), 12000); closeSheet(); render(); } catch (e) { st.err = failText(); drawSheet(); }
+    }
+  });
+}
+function openOnline() {
+  const st = { err: '' };
+  openSheet({
+    render: () => headHTML(t('onlineName')) + `<div class="e-acts">${ONLINE_CHOICES.map(c => `<button class="btn ${c === onl() ? 'navy' : 'line'}" data-act="pick" data-c="${esc(c)}">${esc(c)} (P)</button>`).join('')}</div>` + (st.err ? `<p class="err">${esc(st.err)}</p>` : ''),
+    async on(act, el) {
+      if (act !== 'pick' || !S.isOwner) return;
+      try { await withTimeout(S.store.mergeShop({ online: el.dataset.c }), 12000); closeSheet(); render(); } catch (e) { st.err = failText(); drawSheet(); }
+    }
+  });
+}
+function monthCSV(ym) {
+  const [a, b] = ymRange(ym);
+  const cell = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+  const type = { pay: 'Payment', out: 'Money taken', own_out: 'Owner took cash', own_in: 'Owner added cash' };
+  const rows = [['Date', 'Time', 'Type', 'Name', 'Amount', 'Cash or online', 'Reason', 'Written by', 'Marked wrong', 'Cancelled']];
+  for (let dk = a; dk <= Math.min(b, S.todayDk); dk = dkAdd(dk, 1)) {
+    if (!dayHas(dk)) continue;
+    const r = dayCalc(dk), date = dkY(dk) + '-' + pad2(dkM(dk)) + '-' + pad2(dkD(dk));
+    r.list.forEach(e => rows.push([date, clock(e.at), type[e.t] || e.t, e.t === 'own_out' || e.t === 'own_in' ? 'Owner' : e.who === 'shop' ? 'Shop expense' : whoName(e), e.amt,
+      e.t === 'pay' ? (e.mode === 'ptm' ? onl() : 'Cash') : 'Cash', e.why ? STR.en['r_' + e.why] : '', e.email || '',
+      e.flag ? STR.en['r_' + e.flag.why].replace('{p}', onl()) : '', e.void ? (e.void.self ? 'By writer ' : 'By owner ') + clock(e.void.at) : '']));
+    rows.push([date, '', 'Page total', '', r.total, onl() + ' ' + r.ptm + ', Cash ' + r.cash, 'Earlier cash ' + r.opening + ', should be ' + r.expected, r.last ? 'Counted ' + r.last.counted : 'Not counted', '', '']);
+  }
+  return '\uFEFF' + rows.map(r => r.map(cell).join(',')).join('\r\n');
+}
+function downloadMonth() {
+  const ym = S.ownerYm || ymOf(S.todayDk), csv = monthCSV(ym);
+  try {
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+    const a = document.createElement('a'); a.href = url; a.download = 'salon-copy-' + ym + '.csv'; document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1500);
+  } catch (e) {
+    openSheet({ render: () => headHTML(t('download', { m: esc(monthName(ym)) })) + `<textarea class="ta" readonly>${esc(csv)}</textarea><button class="btn line" data-act="sheet-close">${t('close')}</button>` });
+  }
+}
+
+/* ───────── setup ───────── */
+function setupErr(msg) { S.setup.err = msg; render(); }
+function setupAdd() {
+  const ni = $('#su-add'), mi = $('#su-mail'); if (!ni) return;
+  const name = ni.value.trim().replace(/\s+/g, ' ').slice(0, 16), email = mi ? normEmail(mi.value) : '';
+  if (!name) { ni.focus(); return; }
+  if (S.setup.staff.some(p => p.name.toLowerCase() === name.toLowerCase())) return setupErr(t('dupName', { n: name }));
+  if (email && !okEmail(email)) return setupErr(t('badEmail'));
+  if (email && S.setup.staff.some(p => p.email === email)) return setupErr(t('emailTaken'));
+  S.setup.staff.push({ name, email }); S.setup.err = ''; S.setup.dn = ''; S.setup.dm = ''; render();
+  const again = $('#su-add'); if (again) again.focus();
+}
+function setupNext() {
+  const s = S.setup;
+  if (s.step === 2) { const inp = $('#su-add'); if (inp && inp.value.trim()) { setupAdd(); if (s.err) return; } if (!s.staff.length) return setupErr(t('eStaff')); }
+  s.err = ''; s.step = Math.min(3, s.step + 1); render(); window.scrollTo(0, 0);
+}
+function setupKey(k) { const s = S.setup; if (s.step === 3) { s.cash = typeKey(s.cash, k, 8); render(); } }
+async function setupSave() {
+  const s = S.setup;
+  if (s.busy) return;
+  s.busy = true; s.err = ''; render();
+  const staff = {}, ids = [];
+  s.staff.forEach((p, i) => { const id = 's' + i + uid(); ids.push(id); staff[id] = { name: p.name, order: i + 1, active: true, addedAt: now(), email: p.email || null }; });
+  const shop = { v: 3, name: s.name.trim() || 'Salon', staff, openingCash: Number(s.cash) || 0, online: 'Paytm', owners: [S.user.email], startDk: todayDk(), createdAt: now() };
+  try {
+    const existing = await withTimeout(S.store.getMember(S.user.email).catch(() => null), 8000);
+    if (existing && existing.active !== false) throw { code: 'not-owner' };
+    await withTimeout(S.store.setShop(shop), 15000);
+    for (let i = 0; i < s.staff.length; i++) if (s.staff[i].email) await withTimeout(S.store.setMember(s.staff[i].email, { name: s.staff[i].name, staff: ids[i], active: true, addedAt: now() }), 15000);
+  } catch (e) {
+    const c = (e && e.code) || '';
+    s.err = /permission|not-owner/.test(c) ? t('ownerOnlySetup', { e: S.user.email }) : failText();
+  }
+  s.busy = false; render(); window.scrollTo(0, 0);
+}
+
+/* ───────── taps ───────── */
+const goTab = tab => { S.tab = tab; S.viewDay = null; render(); window.scrollTo(0, 0); };
+const ACT = {
+  'pick-lang'(el) { S.lang = el.dataset.l; lsSet('lang', S.lang); render(); },
+  signin() { S.signErr = ''; S.store.signIn().catch(() => { S.signErr = t('signFail'); render(); }); },
+  signout: doSignOut,
+  retry() { if (S.user) startAccess(); },
+  account: openAccount,
+  tab(el) {
+    const to = el.dataset.tab;
+    goTab(to);
+    if (to === 'pages') loadMonth(S.pagesYm || ymOf(S.todayDk));
+    if (to === 'owner') loadOwner();
+  },
+  lang: openLang,
+  pay() { openPay(); },
+  out() { openMoney('out'); },
+  'tips-ok'() { lsSet('tips', '1'); render(); },
+  'refused-ok'() { S.refused = []; render(); },
+  entry(el) { if (S.entries[el.dataset.id]) openEntry(Number(el.dataset.dk), el.dataset.id); },
+  count() { openCount(); },
+  'share-day'(el) { openShare(Number(el.dataset.dk)); },
+  'open-day'(el) { const dk = Number(el.dataset.dk); S.tab = 'pages'; S.viewDay = dk; render(); window.scrollTo(0, 0); loadFor(async () => { await ensureOpening(dk); await ensureSpan(dk, dk); }); },
+  'back-pages'() { S.viewDay = null; render(); window.scrollTo(0, 0); },
+  'pages-month'(el) { const ym = ymAdd(S.pagesYm || ymOf(S.todayDk), Number(el.dataset.d)); if (ym > ymOf(S.todayDk)) return; S.pagesYm = ym; render(); loadMonth(ym); },
+  'owner-month'(el) { const ym = ymAdd(S.ownerYm || ymOf(S.todayDk), Number(el.dataset.d)); if (ym > ymOf(S.todayDk)) return; S.ownerYm = ym; render(); loadFor(async () => { const r = ymRange(ym); await ensureSpan(r[0], Math.min(r[1], dkAdd(S.todayDk, -1))); }); },
+  'own-out'() { if (S.isOwner) openMoney('own_out'); },
+  'own-in'() { if (S.isOwner) openMoney('own_in'); },
+  'ptm-check'(el) { if (S.isOwner) openPtmCheck(Number(el.dataset.dk)); },
+  seen(el) { const s = seenMap(); s[el.dataset.key] = Date.now(); lsSet('seen', JSON.stringify(s)); render(); },
+  staff() { if (S.isOwner) openStaff(); },
+  help: openHelp,
+  salon() { if (S.isOwner) openSalon(); },
+  online() { if (S.isOwner) openOnline(); },
+  csv() { if (S.isOwner) downloadMonth(); },
+  'su-next': setupNext,
+  'su-back'() { const s = S.setup; s.err = ''; s.step = Math.max(1, s.step - 1); render(); },
+  'su-add': setupAdd,
+  'su-rm'(el) { S.setup.staff.splice(Number(el.dataset.i), 1); render(); },
+  'su-done': setupSave,
+  key(el) { if (S.phase === 'setup') setupKey(el.dataset.key); }
+};
+document.addEventListener('click', ev => {
+  const el = ev.target.closest && ev.target.closest('[data-act]');
+  if (!el) return;
+  const act = el.dataset.act;
+  if (toastEl.contains(el)) { const cb = toastCb; hideToast(); if (cb) cb(); return; }
+  if (root.contains(el)) {
+    if (act === 'sheet-bg') { if (ev.target === el) { closeSheet(); render(); } return; }
+    if (act === 'sheet-close') { closeSheet(); render(); return; }
+    if (sheet && sheet.on) sheet.on(act, el, ev);
+    return;
+  }
+  if (ACT[act]) ACT[act](el, ev);
+});
+document.addEventListener('input', ev => {
+  const el = ev.target;
+  if (el.dataset && el.dataset.su) S.setup[el.dataset.su] = el.value;
+  else if (sheet && sheet.input && root.contains(el)) sheet.input(el);
+});
+document.addEventListener('keydown', ev => {
+  const el = ev.target, typing = el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA');
+  if (ev.key === 'Enter' && typing) {
+    if (el.id === 'su-add') { ev.preventDefault(); const m = $('#su-mail'); if (m) m.focus(); }
+    else if (el.id === 'su-mail') { ev.preventDefault(); setupAdd(); }
+    else if (el.id === 'su-name') { ev.preventDefault(); setupNext(); }
+    else if (el.dataset.enter && sheet && sheet.on) { ev.preventDefault(); sheet.on(el.dataset.enter, el, ev); }
+    else if (el.blur) el.blur();
+    return;
+  }
+  if (typing || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+  const k = /^\d$/.test(ev.key) ? ev.key : ev.key === 'Backspace' ? 'back' : ev.key === 'Enter' ? 'enter' : null;
+  if (!sheet) { if (k && k !== 'enter' && S.phase === 'setup' && S.setup.step === 3) { ev.preventDefault(); setupKey(k); } return; }
+  if (ev.key === 'Escape') { closeSheet(); render(); return; }
+  if (!sheet.key || !k) return;
+  if (k === 'enter' && el && el.tagName === 'BUTTON') return;
+  ev.preventDefault(); sheet.key(k);
+});
+
+/* a new salon day (4 am) gets a new page */
+function checkDay() {
+  if (S.phase !== 'app' || !S.dataStarted) return;
+  const dk = todayDk();
+  if (dk !== S.todayDk) { S.todayDk = dk; S.viewDay = null; subscribeDay(); loadFor(() => ensureOpening(dk)); }
+}
+setInterval(checkDay, 15000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { syncClock(); checkDay(); render(); } });
+window.addEventListener('online', () => { S.online = true; render(); });
+window.addEventListener('offline', () => { S.online = false; render(); });
+
+/* ───────── start ───────── */
+async function syncClock() {
+  if (S.mode !== 'cloud' || !/^https?:/.test(location.protocol)) return;
+  try {
+    const t0 = Date.now();
+    const r = await withTimeout(fetch(location.href.split('#')[0], { method: 'HEAD', cache: 'no-store' }), 6000);
+    const t1 = Date.now(), h = r.headers.get('date');
+    if (!h) return;
+    const off = Date.parse(h) + 500 - (t0 + t1) / 2;
+    if (!isFinite(off) || Math.abs(off) > 400 * 864e5) return;
+    const was = CLK.off;
+    CLK.off = Math.abs(off) > 120e3 ? off : 0; CLK.fixed = CLK.off !== 0;
+    if (was !== CLK.off) { S.ver++; checkDay(); render(); }
+  } catch (e) {}
+}
+function loadScript(src) {
+  return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+}
+async function boot() {
+  render();
+  if (S.mode === 'demo') {
+    S.store = makeDemo();
+    S.store.onUser(u => { S.user = u; startAccess(); });
+    return;
+  }
+  try {
+    for (const f of ['app', 'auth', 'firestore']) await withTimeout(loadScript(`https://www.gstatic.com/firebasejs/${FIREBASE_VERSION}/firebase-${f}-compat.js`), 20000);
+    window.firebase.initializeApp(FIREBASE_CONFIG);
+    try { await window.firebase.firestore().enablePersistence({ synchronizeTabs: true }); } catch (e) {}
+  } catch (e) { S.phase = 'noload'; return render(); }
+  S.store = makeCloud(window.firebase);
+  await Promise.race([syncClock(), sleep(3000)]);
+  S.store.redirectResult().catch(() => { S.signErr = t('signFail'); render(); });
+  S.store.onUser(u => {
+    if (!u) { stopAll(); S.user = null; S.phase = 'signin'; return render(); }
+    S.user = u; startAccess();
+  });
+}
+boot();
+})();
+
+</script>
+</body>
+</html>
