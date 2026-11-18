@@ -1320,7 +1320,7 @@ function quickAmts() {
   const freq = {};
   lists().E.slice(-400).forEach(e => { if (e.t === 'pay' && !e.void) freq[e.amt] = (freq[e.amt] || 0) + 1; });
   const top = Object.keys(freq).map(Number).sort((a, b) => (freq[b] - freq[a]) || (a - b)).slice(0, 6);
-  for (const b of [100, 150, 200, 50, 300, 500]) { if (top.length >= 6) break; if (top.indexOf(b) < 0) top.push(b); }
+  for (const b of [100, 150, 200, 70, 300, 500]) { if (top.length >= 6) break; if (top.indexOf(b) < 0) top.push(b); }
   return top.sort((a, b) => a - b);
 }
 function emailOwnerOf(email) {
