@@ -1,0 +1,25 @@
+{
+  "id": "./",
+  "name": "Salon Copy",
+  "short_name": "Salon Copy",
+  "description": "The salon’s cash copy: every payment, cash and online, on every staff phone.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#14264D",
+  "theme_color": "#14264D",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Money taken from cash", "short_name": "Money taken", "url": "./?a=out", "icons": [{ "src": "icons/sc-out.png", "sizes": "96x96", "type": "image/png" }] },
+    { "name": "Today’s page", "short_name": "Today", "url": "./?a=today", "icons": [{ "src": "icons/sc-today.png", "sizes": "96x96", "type": "image/png" }] },
+    { "name": "Count cash and close", "short_name": "Count cash", "url": "./?a=count", "icons": [{ "src": "icons/sc-count.png", "sizes": "96x96", "type": "image/png" }] }
+  ]
+}
